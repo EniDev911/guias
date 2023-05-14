@@ -109,9 +109,9 @@ notepad.exe C:\MySQL_8\my.ini
 
 Buscamos la sección mysql y añadimos lo siguiente:  
 
-```
+```ini
 [mysql]
-prompt=prompt=[✨\u |💾 \d]>\_
+prompt=[✨\u |💾 \d]>\_
 ```
 ![set archivo de opciones](assets/03.png)
 
