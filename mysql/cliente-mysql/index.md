@@ -256,11 +256,11 @@ table
 
 Ejecuta la sentencia y sale. El formato es el mismo que genera el producido por la opción [**`--batch`**](#batch).  
 
-#### Ejemplos
+### Ejemplo
 
 Volcar la salida en un archivo y con formato HTML
-```bat
-mysql -u root -p -e "show databases" -H > results.html
+```bash
+mysql -u root -p -e "SELECT * FROM tablename;" -H > results.html
 ```
 
 <p align="center">

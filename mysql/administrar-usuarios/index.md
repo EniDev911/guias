@@ -6,6 +6,8 @@ title: Administrar usuarios
 [comment]: <> (Author: Marco Contreras Herrera)
 [comment]: <> (Email: enidev911@gmail.com)
 
+[![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
+
 <a name="top"></a>
 ## CONTENIDO
 
