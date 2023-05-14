@@ -15,5 +15,5 @@ title: EniDev
     <a href="{{ '/postgres' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/postgresql.png' | relative_url }}" height="80"></kbd></a>
     <span style="margin: 0 15px;"></span>
     <!-- MySQL -->
-    <a href="/mysql/"><kbd><img src="{{ '/assets/images/logos/mysql.png' | relative_url }}" height="80"></kbd></a>
+    <a href="{{ '/mysql' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mysql.png' | relative_url }}" height="80"></kbd></a>
 </p>

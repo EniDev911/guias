@@ -5,10 +5,6 @@ title: "Crear data dummy"
 
 [![badge](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)](../)
 
-## Resumen
-
-- [Crear una tabla](#crear-tabla)
-
 
 <a name="crear-tabla"></a>
 ## Crear una tabla

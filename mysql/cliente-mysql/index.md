@@ -6,8 +6,6 @@ title: "Cliente de línea de comandos Mysql"
 [comment]: <> (Author: Marco Contreras Herrera)
 [comment]: <> (Email: enidev911@gmail.com)
 
-
-
 [![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
 
 ## CONTENIDO
@@ -279,7 +277,7 @@ mysql -u root -p -e "show databases" -H > results.html
 La contraseña de la cuenta de MySQL utilizada para conectarse al servidor. El valor es opcional si no se proporciona, **mysql** solicita que lo ingrese.
 
 
-#### Ejemplos
+### Ejemplos
 
 **En la línea de comando**  
 
@@ -302,11 +300,12 @@ password=proPassword
 
 ---
 
-### <a name="silent"></a>&#x1f977; `--silent` o `-s`
+<a name="silent"></a>
+### -\-silent \| -s
 
 El modo silencioso da como resultado un formato de salida no tabular y el escape de caracteres especiales.  El escape de caracteres se puede deshabilitar usando el modo sin procesar. Esta opción mantiene el prompt visible.
 
-#### Ejemplos
+### Ejemplos
 
 **En la línea de comando**  
 
@@ -321,18 +320,18 @@ database=test
 silent
 ```
 
-
-<a href="#optionscmd">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
+<a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-### <a name="host"></a>&#x1f977; `--host` o `-h`
+<a name="host"></a>
+### -\-host \| -h
 
 Conectarse al servidor MySQL en el host dado.
 
 La opción `--dns-srv-name` tiene prioridad sobre la opción `--host` en caso de que se den ambas. La opción `--dns-srv-name` hace que la conexión utilice la función `mysql_real_connect_dns_srv()` de la [**API**](https://es.wikipedia.org/wiki/Web_API#:~:text=Una%20API%20es%20una%20interfaz,funciones%20de%20un%20determinado%20software.) de [**C**](https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)) en lugar de `mysql_real_connect()`. Sin embargo, si el comando **`connect`** se usa posteriormente en tiempo de ejecución y especifica un argumento de nombre de host, ese nombre de host tiene prioridad sobre cualquier opción `--dns-srv-name` proporcionada al inicio de **mysql** para especificar un registro DNS SRV.  
 
-#### Ejemplos
+### Ejemplos
 
 **En la línea de comando**  
 
@@ -347,11 +346,12 @@ database=test
 host=localhost
 ```
 
-<a href="#optionscmd">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
+<a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-### <a name="html"></a>&#x1f977; `--html` o `-H`
+<a name="html"></a>
+### -\-html \| -H
 
 Produce que cada vez que ejecutemos comandos, la salida se agreguen las etiquetas HTML para generar tablas. Usando la instrucción `INTO OUTFILE` podemos crear archivos en html. Ej: 
 ```sql
@@ -363,11 +363,12 @@ INTO OUTFILE 'c:/temp/facturas.txt'
   <img src="assets/html-output.png" alt="html print output" width="800">
 </p>
 
-<a href="#optionscmd">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
+<a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-### <a name="user"></a>&#x1f977; `--user` o `-u`
+<a name="user"></a>
+### -\-user \| -u
 
 El nombre de usuario de la cuenta de MySQL que se usará para conectarse el servidor.  
 
@@ -385,21 +386,24 @@ user=root
 host=localhost
 ```
 
-<a href="#optionscmd">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
+<a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-### <a name="namedcommands"></a>&#x1f977; `--named-commands`  o `-G`
+<a name="namedcommands"></a>
+### -\-named-commands \| -G
 
 Habilite los comandos **mysql con nombre**. Se permiten comandos de formato largo, no solo comandos de formato corto. Por ejemplo `quit | q` ambos son reconocidos. Para deshabilitar los comandos con nombres use `--skip-named-commands`
 
-<a href="#optionscmd">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
+<a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 <a href="#top">![](https://img.shields.io/badge/regresar%20contenido%20principal-%E2%86%A9-blue?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)</a>
 
 ---
 
-### <a name="optionssesion"></a>OPCIONES EN LA SESIÓN EN MYSQL
+<a name="optionssesion"></a>
+
+## OPCIONES EN LA SESIÓN EN MYSQL
 
 Ahora que estamos conectado **mysql** envía cada instrucción SQL que emite al servidor para que se ejecute. También hay un conjunto de comandos que el cliente **mysql** interpreta. Para obtener una lista escribimos el comando **help** o el símbolo de interrogación **?** en el prompt.  
 
@@ -456,33 +460,30 @@ Para obtener ayuda del lado del servidor, escriba `help contents`
 |[**`nopager (\n)`**](#c-help)|Deshabilita la paginación de salida. (El comando solo funciona en Unix)|
 
 
-
-### <a name="c-clear"></a> `clear`
+<a name="c-clear"></a>
+### clear
 
 Borra la instrucción de la entrada actual, quiere decir que se ignorará todo lo ingresado anteriormente.  
 
-#### Ejemplo
+### Ejemplo
 
-<p align="center">
-  <img src="assets/clear-in.png" width="800">
-</p>
+![pic](assets/clear-in.png)
 
 <a href="#optionssesion-table">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-### <a name="c-delimiter"></a> `delimiter`
+<a name="c-delimiter"></a>
+### delimiter
 
-<p align="center">
-  <img src="assets/delimiter_.png" width="800">
-</p>
+![pic](assets/delimiter_.png)
 
 <a href="#optionssesion-table">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-
-### <a name="optionsprompt"></a>OPCIONES PARA EL PROMPT
+<a name="optionsprompt"></a>
+## OPCIONES PARA EL PROMPT
 
 EL comando **`prompt`** puede alterar la configuración predeterminada. La cadena para definir el aviso puede contener las siguientes secuencias especiales.  
 
@@ -501,9 +502,7 @@ EL comando **`prompt`** puede alterar la configuración predeterminada. La caden
 |[**`\p`**](#port)|El puerto TCP/IP actual o archivo de socket.|
 |[**`\R`**](#hourm)|La hora actual, en horario militar de 24 horas(0-23).|
 |[**`\r`**](#hourm)|La hora actual, hora estándar de 12 horas (1-12).|
-<a href="#optionssesion">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 |[**`\S`**](#dotcom)|Punto y coma.|
-
 |[**`\s`**](#second)|Segundos de la hora actual.|
 |[**`\t`**](#tab)|Un carácter de tabulación.|
 |[**`\U`**](#userhost)|Su nombre de cuenta completo usuario@host.|
