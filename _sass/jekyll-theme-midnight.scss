@@ -1,11 +1,16 @@
 @import "normalize";
 @import "fonts";
 @import "rouge-base16-dark.scss";
+@import "headings";
+@import "paragraphs";
+@import "blockquotes";
+@import "blockcodes";
+@import "badges";
 
 body {
   padding:0px 0 20px 0px;
   margin: 0px;
-  font:14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:16px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#f0e7d5;
   font-weight: normal;
   background: #252525;
@@ -13,41 +18,10 @@ body {
   background: linear-gradient(#2a2a29, #1c1c1c);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color:#e8e8e8;
-  margin:0 0 10px;
-  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-}
-
 p, ul, ol, table, pre, dl {
   margin:0 0 20px;
 }
 
-h1, h2, h3 {
-  line-height:1.1;
-
-}
-
-h1 {
-  font-size:28px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h4, h5, h6 {
-  color:#e8e8e8;
-}
-
-h3 {
-  font-size: 18px;
-  line-height: 24px;
-  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: normal;
-  color: #b6b6b6;
-}
 
 a {
   color:#ffcc00;
@@ -66,6 +40,19 @@ a small {
   display:block;
 }
 
+a[href='#top'] img {
+  border-radius: 6px;
+  border: 2px solid black;
+  margin: 10px 0;
+}
+
+kbd img {
+  transition: transform .2s ease;
+}
+kbd img:hover {
+  transform: scale(1.1);
+}
+
 ul{
   list-style-image:url('../images/bullet.png');
 }
@@ -76,7 +63,7 @@ strong {
 }
 
 .wrapper {
-  max-width:650px;
+  max-width:100%;
   margin:0 auto;
   position:relative;
   padding: 0 20px;
@@ -86,12 +73,7 @@ section img {
   max-width: 100%;
 }
 
-blockquote {
-  border-left:3px solid #ffcc00;
-  margin:0;
-  padding:0 0 0 20px;
-  font-style:italic;
-}
+
 
 code {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, monospace;
@@ -116,6 +98,7 @@ pre {
     text-shadow: 0px 1px 0px #000;
     margin: 0;
     padding: 0;
+    font-size: 16px;
   }
 }
 
@@ -231,11 +214,21 @@ dt {
 }
 
 section {
-  max-width:650px;
+  max-width: 65%;
   padding: 30px 0px 50px 0px;
-  margin: 20px 0;
+  margin: 20px auto;
   margin-top: 70px;
 
+  ul {
+    li {
+      p {
+        strong {
+          color:#ffbf00;
+          padding: 0 3px; 
+        }
+      }
+    }
+  }
   #title {
     border: 0;
     outline: none;
@@ -250,13 +243,7 @@ section {
       line-height: 36px;
     }
 
-    p {
-      color: #d7cfbe;
-      font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: normal;
-      font-size: 18px;
-      text-align: center;
-    }
+
 
     .credits {
       font-size: 11px;
