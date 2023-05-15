@@ -3,9 +3,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
-h1 { font-size:28px;}
-h2 { font-size: 25px; }
-h3 { font-size: 22px; }
+h1 { 
+	font-size: 18px;
+    text-align: center;
+    line-height: 36px;
+}
+h2 { font-size: 15px; }
+h3 { font-size: 12px; }
 
 // MARGIN AND PADDING
 h1, h2, h3, h4, h5, h6 {
@@ -18,3 +22,14 @@ h1, h3, h4, h5, h6 { color:#e8e8e8;}
 h2 {color:#ffbf00;}
 
 
+@media (min-width: 768px) {
+	h1 { font-size: 28px;}
+	h2 { font-size: 25px; }
+	h3 { font-size: 22px; }
+}
+
+@media (min-width: 992px) {
+	h1 { font-size: 38px;}
+	h2 { font-size: 25px; }
+	h3 { font-size: 22px; }
+}

@@ -1,0 +1,9 @@
+th img, td img {
+    display: none;
+}
+
+@media (min-width: 992px) {
+  th img, td img {
+    display: inline-block;
+  }
+}
