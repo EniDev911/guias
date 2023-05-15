@@ -257,10 +257,9 @@ SELECT DATE('2020-12-31 01:02:03');
 /* '2020-12-31' */
 ```
 
-<details><summary><strong>CLIC:</strong> Ver más ejemplos</summary><br>
-<ul><details><summary><strong>CLIC:</strong> Ejemplo 1: Extraer fecha de un campo fecha y hora</summary><br>
+**Ejemplo 1**: Extraer fecha de un campo fecha y hora
 
-Considerando tener la siguiente tabla llamada <b>users</b>:  
+Considerando tener la siguiente tabla llamada `USERS`:  
 
 ```sql
 CREATE TABLE `users`(
@@ -272,7 +271,7 @@ CREATE TABLE `users`(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
-Para insertar valores usando la función <code>CURRENT_TIMESTAMP()</code> en el campo <b>up</b>:  
+Para insertar valores usando la función `CURRENT_TIMESTAMP` en el campo <b>up</b>:  
 
 ```sql
 INSERT INTO `users` (`user_id`, `username`, `birthday`, `up`, `status`)
@@ -295,8 +294,6 @@ Resultado:
 | Jhon Doe | Monday November 1990 | 2022-03-24 |
 +----------+----------------------+------------+
 ```
-</details></ul>
-</details><br>
 
 [Regresar a la tabla](#top) &#x2934;
 
@@ -349,27 +346,27 @@ Da formato al valor *date* según la cadena *format*.  Los especificadores que s
 			<td><p>Mes numérico (0..12)</p></td>
 		</tr>
 		<tr>
-			<td><b>%D</b></td>
+			<td>%D</td>
 			<td><p>Día del mes con sufijo en inglés (0th, 1st, 2nd, 3rd, ...)</p></td>
 		</tr>
 		<tr>
-			<td><b>%d</b></td>
+			<td>%d</td>
 			<td><p>Día del mes, numérico (00..31)</p></td>
 		</tr>
 		<tr>
-			<td><b>%e</b></td>
+			<td>%e</td>
 			<td><p>Día del mes, numérico (0..31)</p></td>
 		</tr>
 		<tr>
-			<td><b>%f</b></td>
+			<td>%f</td>
 			<td><p>Microsegundos (000000..999999)</p></td>
 		</tr>		
 		<tr>
-			<td><b>%H</b></td>
+			<td>%H</td>
 			<td><p>Hora (00..23)</p></td>
 		</tr>
 		<tr>
-			<td><b>%h</b> o <b>%l</b> (ele)</td>
+			<td>%h o %l (ele)</td>
 			<td><p>Hora (01..12)</p></td>
 		</tr>
 		<tr>
@@ -528,7 +525,8 @@ SELECT DAYOFYEAR('2022-03-24');
 ---
 
 <!-- EXTRACT -->
-### <a name="extract"></a>&#x1f977; `EXTRACT(unit FROM date)`
+<a name="extract"></a>
+### EXTRACT(unit FROM date)
 
 La función **`EXTRACT()`** utiliza los mismos argumentos con tipos de especificadores *unit* que la función **[`DATE_ADD()`](#addsubdate)** o **[`DATE_SUB()`](#addsubdate)**, pero extrae partes de la fecha en lugar de realizar operaciones aritméticas de fechas.
 
@@ -546,7 +544,8 @@ SELECT EXTRACT(MINUTE FROM CURTIME());
 ---
 
 <!-- FROM_DAYS -->
-### <a name="fromdays"></a>&#x1f977; `FROM_DAYS(N)`
+<a name="fromdays"></a>
+### FROM_DAYS(N)
 
 Dado un número de día **N**, devuelve un valor **DATE**.  
 
@@ -560,12 +559,23 @@ SELECT FROM_DAYS(738603);
 ---
 
 <!-- GET_FORMAT -->
-### <a name="getformat"></a>&#x1f977; `GET_FORMAT({DATE|TIME|DATETIME}, {'EUR'|'USA'|'JIS'|'ISO'|'INTERNAL'})`
+<a name="getformat"></a>
+### GET_FORMAT
+
+
+**Sintaxis**
+
+```txt
+GET_FORMAT({DATE|TIME|DATETIME}, {'EUR'|'USA'|'JIS'|'ISO'|'INTERNAL'})
+```
 
 Devuelve una cadena de formato. Esta función es útil en combinación con [`DATE_FORMAT()`](#dateformat) y las funciones [`STR_TO_DATE`](#strtodate).  
 Los valores posibles para el primer argumento dan como resultado varias cadenas de formato posibles (para los especificadores utilizados, consulte la tabla en la descripción de la función [`DATE_FORMAT()`](#dateformat)).  
 
-<details><summary><strong>CLIC:</strong> Ver tabla de especificadores</summary><br>
+
+Ver tabla de especificadores:
+
+
 <table>
 	<thead>
 		<tr>
@@ -632,39 +642,38 @@ Los valores posibles para el primer argumento dan como resultado varias cadenas 
 		</tr>
 		<tr>
 			<td>GET_FORMAT(TIME, <b>'JIS'</b>)</td>
-			<td><b>'%H:%i:%s'</b></td>
-			<td><b>'07:45:14'</b></td>
+			<td>'%H:%i:%s'</td>
+			<td>'07:45:14'</td>
 		</tr>
 		<tr>
 			<td>GET_FORMAT(TIME, <b>'ISO'</b>)</td>
-			<td><b>'%H:%i:%s'</b></td>
-			<td><b>'07:45:14'</b></td>
+			<td>'%H:%i:%s'</td>
+			<td>'07:45:14'</td>
 		</tr>
 		<tr>
 			<td>GET_FORMAT(TIME, <b>'EUR'</b>)</td>
-			<td><b>'%H.%i.%s'</b></td>
-			<td><b>'07.45.14'</b></td>
+			<td>'%H.%i.%s'</td>
+			<td>'07.45.14'</td>
 		</tr>
 		<tr>
 			<td>GET_FORMAT(TIME, <b>'INTERNAL'</b>)</td>
-			<td><b>'%H%i%s'</b></td>
-			<td><b>'074514'</b></td>
+			<td>'%H%i%s'</td>
+			<td>'074514'</td>
 		</tr>
 	</tbody>
 </table>
-</details><br>
+
 <!-- EJEMPLOS -->
-<details><summary><b>CLIC</b> Ver ejemplos</summary>
 <!-- Ejemplo 1 -->
-<ul><details><summary><b>CLIC</b> Ejemplo 1: uso básico</summary>
-<br>
+**Ejemplo 1** : uso básico
+
 Aquí una demostración de como funciona:  
 
 ```sql
 SELECT GET_FORMAT(DATE, 'USA');
 ```
 
-resultado:  
+Resultado:  
 
 ```text
 +------------------------+
@@ -690,25 +699,27 @@ resultado:
 +----------+
 ```
 
-Sin embargo, también podemos pasar esta función directamente a la función <code>DATE_FORMAT()</code>. Ejemplo:  
+Sin embargo, también podemos pasar esta función directamente a la función `DATE_FORMAT()`. Por ejemplo:  
 
 ```sql
 SELECT DATE_FORMAT('2020-03-07', GET_FORMAT(DATE, 'USA')) AS 'Formateado';
 ```
-Así que esto nos evita tener que recordar qué cadena de formato usar, <code>GET_FORMAT()</code> lo hace por nosotros.
-</details></ul>
+
+Así que esto nos evita tener que recordar qué cadena de formato usar, `GET_FORMAT()` lo hace por nosotros.
+
+
 <!-- Ejemplo 2-->
-<ul><details><summary><b>CLIC</b> Ejemplo 2: valores de fecha</summary>
-<br>
-Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es <code>DATE</code>.  
+**Ejemplo 2** : valores de fecha
+
+Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es `DATE`.  
 
 ```sql
 SELECT
-	GET_FORMAT(DATE, 'USA') AS 'USA',
-	GET_FORMAT(DATE, 'JIS') AS 'JIS',
-	GET_FORMAT(DATE, 'ISO') AS 'ISO',
-	GET_FORMAT(DATE, 'EUR') AS 'EUR',
-	GET_FORMAT(DATE, 'INTERNAL') AS 'INTERNAL';
+  GET_FORMAT(DATE, 'USA') AS 'USA',
+  GET_FORMAT(DATE, 'JIS') AS 'JIS',
+  GET_FORMAT(DATE, 'ISO') AS 'ISO',
+  GET_FORMAT(DATE, 'EUR') AS 'EUR',
+  GET_FORMAT(DATE, 'INTERNAL') AS 'INTERNAL';
 ```
 
 Resultado:  
@@ -720,19 +731,19 @@ Resultado:
 | %m.%d.%Y | %Y-%m-%d | %Y-%m-%d | %d.%m.%Y | %Y%m%d   |
 +----------+----------+----------+----------+----------+
 ```
-</details></ul>
+
 <!-- Ejemplo 3-->
-<ul><details><summary><b>CLIC</b> Ejemplo 3: valores de fecha y hora</summary>
-<br>
-Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es <code>DATETIME</code>.
+**Ejemplo 3** : valores de fecha y hora
+
+Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es `DATETIME`.
 
 ```sql
 SELECT
-	GET_FORMAT(DATETIME, 'USA') AS 'USA',
-	GET_FORMAT(DATETIME, 'JIS') AS 'JIS',
-	GET_FORMAT(DATETIME, 'ISO') AS 'ISO',
-	GET_FORMAT(DATETIME, 'EUR') AS 'EUR',
-	GET_FORMAT(DATETIME, 'INTERNAL') AS 'INTERNAL';
+  GET_FORMAT(DATETIME, 'USA') AS 'USA',
+  GET_FORMAT(DATETIME, 'JIS') AS 'JIS',
+  GET_FORMAT(DATETIME, 'ISO') AS 'ISO',
+  GET_FORMAT(DATETIME, 'EUR') AS 'EUR',
+  GET_FORMAT(DATETIME, 'INTERNAL') AS 'INTERNAL';
 ```
 
 Resultado:  
@@ -744,19 +755,19 @@ Resultado:
 | %Y-%m-%d %H.%i.%s | %Y-%m-%d %H:%i:%s | %Y-%m-%d %H:%i:%s | %Y-%m-%d %H.%i.%s | %Y%m%d%H%i%s |
 +-------------------+-------------------+-------------------+-------------------+--------------+
 ```
-</details></ul>
+
 <!-- Ejemplo 4-->
-<ul><details><summary><b>CLIC</b> Ejemplo 4: valores de tiempo</summary>
-<br>
-Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es <code>TIME</code>.
+**Ejemplo 4** : valores de tiempo
+
+Este ejemplo enumera todas las variaciones del segundo argumento cuando el primer argumento es `TIME`.
 
 ```sql
 SELECT
-	GET_FORMAT(TIME, 'USA') AS 'USA',
-	GET_FORMAT(TIME, 'JIS') AS 'JIS',
-	GET_FORMAT(TIME, 'ISO') AS 'ISO',
-	GET_FORMAT(TIME, 'EUR') AS 'EUR',
-	GET_FORMAT(TIME, 'INTERNAL') AS 'INTERNAL';
+  GET_FORMAT(TIME, 'USA') AS 'USA',
+  GET_FORMAT(TIME, 'JIS') AS 'JIS',
+  GET_FORMAT(TIME, 'ISO') AS 'ISO',
+  GET_FORMAT(TIME, 'EUR') AS 'EUR',
+  GET_FORMAT(TIME, 'INTERNAL') AS 'INTERNAL';
 ```
 
 Resultado:  
@@ -769,7 +780,7 @@ Resultado:
 +-------------+----------+----------+----------+----------+
 ```
 
-Entonces podemos pasar la función <code>GET_FORMAT()</code> directamente a la función <code>TIME_FORMAT()</code>. Ejemplo:  
+Entonces podemos pasar la función `GET_FORMAT()` directamente a la función `TIME_FORMAT()`. Ejemplo:  
 
 ```sql
 SELECT TIME_FORMAT(140529, GET_FORMAT(TIME, 'USA')) AS 'Formateado';
@@ -784,8 +795,6 @@ Resultado:
 | 02:05:29 PM |
 +-------------+
 ```
-</details></ul>
-</details><br>
 
 [Subir al principio](#top) &#x2934;
 

@@ -48,6 +48,12 @@ a[href='#top'] img {
   margin: 10px 0;
 }
 
+kbd {
+  background: #00000040;
+  padding: 3px 10px;
+}
+
+
 kbd img {
   transition: transform .2s ease;
 }
