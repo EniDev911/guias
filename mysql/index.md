@@ -11,5 +11,6 @@ title: "Contenido"
 |<img height="30" src="{{ '/assets/images/logos/mysql.png' | relative_url }}" >|[mysqldump: importa y exportar bases de datos](./mysqldump)|
 |<img height="30" src="{{ '/assets/images/logos/mysql.png' | relative_url }}" >|[mysql: administrar usuarios](./administrar-usuarios)|
 |<img height="30" src="{{ '/assets/images/logos/mysql.png' | relative_url }}" >|[mysql: guia resumida general](./guia-resumida-general)|
+|<img height="30" src="{{ '/assets/images/logos/mysql.png' | relative_url }}" >|[mysql: funciones de fecha y hora](./date-datetime)|
 
 
