@@ -77,7 +77,7 @@ end
 
 ### Usando form builder
 
-Para ello creamos un nuevo archivo, en este caso, el ejemplo estará basado en **personas**, para la vista voy a estar usando clases de bootstrap para darle estilos, este formulario debemos crearlo en `app/views/articles/new.html.erb` y tendrá el siguiente contenido:  
+Para ello creamos un nuevo archivo, en este caso, el ejemplo estará basado en **personas**, para la vista voy a estar usando clases de bootstrap para darle estilos, este formulario debemos crearlo en `app/views/personas/new.html.erb` y tendrá el siguiente contenido:  
 
 ```erb
 <!-- app/views/personas/new.html.erb -->
