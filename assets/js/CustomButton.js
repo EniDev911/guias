@@ -134,13 +134,13 @@ export class CustomButton extends HTMLElement {
 
 customElements.define('enidev-button', CustomButton);
 
-const codeBlocks = document.querySelectorAll("pre>code");
+// const codeBlocks = document.querySelectorAll("pre>code");
 
-const tpl = document.createElement("template");
-tpl.innerHTML = /*html*/ `
-<enidev-button></enidev-button>
-`
+// const tpl = document.createElement("template");
+// tpl.innerHTML = /*html*/ `
+// <enidev-button></enidev-button>
+// `
 
-codeBlocks.forEach(el => {
-    el.parentElement.appendChild(tpl.content.cloneNode(true));
-})
+// codeBlocks.forEach(el => {
+//     el.parentElement.appendChild(tpl.content.cloneNode(true));
+// })

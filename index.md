@@ -32,3 +32,8 @@ title: EniDev
     <a href="{{ '/vs-code' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/vs_code.png' | relative_url }}" height="80"></kbd></a>
 </p>
 
+<!-- Herramientas -->
+<p align="center">
+    <!-- MermaidJS -->
+    <a href="{{ '/mermaidjs' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
+</p>
