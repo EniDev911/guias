@@ -17,3 +17,7 @@ pre {
     font-size: 0;
     font-variant-ligatures: none;
 }
+
+.language-liquid pre {
+    white-space: pre-wrap;
+}

@@ -2,6 +2,20 @@ th img, td img {
     display: none;
 }
 
+
+tr:hover {
+	background: #11111150;
+}
+
+td.item {
+	color: #dc1;
+}
+
+td:nth-of-type(1) {
+	width: 50px;
+	text-align: center;
+}
+
 @media (min-width: 992px) {
   th img, td img {
     display: inline-block;

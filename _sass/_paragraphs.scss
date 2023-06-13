@@ -3,10 +3,6 @@ p {
 	font-family: 'EncodeSansRegular', sans-serif;
     font-size: 18px;
     font-weight: normal;
-
-    em {
-    	padding: 0 5px;
-    }
 }
 
 li {
@@ -16,4 +12,11 @@ li {
 	strong {
 		color:#ffbf00;
 	}
+	 a::after {
+	  content: "\25E5";
+	  font-size: .6rem;
+	  font-weight: bolder;
+	  margin-left: 0.1rem;
+	  vertical-align: super;
+    }
 }
