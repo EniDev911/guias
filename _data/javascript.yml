@@ -1,0 +1,3 @@
+storage:
+  - name: "API indexedDB"
+    link: indexedDB_API/usando-indexedDB

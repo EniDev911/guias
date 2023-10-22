@@ -1,0 +1,18 @@
+ActionView:
+  - name: "Método collection_check_boxes"
+    link: rails/form_option_helper/collection-check-boxes
+  - name: "generando formularios"
+    link: rails/generando-formularios
+ActiveRecord:
+  - name: "Asociación muchos a muchos"
+    link: rails/activerecord/asociaciones/muchos-a-muchos
+  - name: CRUD - lectura y escritura de datos
+    link: rails/activerecord/crud
+  - name: Validaciones
+    link: rails/activerecord/validaciones
+ActionRecord:
+  - name: "Convenciones de ActionRecord"
+    link: rails/actionrecord/convenciones
+Exercises:
+  - name: "Devise adjuntar avatar a un usuario con Active Storage"
+    link: rails/ejercicios/devise-avatar-active-storage

@@ -1,0 +1,32 @@
+
+<div class="contenedor">
+	<ul class="ul">
+		<li class="li activo">{{ include.tab_1 }}</li>
+		<li class="li">{{ include.tab_2}}</li>
+		<li class="li">{{ include.tab_3 }}</li>
+	</ul>
+	<div class="subcontenedor">
+		<div class="bloque activo" id="tab_1">
+			<div class="clipboard">
+{% highlight sql %}
+{{ include.bloque_1 }}
+{% endhighlight %}
+			</div>
+		</div>
+		<div class="bloque" id="tab_2">
+			<div class="clipboard">
+{% highlight sql %}
+{{ include.bloque_2 }}
+{% endhighlight %}
+			</div>
+		</div>
+		<div class="bloque" id="tab_3">
+			<div class="clipboard">
+{% highlight sql %}
+{{ include.bloque_3 }}
+{% endhighlight %}
+			</div>
+		</div>
+	</div>
+</div>
+

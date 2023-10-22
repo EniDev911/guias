@@ -1,0 +1,18 @@
+install:
+  - window: "desde los binarios - zip"
+    window_link: "instalacion/zip"
+    linux: "ubuntu"
+    linux_link: "instalacion/ubuntu"
+
+articles:
+  - name: "psql: cliente de línea de comandos"
+    link: "psql"
+  - name: "recuperar password usuario administrador postgres"
+    link: "recuperar-password-postgres"
+  - name: "administrar roles de usuario"
+    link: "administrar-roles-usuarios"
+  - name: "trabajar con valores NULL"
+    link: "trabajar-con-valores-null"
+  - name: "tipos de datos"
+    link: "tipos-de-datos"
+

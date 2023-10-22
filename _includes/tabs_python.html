@@ -1,0 +1,43 @@
+<div class="contenedor" id="{{ include.id }}">
+	<ul class="ul">
+	{% if include.tab_1 %}
+		<li class="li activo">{{ include.tab_1 }}</li>
+	{% endif %}
+	{% if include.tab_2 %}
+		<li class="li">{{ include.tab_2}}</li>
+	{% endif %}
+	{% if include.tab_3 %}
+		<li class="li">{{ include.tab_3 }}</li>
+	{% endif %}
+	</ul>
+	<div class="subcontenedor">
+	{% if include.bloque_1 %}
+		<div class="bloque activo">
+			<div class="clipboard">
+{% highlight python %}
+{{ include.bloque_1 }}
+{% endhighlight %}
+			</div>
+		</div>
+	{% endif %}
+	{% if include.bloque_2 %}
+		<div class="bloque">
+			<div class="clipboard">
+{% highlight python %}
+{{ include.bloque_2 }}
+{% endhighlight %}
+			</div>
+		</div>
+	{% endif %}
+	{% if include.bloque_3 %}
+		<div class="bloque">
+			<div class="clipboard">
+{% highlight python %}
+{{ include.bloque_3 }}
+{% endhighlight %}
+			</div>
+		</div>
+	{% endif %}
+	</div>
+</div>
+

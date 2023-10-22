@@ -1,0 +1,14 @@
+- name: "Uso de línea de comandos"
+  link: "jekyll/uso-linea-de-comandos"
+- name: "Archivo de datos"
+  link: jekyll/archivo-de-datos
+- name: "Front matter"
+  link: jekyll/front-matter
+- name: "Layouts"
+  link: jekyll/layouts
+- name: "Includes"
+  link: jekyll/includes
+- name: "Despliegue"
+  link: jekyll/deployment
+- name: "Liquid filtros"
+  link: jekyll/liquid/filtros

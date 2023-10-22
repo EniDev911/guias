@@ -1,0 +1,25 @@
+<style type="text/css">
+	.card {
+		border-radius: 10px;
+		max-width: 18rem;
+		overflow: hidden;
+	}
+	.card-header img {
+		object-fit: cover;
+	}
+	.card-title: {
+		color: #ff2c0c;
+	 }
+
+</style>
+
+
+<div class="card" onclick='window.location.href = '''>
+	<div class="card-header">
+		<img src="{{ include.img }}" alt="{{ include.title }}">
+	</div>
+	<div class="card-body">
+		<h4 class="card-title">{{ include.title }}</h4>
+		<p class="card-body">{{ include.body }}</p>
+	</div>
+</div>

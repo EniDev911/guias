@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "es-CL" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">
+    <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/scrolls-anchors.js' | relative_url }}"></script>
+    <script type="module" src="{{ '/assets/js/CustomButton.js' | relative_url }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.2/dist/mermaid.min.js"></script>
+    {% include head-custom.html %}
+    <style>
+      {{ page.css.custom }}
+    </style>
+  </head>
+  <body>
+    <enidev-button data-btn="top"></enidev-button>
+      <div id="header">
+        <nav>
+          <ul>
+            <li class="fork"><a href="{{ '/' | relative_url }}">INICIO</a></li>
+            {% if site.show_downloads %}
+              <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
+              <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
+              <li class="title">DOWNLOADS</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div><!-- end header -->
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1 style="font-weight: bold; margin-bottom: 20px">{{ page.title | default: site.title }}</h1>
+          <p align="center">{{ site.description | default: site.github.project_tagline }}</p>
+          <hr>
+        </div>
+
+        {{ content }}
+
+      </section>
+    </div>
+    <!-- The actual snackbar -->
+    <div id="snackbar">Copiado!</div>
+    <script type="text/javascript">
+     const div = document.createElement('div');
+     div.style.display = 'flex'
+     div.style.flexWrap = 'wrap'
+     div.style.justifyContent = 'center'
+     document.querySelectorAll("h2").forEach(ele => {
+        let anchor = document.createElement("a");
+        anchor.textContent = ele.textContent
+        anchor.href = '#'+ele.id
+        anchor.style.margin = '0 10px 10px 0';
+        anchor.style.background = '#111';
+        anchor.style.padding = '.2em .6em';
+        anchor.style.borderRadius = '4px';
+        anchor.style.display = 'inline-block';
+        div.appendChild(anchor)
+    })
+     document.querySelector("#title").appendChild(div);
+
+    document.querySelectorAll("img[alt*='img']").forEach(element => {
+        element.style.cursor = "pointer";
+        element.addEventListener('click', () => {
+          let params  = 'width='+screen.width;
+           params += ', height='+screen.height;
+           params += ', top=0, left=0'
+           params += ', fullscreen=yes';
+           params += ', directories=no';
+           params += ', location=no';
+           params += ', menubar=no';
+           params += ', resizable=no';
+           params += ', scrollbars=no';
+           params += ', status=no';
+           params += ', toolbar=no';
+          const popup = window.open(element.src, '_blank', params)
+        })
+      })
+
+      const contenedores = document.querySelectorAll(".contenedor");
+      const li = document.querySelectorAll(".li");
+      const bloque = document.querySelectorAll(".bloque");
+      const subcontenedor = document.querySelector(".subcontenedor");
+
+      li.forEach((cadaLi, posicion) => {
+        cadaLi.addEventListener('click', () => {
+          li.forEach((cadaLi, posicion) => {
+            li[posicion].classList.remove('activo');
+            bloque[posicion].classList.remove('activo');
+          })
+
+          contenedores.forEach(contenedor => {
+            if(li[posicion].parentNode.parentNode.id != contenedor.id) {
+              contenedor.children[0].children[0].classList.add('activo')
+              contenedor.children[1].children[0].classList.add('activo')
+            }
+          })
+
+          li[posicion].classList.add('activo')
+          bloque[posicion].classList.add('activo')
+        })
+      })
+
+    </script>
+  </body>
+</html>

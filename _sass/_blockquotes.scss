@@ -1,0 +1,16 @@
+blockquote {
+  border-left:3px solid #ffcc00;
+  margin:15px 0 10px 0;
+  padding: 0;
+  font-style:italic;
+  background: #00000040;
+  border-radius: 3px;
+  box-sizing: border-box;
+  * {
+  	padding: 20px;
+  }
+  strong, em {
+  	margin: 0 ;
+  	padding: 0 ;
+  }
+}

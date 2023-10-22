@@ -1,0 +1,25 @@
+th img, td img {
+    display: none;
+}
+
+td.item {
+	color: #dc1;
+}
+
+@media (min-width: 992px) {
+  table {
+  }
+  th img, td img {
+    display: inline-block;
+
+  }
+
+  td {
+  	width: 10%;
+  	  &:hover {
+		background: #11111150;
+
+  	}
+  }
+
+}

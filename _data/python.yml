@@ -1,0 +1,13 @@
+papers:
+  - name: "Entornos virtuales con pipenv"
+    link: pipenv
+  - name: "Crud Python - Sqlite"
+    link: python-crud-sqlite
+  - name: "Usando entradas estándar - input"
+    link: input/
+  - name: "Trabajando con archivos - open"
+    link: trabajar-con-archivos/funcion-open
+tipos:
+  - name: "Diccionarios"
+    link: tipos-de-datos/diccionarios
+    img: /assets/images/python/diccionarios.jpg

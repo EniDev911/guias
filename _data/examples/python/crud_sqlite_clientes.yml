@@ -1,0 +1,236 @@
+conexion: |
+  import sqlite3
+  from sqlite3 import Error
+
+  def conexion_bd():
+      try:
+          con = sqlite3.connect('clientes.db')
+          return con
+
+      except Error as e:
+          print('Error: ', e)
+
+  def ejecutar_query(sql, params=''):
+      with conexion_bd() as con:
+          cursor = con.cursor()
+          try:
+              return cursor.execute(sql, params)
+          except Error as e:
+              print('Error: ', e)
+
+  sql = """
+      CREATE TABLE IF NOT EXISTS clientes(
+          id INTEGER PRIMARY KEY,
+          nombre VARCHAR(50) NOT NULL,
+          apellido VARCHAR(50) NOT NULL,
+          telefono VARCHAR(12) NOT NULL,
+          email VARCHAR(50) NOT NULL,
+          direccion VARCHAR(100),
+          ciudad VARCHAR(50))
+      """
+
+  ejecutar_query(sql)
+
+ej_insertar: |
+  from modelos.cliente import Cliente
+
+  import sqlite3
+
+  connection = sqlite3.connect("clientes.db")
+  cursor = connection.cursor()
+
+  cliente_1 = Cliente("marco", "contreras", "+569-84687949", "block 327", "coquimbo")
+
+  cursor.execute(
+      """
+    INSERT INTO clientes (nombre, apellido, telefono, email, direccion, ciudad)
+    VALUES (:nombre, :apellido, :telefono, :email,:direccion, :ciudad)
+      """,
+      {
+          "nombre": cliente_1.nombre,
+          "apellido": cliente_1.apellido,
+          "telefono": cliente_1.telefono,
+          "email": cliente_1.email,
+          "direccion": cliente_1.direccion,
+          "ciudad": cliente_1.ciudad,
+      },
+  )
+
+  connection.commit()
+  connection.close()
+
+obtener_todos: |
+  def obtener_clientes():
+      return ejecutar_query("SELECT * FROM clientes").fetchall()
+
+obtener_uno: |
+  def obtener_cliente(id_cliente):
+      return ejecutar_query("SELECT * FROM clientes WHERE id=:id",
+        {'id': id_cliente}).fetchone()
+
+crear: |
+  from db.conexion import ejecutar_query
+
+  def crear_cliente(cliente):
+      sql = """
+            INSERT INTO clientes
+            (nombre, apellido, email, telefono, direccion, ciudad)
+            VALUES
+            (:nombre, :apellido, :email, :telefono, :direccion, :ciudad)"""
+      ejecutar_query(
+          sql,
+          {
+              "nombre": cliente.nombre,
+              "apellido": cliente.apellido,
+              "telefono": cliente.telefono,
+              "email": cliente.email,
+              "direccion": cliente.direccion,
+              "ciudad": cliente.ciudad,
+          }
+      )
+actualizar: |
+  def actualizar_cliente(cliente, id_cliente):
+      sql = """UPDATE clientes
+              SET nombre=:nombre,
+                  apellido=:apellido,
+                  telefono=:telefono,
+                  email=:email,
+                  direccion=:direccion,
+                  ciudad=:ciudad
+              WHERE id=:id"""
+      ejecutar_query(
+          sql,
+          {
+              "nombre": cliente.nombre,
+              "apellido": cliente.apellido,
+              "telefono": cliente.telefono,
+              "email": cliente.email,
+              "direccion": cliente.direccion,
+              "ciudad": cliente.ciudad,
+              "id": id_cliente,
+          }
+      )
+
+eliminar: |
+  # La función elimina a un cliente según su id
+  def eliminar_cliente(id_cliente):
+      sql="DELETE FROM clientes WHERE id=:id"
+      ejecutar_query(sql, {'id': id_cliente})
+clase_cliente: |
+  class Cliente:
+
+      def __init__(self, nombre, apellido, tel, direccion, ciudad):
+          self.nombre = nombre
+          self.apellido = apellido
+          self.telefono = tel
+          self._email = '{}.{}@gmail.com'.format(nombre, apellido)
+          self.direccion = direccion
+          self.ciudad = ciudad
+
+      @property
+      def email(self):
+          return self._email
+
+      @email.setter
+      def email(self, value):
+          self._email = value
+
+      @property
+      def nombre_completo(self):
+          return '{} {}'.format(self.nombre, self.apellido)
+
+      def __repr__(self):
+          return "Cliente('{}', '{}', '{}', '{}', '{}')".format(
+              self.nombre,
+              self.apellido,
+              self.telefono,
+              self.direccion,
+              self.ciudad)
+
+pedir_datos: |
+  from modelos.cliente import Cliente
+
+  def pedir_datos(cliente=()):
+      nombre = input(f"nombre: ({cliente[1]}) > " if cliente else "Su nombre: ")
+      apellido = input(
+          f"apellido: ({cliente[2]}) > " if cliente else "Su apellido: ")
+      telefono = input(
+          f"telefono: ({cliente[3]}) > " if cliente else "Su teléfono: ")
+      direccion = input(
+          f"dirección: ({cliente[5]}) > " if cliente else "Su dirección: ")
+      ciudad = input(
+          f"ciudad: ({cliente[6]}) > " if cliente else "Su ciudad: ")
+
+      nuevo_cliente = Cliente(
+          nombre if len(nombre) > 0 else cliente[1],
+          apellido if len(apellido) > 0 else cliente[2],
+          telefono if len(telefono) > 0 else cliente[3],
+          direccion if len(direccion) > 0 else cliente[5],
+          ciudad if len(ciudad) > 0 else cliente[6])
+
+      email = input(
+          f"email: ({cliente[4]}) > ") if cliente else nuevo_cliente.email
+
+      nuevo_cliente.email = email if len(email) > 0 else cliente[4]
+
+      return nuevo_cliente
+
+mostrar_menu: |
+  def mostrar_menu(opciones):
+      print('Seleccione una opción:')
+      for clave in sorted(opciones):
+          print(f' {clave}) {opciones[clave][0]}')
+
+leer_opcion: |
+  def leer_opcion(opciones):
+      opt = input("Ingresa una opción: ")
+      while (opt) not in sorted(opciones):
+          print('Opción incorrecta, vuelva a intentarlo.')
+          return leer_opcion(opciones)
+      return opt
+
+ejecutar_opcion: |
+  def ejecutar_opcion(opcion, opciones):
+      if opciones[opcion][1] == 'crear':
+          return crear_cliente(pedir_datos())
+      elif opciones[opcion][1] == 'consultar':
+          [print(cliente) for cliente in obtener_clientes()]
+      elif opciones[opcion][1] == 'actualizar':
+          [print(cliente) for cliente in obtener_clientes()]
+          while True:
+              id = int(input("Selecciona el ID del cliente para actualizar: "))
+              ids = [record[0] for record in obtener_clientes()]
+              if id in ids:
+                  datos_actualizados = pedir_datos(obtener_cliente(id))
+                  actualizar_cliente(datos_actualizados, id)
+                  break
+              else:
+                  print("id no válido")
+                  continue
+      elif opciones[opcion][1] == 'eliminar':
+          [print(cliente) for cliente in obtener_clientes()]
+          while True:
+              id = int(input("Selecciona el ID del cliente para eliminar: "))
+              ids = [record[0] for record in obtener_clientes()]
+              if id in ids:
+                  eliminar_cliente(id)
+                  break
+              else:
+                  print("id no válido")
+                  continue
+      else:
+          print("Gracias por usar el programa")
+menu: |
+  def menu():
+      opciones = {
+          '1': ('Crear un cliente', 'crear'),
+          '2': ('Consultar clientes', 'consultar'),
+          '3': ('Actualizar a un cliente', 'actualizar'),
+          '4': ('Eliminar a un cliente', 'eliminar')
+      }
+      mostrar_menu(opciones)
+      opcion = leer_opcion(opciones)
+      ejecutar_opcion(opcion, opciones)
+
+  if __name__ == '__main__':
+      menu()

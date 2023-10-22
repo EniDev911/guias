@@ -1,0 +1,31 @@
+code.language-plaintext {
+	font-size: 19px;
+	margin: 0;
+	padding: 0 2px;
+	font-weight: 600;
+	color: #8dcafe;
+	font-family: monospace;
+}
+
+div.highlight {
+	position: relative;
+}
+
+.highlight > *,
+code[class*='lang'] > * {
+	font-family: 'JetBrains Mono', monospace !important;
+}
+
+pre {
+	position: relative;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    font-size: 0;
+    font-variant-ligatures: none;
+    white-space: pre-wrap;
+}
+
+.language-liquid pre {
+    white-space: pre-wrap;
+}

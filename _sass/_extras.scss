@@ -1,0 +1,16 @@
+.tag {
+	color: #9dc;
+	font-family: consolas;
+	 &::before {
+		content: "<";
+		color: #fd7;
+	}
+	 &::after {
+		color: #fd7;
+		content: ">";
+	}
+}
+
+em {
+    	padding: 0 5px;
+}

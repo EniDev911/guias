@@ -1,0 +1,21 @@
+tsn_add: |
+  let transaction = db.transaction("books", "readwrite"); // (1)
+
+  // obtiene un almacén de objetos para operar con él
+  let books = transaction.objectStore("books"); // (2)
+
+  let book = {
+    id: "js",
+    price: 3000,
+    created: new Date()
+  };
+
+  let request = books.add(book); // (3)
+
+  request.onsuccess = function() { // (4)
+    console.log("Libro agregado al almacén", request.result)
+  }
+
+  request.onerror = function() {
+    console.log("Error", request.error);
+  }

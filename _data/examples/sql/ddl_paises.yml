@@ -1,0 +1,22 @@
+postgres: >-
+  CREATE TABLE paises (
+    id      BIGSERIAL CONSTRAINT identificador_unico_pais PRIMARY KEY,
+    nombre  VARCHAR(70) NOT NULL,
+    iso     CHARACTER(2) NOT NULL
+  );
+
+mysql: >-
+  CREATE TABLE paises (
+    id      BIGINT auto_increment PRIMARY KEY,
+    nombre  VARCHAR(70) NOT NULL,
+    iso     CHARACTER(2) NOT NULL
+  );
+sql_server: >-
+  CREATE TABLE films (
+    code        IDENTITY(1, 1) PRIMARY KEY,
+    title       varchar(40) NOT NULL,
+    did         integer NOT NULL,
+    date_prod   date,
+    kind        varchar(10),
+    len         interval hour to minute
+  );

@@ -1,0 +1,5 @@
+papers:
+  - name: "Configurar emmet en Vs Code para archivos erb"
+    link: "configurar-emmet-en-archivos-erb"
+  - name: "Configurar un Shorcut"
+    link: "configurar-shorcut"

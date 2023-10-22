@@ -1,0 +1,5 @@
+papers:
+  - name: "mysql: cliente de línea de comandos"
+    link: "cliente-mysql"
+  - name: "mysql: personalizar el prompt de mysql"
+    link: "personalizar-prompt-mysql"

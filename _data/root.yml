@@ -1,0 +1,20 @@
+db:
+  - name: PostgreSQL
+    logo: /assets/images/logos/postgresql.png
+    link: /postgres
+  - name: MySQL
+    logo: /assets/images/logos/mysql.png
+    link: /mysql
+  - name: SQLite3
+    logo: /assets/images/logos/sqlite.ico
+    link: /sqlite
+programming:
+  - name: ruby
+    logo: /assets/images/logos/ruby.png
+    link: /ruby
+  - name: python
+    logo: /assets/images/logos/python.png
+    link: /python
+  - name: javascript
+    logo: /assets/images/logos/javascript.png
+    link: /javascript
