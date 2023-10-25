@@ -7,6 +7,10 @@ papers:
     link: input/
   - name: "Trabajando con archivos - open"
     link: trabajar-con-archivos/funcion-open
+  - name: "Limpieza de datos con pandas"
+    link: liempieza-de-datos
+  - name: "Formas de importar un CSV desde colabs"
+    link: google-colab/formas-de-importar-csv
 tipos:
   - name: "Diccionarios"
     link: tipos-de-datos/diccionarios

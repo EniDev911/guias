@@ -19,3 +19,36 @@ tsn_add: |
   request.onerror = function() {
     console.log("Error", request.error);
   }
+
+open_db_version_1: |
+  let openRequest = indexedDB.open("db", 1);
+
+  // se ejecuta la primera vez que se intenta abrir la base de datos
+  openRequest.onupgradeneeded = function() {
+    let db = openRequest.result;
+    db.createObjectStore('object_store1', {keyPath: 'id'});
+  };
+
+open_db_version_2: |
+  let openRequest = indexedDB.open("db", 2); // 👈
+
+  // se ejecuta al comprobar que la versión es mayor a la actual
+  openRequest.onupgradeneeded = function() {
+    let db = openRequest.result;
+    db.createObjectStore('object_store1', {keyPath: 'id'});
+    db.createObjectStore('object_store2', {keyPath: 'id'});
+  };
+
+
+object_store_create: |
+  let openRequest = indexedDB.open("db", 2);
+
+  // crea/actualiza la base de datos sin chequeo de versiones
+  openRequest.onupgradeneeded = function() {
+    let db = openRequest.result;
+    // si no hay un almacén de libros ("books"),
+    if (!db.objectStoreNames.contains('books')) {
+      // crearlo
+      db.createObjectStore('books', {keyPath: 'id'});
+    }
+  };

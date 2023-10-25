@@ -10,6 +10,7 @@ css:
     marker { fill: #f2f5a6 !important }
     .flowchartTitleText { fill: #ccc !important; text-transform: uppercase; stroke:#000; stroke-width:0.5em; paint-order:stroke; stroke-linejoin:round }
     svg[id^="mermaid-"] { min-width: 80%; max-width: 900px; font-size: 20px; }
+    img[alt*='img']{border: 1px solid #ccc}
 ---
 
 
@@ -144,7 +145,7 @@ Entonces, y solamente si el manejador `onupgradeneeded` finaliza sin errores, se
 
 Para borrar la base de datos:
 
-
+{: .clipboard }
 ```js
 let deleteRequest = indexedDB.deleteDatabase(name);
 // deleteRequest.onsuccess/onerror rastrea el resultado
@@ -152,21 +153,53 @@ let deleteRequest = indexedDB.deleteDatabase(name);
 
 ---
 
+## Actualización de la versión de base de datos
+
+Cuando se crea una nueva base de datos o se aumenta el número de versión de una base de datos existente (mediante la especificación de un número de versión más alto), el evento `onupgradeneeded` se activará y un [`IDBVersionChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent){:target='_blank' class='link'} será pasado al controlador de eventos `onversionchange` establecido en `request.result`. En el controlador para el evento `onupgradeneeded`, se debe crear los almacenes de objetos necesarios para esta versión de la base de datos:
+
+{: .clipboard }
+```js
+// Este evento solamente se activará al cambiar de versión
+request.onupgradeneeded = function (event) {
+  var db = event.target.result;
+
+  // Crea un almacén de objetos (objectStore) para esta versión de base de datos
+  var objectStore = db.createObjectStore("name", { keyPath: "myKey" });
+};
+```
+
+Podemos ver esto de mejor manera en el siguiente caso, donde en primera instancia tenemos una base de datos inicial con un almacén creado:
+
+{% include tabs_js.html 
+  id="open_db_version_1"
+  tab_1='idb-ejemplo.js'
+  bloque_1=site.data.examples.js.indexeddb.open_db_version_1
+%}
+
+Si nos detenemos a revisar lo anterior, abriendo las herramientas de desarrollador ( <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>i</kbd> ) en la pestaña de aplicación encontraremos que efectivamente se creó nuestro almacén de datos `object_store1`.
+
+![img - version1](assets/object_store_version1.png)
+
+{% include tabs_js.html 
+  id="open_db_version_2"
+  tab_1='idb-ejemplo.js'
+  bloque_1=site.data.examples.js.indexeddb.open_db_version_2
+%}
+
+---
+
 ## Almacén de objetos
 
-Para almacenar algo en indexedDB, necesitamos un "almacen de objetos" *object store*.
+Para almacenar algo en indexedDB, necesitamos un **almacen de objetos** (*object store*).
 
-Un almacen de objetos es un concepto central de indexedDB. Equivale a lo que en otras bases de datos se denominan "tablas" o "colecciones". Es donde los datos son almacenados. Una base de datos puede tener múltiples almacenes: uno para usuarios, otro para bienes, etc.
+Un almacen de objetos es un concepto central de indexedDB. Equivale a lo que en otras bases de datos se denominan **tablas** o **colecciones**. Es donde los datos son almacenados. Una base de datos puede tener múltiples almacenes: uno para usuarios, otro para bienes, etc.
 
-A pesar de llamarse "almacén de objetos", también puede almacenar tipos primitivos.
+A pesar de llamarse **almacén de objetos**, también puede almacenar tipos primitivos. Podemos almacenar casi cualquier valor,incluyendo objetos complejos
 
-### Podemos almacenar casi cualquier valor,incluyendo objetos complejos
+IndexedDB usa el algoritmo de serialización estándar para clonar-y-almacenar un objeto. Es como [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify){:target='_blank' class='link'} pero más poderoso, capaz de almacenar muchos tipos de datos más.
 
-IndexedDB usa el algoritmo de serialización estándar para clonar-y-almacenar un objeto. Es como `JSON.stringify` pero más poderoso, capaz de almacenar muchos tipos de datos más.
+Hay objetos que no pueden ser almacenados, por ejemplo los que tienen referencias circulares. Tales objetos no son serializables.[`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify){:target='_blank' class='link'} también falla con ellos.
 
-Hay objetos que no pueden ser almacenados, por ejemplo los que tienen referencias circulares. Talesobjetos no son serializables. `JSON.stringify` también falla con ellos.
-
-### Debe haber una clave "key" única para cada valor del almacén
 
 Una clave debe ser uno de estos tipos: `number`, `date`, `string`, `binary`, o `array`. Es un identificador único, así podemos **buscar**/**borrar**/**modificar** valores por medio de la clave.
 
@@ -174,6 +207,11 @@ Una clave debe ser uno de estos tipos: `number`, `date`, `string`, `binary`, o `
 Como veremos en breve, cuando agregamos un valor al almacén podemos proporcionarle una clave, de forma similar a `localStorage`. Pero cuando lo que almacenamos son objetos, IndexedDB permite asignar una propiedad al objeto como clave, lo que es mucho más conveniente. También podemos usar claves que se generan automáticamente.
 
 Pero primero, necesitamos crear el almacén de objetos.
+
+---
+
+## Crear un almacén de objetos
+
 
 La sintaxis para crear un almacén de objetos u `object store`:
 
@@ -184,25 +222,38 @@ db.createObjectStore(name[, keyOptions]);
 
 Ten en cuenta que esta operación es sincrónica, no requiere `await`.
 
-- `name`: es el nombre del almacén, por ejemplo `"books"`,
+- `name`: es el nombre del almacén, por ejemplo: **books**.
 - `keyOptions`: es un objeto opcional con una de estas dos propiedades:
 	- `keyPath`: la ruta a una propiedad del objeto que IndexedDB usará como clave, por ejemplo **id**.
-	- `autoIncrement`: si es `true`, la clave para el objeto nuevo que se almacene se generará automáticamente con un número autoincremental.
-	
-Si no establecemos `keyOptions`, necesitaremos proporcionar una clave explícitamente más tarde: al momento de almacenar un objeto.
+	- `autoIncrement`: si es `true`, la clave para el objeto nuevo que se almacene se generará automáticamente con un número autoincrementable.
 
 
-Por ejemplo, este objeto usa la propiedad `id` como clave:
+> Si no establecemos `keyOptions`, necesitaremos proporcionar una clave explícitamente más tarde: al momento de almacenar un objeto.
 
+
+Por ejemplo, creamos un almacén de objeto que use la propiedad `id` como clave:
+
+{: .clipboard }
 ```js
 db.createObjectStore('books', {keyPath: 'id'})
 ```
 
-La API de indexedDB está diseñada para disminuir la necesidad de manejo de errores, por lo que es probable que no veamos muchos eventos de error. Sin embargo, en el caso de abrir una base de datos, existen algunas condiciones comunes que generan eventos de error.
+Veamos un caso mínimo de como sería crear el almacén de objetos anterior:
 
-**Manejo de errores**
+{% include tabs_js.html 
+  id="ej_create_object_store"
+  tab_1='ej_crear_objectstore.js'
+  bloque_1=site.data.examples.js.indexeddb.object_store_create
+%}
 
-Los eventos de error están dirigidos a la solicitud que generó el error, luego el evento se propaga a la transacción y finalmente al objeto de la base de datos. Si desea evitar agregar controladores de errores a cada solicitud.
+Si abrimos el navegador y revisamos la consola ( <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>i</kbd> ) en la pestaña de **aplicación**, observaremos que se creó el almacén **books**:
+
+![img - objectstore books](assets/console_books_store.png)
+
+
+La API de indexedDB está diseñada para disminuir la necesidad de manejo de errores, por lo que es probable que no veamos muchos eventos de error.
+
+
 
 ## Descripción general de una solicitud a la bas de datos
 
