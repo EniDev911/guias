@@ -11,6 +11,8 @@ papers:
     link: liempieza-de-datos
   - name: "Formas de importar un CSV desde colabs"
     link: google-colab/formas-de-importar-csv
+  - name: "Tutorial para trabajar con pandas"
+    link: tutorial-pandas
 tipos:
   - name: "Diccionarios"
     link: tipos-de-datos/diccionarios

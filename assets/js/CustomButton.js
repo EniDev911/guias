@@ -194,8 +194,9 @@ codeBlocks.forEach(el => {
 })
 
 
-const codeBlocksCompiler = document.querySelectorAll(".highlight.compiler pre>code");
+const codeBlocksCompiler = document.querySelectorAll(".compiler.python pre>code");
 
 codeBlocksCompiler.forEach(el => {
-    el.parentElement.innerHTML += `<enidev-button data-btn="compiler" data-btn="compiler" data-lang="postgresql" data-ext="sql"></enidev-button>`
+    console.log(el.classList)
+    el.parentElement.innerHTML += `<enidev-button data-btn="compiler" data-btn="compiler" data-lang="python" data-ext="py"></enidev-button>`
 })

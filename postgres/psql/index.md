@@ -15,17 +15,6 @@ css:
 [![badge](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)](../)
 
 
-<a href="top"></a>
-## CONTENIDO
-
-- [Introducción](#intro)
-- [Opciones en línea de comandos](#opciones-en-linea-de-comandos)
-- [Establecer variables de entornos con valores de conexion](#variables-de-conexion)
-- [Establecer conexión en formato de URI](#formato-uri-conexion)
-- [Archivo de contraseñas **pgpass**](#archivo-pgpass)
-- [Meta comandos](#meta-comandos)
-- [Interpolación SQL](#interpolar-sql)
-- [Opciones para el prompt](#optionsprompt)
 
 ---
 

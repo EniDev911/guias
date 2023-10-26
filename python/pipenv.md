@@ -7,20 +7,10 @@ css:
 ---
 
 
-<img src="https://badges.aleen42.com/src/python.svg" alt="badge python" height="50">
+[![badge](https://badges.aleen42.com/src/python.svg)](./)
 
 <a name="top"></a>
 
-- ### CONTENIDO
-	+ [¿Qué es?](#que-es)
-	+ [Cambiar directorio de los entornos al crearlo](#cambiar-destino-pipenv)
-	+ [Instalación](#instalacion)
-	+ [Crear un entorno virtual](#crear-entorno-virtual)
-	+ [Instalar paquetes](#install_package)
-	+ [Eliminar paquetes](#uninstall_package)
-	+ [Archivo Pipfile](#pipfile)
-	+ [Desactivar un entorno virtual](#exit)
-	+ [Ejecutar un script](#run_script)
 
 
 ---

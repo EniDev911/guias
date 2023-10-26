@@ -1,0 +1,11 @@
+ex_rename:
+  code: |
+    df_clientes = df_clientes.rename(columns={"FECHA_NAC":"FECHA_NACIMIENTO"})
+    print(df_clientes.dtypes)
+  result: |
+    Output:
+    NOMBRE             object
+    FECHA_NACIMIENTO    int64
+    TIPO_CLIENTE       object
+    MONTO             float64
+    dtype: object

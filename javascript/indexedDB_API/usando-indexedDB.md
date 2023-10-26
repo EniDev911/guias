@@ -8,7 +8,7 @@ css:
     svg.mermaid{max-width: 100%}
     svg.mermaid:hover{max-width: none}
     marker { fill: #f2f5a6 !important }
-    .flowchartTitleText { fill: #ccc !important; text-transform: uppercase; stroke:#000; stroke-width:0.5em; paint-order:stroke; stroke-linejoin:round }
+    .flowchartTitleText { fill: #f00 !important; text-transform: uppercase; stroke:#000; stroke-width:0.5em; paint-order:stroke; stroke-linejoin:round }
     svg[id^="mermaid-"] { min-width: 80%; max-width: 900px; font-size: 20px; }
     img[alt*='img']{border: 1px solid #ccc}
 ---
