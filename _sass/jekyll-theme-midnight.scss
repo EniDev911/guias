@@ -18,8 +18,7 @@ body {
   font-weight: normal;
   background: #252525;
   background-attachment: fixed !important;
-  background: linear-gradient(#2a2a29, #1c1c1c);
-
+  background: linear-gradient(#111, #1c1c1c);
 }
 
 
@@ -400,6 +399,12 @@ section {
 
   }
 }
+
+
+@media (min-width: 768px) {
+
+}
+
 
 @media print, screen and (max-width: 720px) {
 
