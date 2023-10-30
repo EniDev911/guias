@@ -65,3 +65,125 @@ Swal.fire({
 ```
 
 <button class="btn" onclick="{Swal.fire({title: 'Alerta con imagen', text: 'Robot aleatorio desde robohash.org', imageUrl:'//robohash.org/2'});}">VER ALERTA</button>
+
+---
+
+## Establecer ancho de ventana
+
+
+```js
+Swal.fire({
+    title: 'Título',
+    text: 'descripción',
+    width: '50%',
+});
+```
+
+<button class="btn" onclick="{Swal.fire({
+    title: 'Título',
+    text: 'descripción',
+    width: '50%',
+});}">VER ALERTA</button>
+
+
+## Usar background
+
+```js
+Swal.fire({
+    title: 'Estás seguro?',
+    text: 'Si confirma, se eliminará el registro',
+    icon: 'warning',
+    confirmButtonText: "Confirmar",
+    showCloseButton: true,
+    background: "#000"
+});
+```
+
+<button class="btn" onclick="{Swal.fire({
+    title: 'Estás seguro?',
+    text: 'Si confirma, se eliminará el registro',
+    icon: 'warning',
+    confirmButtonText: 'Confirmar',
+    showCloseButton: true,
+    background: '#000'
+});}">VER ALERTA</button>
+
+
+---
+
+## Usando input tipo select
+
+{: .clipboard }
+```js
+Swal.fire({
+    title: 'Bienvenido',
+    text: 'Selecciona tu País',
+    confirmButtonText: "Seleccionar",
+    padding: "1rem",
+    backdrop: true,
+
+    input: 'select',
+    inputPlaceholder: 'País',
+    inputValue: '',
+    inputOptions:{
+        mexico: 'México',
+        chile: 'Chile',
+        brazil: 'Brazil',
+    }
+}).then(res => {
+	console.log(res);
+	Swal.fire({
+		title: `Seleccionaste ${res.value}`
+	});
+```
+
+Otro enfoque sería usando `async - await`:
+
+{: .clipboard }
+```js
+async function obtenerPais(){
+    const {value: pais} = await Swal.fire({
+            title: 'Bienvenido',
+            text: 'Selecciona tu País',
+            confirmButtonText: "Seleccionar",
+            padding: "1rem",
+            backdrop: true,
+
+            input: 'select',
+            inputPlaceholder: 'País',
+            inputValue: '',
+            inputOptions:{
+                mexico: 'México',
+                chile: 'Chile',
+                brazil: 'Brazil',
+                }
+            });
+
+        if (pais){
+            Swal.fire({
+                title: `Seleccionaste ${pais}`
+            })
+        }
+    }
+``` 
+
+<button class="btn" onclick="{Swal.fire({
+    title: 'Bienvenido',
+    text: 'Selecciona tu País',
+    confirmButtonText: 'Seleccionar',
+    padding: '1rem',
+    backdrop: true,
+    input: 'select',
+    inputPlaceholder: 'País',
+    inputValue: '',
+    inputOptions:{
+        mexico: 'México',
+        chile: 'Chile',
+        brazil: 'Brazil',
+    }
+}).then(res => {
+	console.log(res);
+	Swal.fire({
+		title: `Seleccionaste ${res.value}`
+	})
+});}">VER ALERTA</button>
