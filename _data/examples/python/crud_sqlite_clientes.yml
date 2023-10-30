@@ -148,8 +148,6 @@ clase_cliente: |
               self.ciudad)
 
 pedir_datos: |
-  from modelos.cliente import Cliente
-
   def pedir_datos(cliente=()):
       nombre = input(f"nombre: ({cliente[1]}) > " if cliente else "Su nombre: ")
       apellido = input(

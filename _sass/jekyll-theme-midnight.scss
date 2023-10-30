@@ -203,14 +203,54 @@ strong {
   max-width:100%;
   margin:0 auto;
   position:relative;
-  padding: 0 20px;
+
+  section {
+    max-width: 70%;
+    padding: 50px 30px;
+    margin: 20px auto;
+    margin-top: 70px;
+    ul {
+      ul {
+        margin: 0;
+      }
+      li {
+        p {
+          strong {
+            color:#ffbf00;
+            padding: 0 3px;
+          }
+        }
+      }
+    }
+    #title {
+      border: 0;
+      outline: none;
+      margin: 0 0 50px 0;
+      padding: 0 0 5px 0;
+
+      .credits {
+        font-size: 11px;
+        font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        color: #696969;
+        margin-top: -10px;
+
+        &.left {
+          float: left;
+        }
+
+        &.right {
+          float: right;
+        }
+      }
+
+    }
+  }
 }
 
 section img {
   max-width: 100%;
 }
-
-
 
 code {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, monospace;
@@ -221,24 +261,6 @@ code {
   border-radius: 2px;
 }
 
-pre {
-  padding:8px 15px;
-  background: #191919;
-  border-radius: 2px;
-  // border:1px solid #121212;
-  border:1px solid #ccc;
-  box-shadow: 0 3px 6px rgba(0,0,0,.3);
-  overflow: auto;
-  overflow-y: hidden;
-
-  code {
-    color: #efefef;
-    text-shadow: 0px 1px 0px #000;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-  }
-}
 
 table {
   width:100%;
@@ -274,12 +296,7 @@ dt {
   font-weight: normal;
 }
 
-aside {
-  position: absolute;
-  background: #000;
-  top: 0;
-  z-index: 999;
-}
+
 
 #header {
   z-index: 99100;
@@ -356,49 +373,6 @@ aside {
   }
 }
 
-section {
-  max-width: 65%;
-  padding: 30px 0px 50px 0px;
-  margin: 20px auto;
-  margin-top: 70px;
-
-  ul {
-    ul {
-      margin: 0;
-    }
-    li {
-      p {
-        strong {
-          color:#ffbf00;
-          padding: 0 3px;
-        }
-      }
-    }
-  }
-  #title {
-    border: 0;
-    outline: none;
-    margin: 0 0 50px 0;
-    padding: 0 0 5px 0;
-
-    .credits {
-      font-size: 11px;
-      font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: normal;
-      color: #696969;
-      margin-top: -10px;
-
-      &.left {
-        float: left;
-      }
-
-      &.right {
-        float: right;
-      }
-    }
-
-  }
-}
 
 
 @media (min-width: 768px) {

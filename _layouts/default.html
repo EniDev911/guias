@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-{% seo %}
+    {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -15,6 +15,11 @@
     <script type="module" src="{{ '/assets/js/CustomButton.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.2/dist/mermaid.min.js"></script>
+    {% if page.libs %}
+      {% for i in page.libs %}
+        <script src="{{ i.cdn }}"></script>
+      {% endfor%}
+    {% endif %}
     {% include head-custom.html %}
     <style>
       {{ page.css.custom }}
@@ -22,20 +27,14 @@
   </head>
   <body>
     <enidev-button data-btn="top"></enidev-button>
-      <div id="header">
-        <nav>
-          <ul>
-            <li class="fork"><a href="{{ '/' | relative_url }}">INICIO</a></li>
-            {% if site.show_downloads %}
-              <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
-              <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
-              <li class="title">DOWNLOADS</li>
-            {% endif %}
-          </ul>
-        </nav>
-      </div><!-- end header -->
+    <div id="header">
+      <nav>
+        <ul>
+          <li class="fork"><a href="{{ '/' | relative_url }}">INICIO</a></li>
+        </ul>
+      </nav>
+    </div><!-- end header -->
     <div class="wrapper">
-
       <section>
         <div id="title">
           <h1 style="font-weight: bold; margin-bottom: 20px">{{ page.title | default: site.title }}</h1>
@@ -49,23 +48,23 @@
     </div>
     <!-- The actual snackbar -->
     <div id="snackbar">Copiado!</div>
-    <script type="text/javascript">
+  <script type="text/javascript">
      const div = document.createElement('div');
      div.style.display = 'flex'
+     div.style.flexDirection = 'row'
      div.style.flexWrap = 'wrap'
      div.style.justifyContent = 'center'
      document.querySelectorAll("h2").forEach(ele => {
         let anchor = document.createElement("a");
         anchor.textContent = ele.textContent
         anchor.href = '#'+ele.id
-        anchor.style.margin = '0 10px 10px 0';
+        anchor.style.margin = '10px';
         anchor.style.background = '#111';
         anchor.style.padding = '.2em .6em';
-        anchor.style.borderRadius = '4px';
         anchor.style.display = 'inline-block';
         div.appendChild(anchor)
     })
-     document.querySelector("#title").appendChild(div);
+    document.querySelector("#title").appendChild(div);
 
     document.querySelectorAll("img[alt*='img']").forEach(element => {
         element.style.cursor = "pointer";

@@ -23,3 +23,6 @@ syntax_highlighter_opts:
     start_line: 1
 kramdown:
   input: GFM
+
+plugins:
+  - jemoji

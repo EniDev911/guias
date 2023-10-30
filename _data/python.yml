@@ -13,6 +13,10 @@ papers:
     link: google-colab/formas-de-importar-csv
   - name: "Tutorial para trabajar con pandas"
     link: tutorial-pandas
+  - name: "Tutorial - Errores y excepciones"
+    link: tutorial/errores-y-excepciones
+  - name: "Módulo sqlite3"
+    link: tutorial/modulo-sqlite3
 tipos:
   - name: "Diccionarios"
     link: tipos-de-datos/diccionarios
