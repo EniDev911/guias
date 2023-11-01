@@ -10,10 +10,7 @@ css:
 ---
 
 
-- [Cambiar a cuenta de postgres](#cambiar-a-postgres)
-- [Crear un rol](#crear-un-rol)
-- [Crear una nueva base de datos](#crear-nueva-basedatos)
-- [Cambiar el método de autenticación a través del archivo pg_hba.conf](#cambiar-metodo-autenticacion)
+## Instalar paquetes
 
 
 Instalar los paquetes de PostgreSQL desde los repositorios predeterminados de Ubuntu. Para ello es necesario actualizar el índice de paquete:  
@@ -38,7 +35,6 @@ Postgres se configura por defecto para usar la autenticación **ident**. Esto si
 En el proceso de instalación Postgres creó una cuenta de usuario llamada **postgres, que se asocia con el rol predeterminado de Postgres**. Para comenzar a usar Postgres, podemos iniciar sesión en esa cuenta. Existen varias maneras de usar esta cuenta para acceder a Postgres.
 
 
-<a name="cambiar-a-postgres"></a>
 ## Cambiar a la cuenta de postgres
 
 Primero podemos invocar un shell con con inicio de sesión usando simplemente `sudo -i -u` especificando el usuario en este caso tenemos al usuario **postgres**:

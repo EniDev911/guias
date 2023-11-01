@@ -23,3 +23,8 @@ title: Python
  {% endfor %}	
 </ul>
  -->
+<ul style="list-style: none; padding: 0">
+ {% for item in site.data.python.tipos %}
+ 	<li style="margin: 8px 0">{{ forloop.index }} <a href="{{ item.link }}">{{ item.name | upcase }}</a></li>
+ {% endfor %}	
+</ul>

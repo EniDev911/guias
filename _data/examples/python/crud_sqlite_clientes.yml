@@ -229,6 +229,10 @@ menu: |
       mostrar_menu(opciones)
       opcion = leer_opcion(opciones)
       ejecutar_opcion(opcion, opciones)
-
+      repetir = input("¿Quieres realizar alguna otra operación? (S/N): ")
+      if repetir.upper() == "S":
+        menu()
+      else:
+        exit()
   if __name__ == '__main__':
       menu()

@@ -18,7 +18,8 @@ body {
   font-weight: normal;
   background: #252525;
   background-attachment: fixed !important;
-  background: linear-gradient(#111, #1c1c1c);
+  // background: linear-gradient(#111, #1c1c1c);
+  background: #111;
 }
 
 
@@ -205,7 +206,7 @@ strong {
   position:relative;
 
   section {
-    max-width: 70%;
+    max-width: 55%;
     padding: 50px 30px;
     margin: 20px auto;
     margin-top: 70px;
