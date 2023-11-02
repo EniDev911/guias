@@ -34,8 +34,14 @@ title: EniDev
 
 <!-- Editores -->
 <p align="center">
-    <!-- Vs Code -->
-    <a href="{{ '/vs-code' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/vs_code.png' | relative_url }}" height="80"></kbd></a>
+  {% for item in site.data.root.editors %}
+    <a href="{{ item.link | relative_url }}">
+        <kbd><img 
+            src="{{ item.logo | relative_url }}"
+            alt="{{ item.name }}"
+            height="80"></kbd>
+    </a>
+  {% endfor %}
 </p>
 
 <!-- Herramientas -->

@@ -53,13 +53,15 @@
      div.style.display = 'flex'
      div.style.flexDirection = 'row'
      div.style.flexWrap = 'wrap'
-     div.style.justifyContent = 'center'
+     div.style.justifyContent = 'flex-start'
+     div.style.alignContent = 'flex-start'
      document.querySelectorAll("h2").forEach(ele => {
         let anchor = document.createElement("a");
-        anchor.textContent = ele.textContent
+        anchor.textContent = ele.textContent.toUpperCase();
         anchor.href = '#'+ele.id
-        anchor.style.margin = '10px';
-        anchor.style.background = '#111';
+        anchor.classList.add('jump');
+        anchor.style.margin = '5px 10px';
+        anchor.style.fontSize = '14px';
         anchor.style.padding = '.2em .6em';
         anchor.style.display = 'inline-block';
         div.appendChild(anchor)
@@ -107,7 +109,6 @@
           bloque[posicion].classList.add('activo')
         })
       })
-
     </script>
   </body>
 </html>

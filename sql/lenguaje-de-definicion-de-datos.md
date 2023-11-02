@@ -6,8 +6,6 @@ css:
     strong { color: #985 }
 ---
 
-
-
 ![img - sql](./assets/sub-lenguajes-sql.jpg)
 
 Es un lenguaje de programación **para definir estructuras de datos**, proporcionado por los sistemas gestores de bases de datos. En inglés ***Data Definition Language***, de ahí sus siglas **DDL**.
@@ -27,13 +25,25 @@ Crear una tabla **PAISES** donde me permita identificar a cada país como único
 
 ### EJEMPLO
 
+{% capture postgres_ddl_1 %}
+{% highlight sql %}
+{{ site.data.examples.sql.ddl_paises.postgres }}
+{% endhighlight %}
+{% endcapture %}
+{% capture mysql_ddl_1 %}
+{% highlight sql %}
+{{ site.data.examples.sql.ddl_paises.mysql }}
+{% endhighlight %}
+{% endcapture %}
+
+
 {% include tabs.html 
     lang='sql'
     tab_1='PostgreSQL'
     tab_2='MySQL'
     tab_3='SQLSERVER'
-    bloque_1=site.data.examples.sql.ddl_paises.postgres
-    bloque_2=site.data.examples.sql.ddl_paises.mysql
+    bloque_1=postgres_ddl_1
+    bloque_2=mysql_ddl_1
     bloque_3=site.data.examples.sql.ddl_paises.sql_server
 %}
 

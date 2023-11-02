@@ -1,2 +1,4 @@
 - name: "Sqlite: CLI"
   link: cli-sqlite
+- name: "Sqlite: RowID"
+  link: rowid

@@ -1,0 +1,17 @@
+create_table_student: |-
+  import sqlite3
+  db = sqlite3.connect('university.db')
+  try:
+    cur = db.cursor()
+    cur.execute('''
+      CREATE TABLE students(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT(30) NOT NULL,
+        age INTEGER,
+        note REAL);
+    ''')
+    print('Table created successfully')
+  except:
+    print('Error in operation')
+    db.rollback()
+  db.close()

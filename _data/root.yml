@@ -18,3 +18,10 @@ programming:
   - name: javascript
     logo: /assets/images/logos/javascript.png
     link: /javascript
+editors:
+  - name: vs_code
+    link: /vs-code
+    logo: /assets/images/logos/vs_code.png
+  - name: sublimetext
+    link: /sublimetext
+    logo: /assets/images/logos/sublimetext.png

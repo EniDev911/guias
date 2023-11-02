@@ -72,24 +72,17 @@ db.close()
 
 Una cadena que encierra la consulta **`CREATE TABLE`** se pasa como parámetros al método **`execute()`** del objeto cursor. El siguiente código crea las tabla **students** en la base de datos **university.db**
 
-{: .clipboard }
-```py
-import sqlite3
-db = sqlite3.connect('university.db')
-try:
-	cur = db.cursor()
-	cur.execute('''CREATE TABLE students(
-					ID INTEGER PRIMARY KEY AUTOINCREMENT,
-					name TEXT(30) NOT NULL,
-					age INTEGER,
-					note REAL);
-					''')
-	print('Table created successfully')
-except:
-	print('Error in operation')
-	db.rollback()
-db.close()
-```
+{% capture create_table_student %}
+{% highlight python %}
+{{ site.data.examples.python.tutorial.modulo_sqlite3.create_table_student }} 
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='create_table_student'
+	tab_1='demo.py'
+	bloque_1=create_table_student
+%}
 
 Esto se puede verificar usando el comando **.tables** en sqlite shell. 
 

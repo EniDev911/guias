@@ -4,17 +4,14 @@ title: "PSQL - CLIENTE DE LÍNEA DE COMANDOS"
 css:
   custom: >-
     strong { color:  #d94; }
-    tbody tr:hover { background: #111; cursor: pointer }
     h3 { color: #dd5; } 
+    thead { background: #000; border: 1px solid #AAA }
+    tbody { border: 1px solid #AAA }
+    tbody tr:hover { background: #030303; cursor: pointer; }    
+author: Marco Contreras Herrera
 ---
 
-[comment]: <> (Author: Marco Contreras Herrera)
-[comment]: <> (Email: enidev911@gmail.com)
-
-
 [![badge](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)](../)
-
-
 
 ---
 

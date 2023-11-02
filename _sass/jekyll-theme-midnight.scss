@@ -22,6 +22,12 @@ body {
   background: #111;
 }
 
+.jump::after {
+  content: "\2693";
+  font-size: 1rem;
+  font-weight: normal;
+  margin-left: 0.3rem;
+}
 
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
@@ -403,8 +409,6 @@ dt {
   }
 }
 
-
-
 @media print, screen and (max-width: 480px) {
 
   #header {
@@ -417,4 +421,11 @@ dt {
   nav {
     display: none;
   }
+}
+
+@media(hover:hover){
+  .jump:hover {
+    background-color: #000;
+  }
+
 }

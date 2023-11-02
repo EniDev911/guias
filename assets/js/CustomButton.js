@@ -68,6 +68,10 @@ export class CustomButton extends HTMLElement {
               this.button.style.right = "-140px";
             }
         })
+        } else if (this.btn == "download") {
+            this.button.style.top = "40px"
+            this.button.style.background = "url(".concat(ASSETS, "download.svg", ")")
+            this.button.style.backgroundRepeat = 'no-repeat';
         }
         else {
             this.button.style.top = "10px"
@@ -80,10 +84,15 @@ export class CustomButton extends HTMLElement {
                 const lang = this.parentNode.parentNode.classList[0].split("-");
                 this.createPen(lang[1], this.parentNode.firstElementChild.textContent);
             } else if (this.btn === "compiler") {
-              console.log("compiler")
-              this.openCompiler(this.parentNode.firstElementChild.textContent, this.getAttribute("data-lang"), this.getAttribute("data-ext"))
+              if (this.getAttribute("data-content")) {
+                  this.openCompiler(this.getAttribute("data-content"), this.getAttribute("data-lang"), this.getAttribute("data-ext"))
+              } else {
+                  this.openCompiler(this.parentNode.firstElementChild.textContent, this.getAttribute("data-lang"), this.getAttribute("data-ext"))
+              }
             } else if(this.btn === "top") {
                 window.scrollTo({top: 0, behavior: 'smooth'})
+            } else if (this.btn === "download") {
+                console.log("Downloading...");
             }
             else {
             // Get the snackbar DIV
@@ -140,6 +149,19 @@ export class CustomButton extends HTMLElement {
         }
     }
 
+   downloadAsFile(filename, content) {
+     var element = document.createElement('a');
+
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content.trim()));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+
+      document.body.removeChild(element);
+   }
+
    openCompiler(content, lang = "nodejs", ext = "js") {
 
         const ifr = document.createElement("iframe");
@@ -193,10 +215,11 @@ codeBlocks.forEach(el => {
     el.parentElement.appendChild(document.createElement("enidev-button"));
 })
 
-
 const codeBlocksCompiler = document.querySelectorAll(".compiler.python pre>code");
 
 codeBlocksCompiler.forEach(el => {
     console.log(el.classList)
-    el.parentElement.innerHTML += `<enidev-button data-btn="compiler" data-btn="compiler" data-lang="python" data-ext="py"></enidev-button>`
+    el.parentElement.innerHTML += `<enidev-button data-btn="compiler" data-lang="python" data-ext="py"></enidev-button>`
 })
+
+const codeBlocksDownloads = document.querySelectorAll(".download pre>code");

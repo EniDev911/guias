@@ -1,0 +1,8 @@
+rowid_example_1: |-
+  CREATE TABLE links (
+    name TEXT,
+    url TEXT
+  );
+  INSERT INTO links VALUES ('google', 'https//google.com');
+  INSERT INTO links VALUES ('github', 'https//github.com');
+  SELECT rowid, * FROM links;
