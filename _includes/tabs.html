@@ -1,4 +1,4 @@
-<div class="contenedor">
+<div class="contenedor" id="{{ include.id }}">
 	<ul class="ul">
 	{% if include.tab_1 %}
 		<li class="li activo">{{ include.tab_1 }}</li>
@@ -11,27 +11,27 @@
 	{% endif %}
 	</ul>
 	<div class="subcontenedor">
-		<div class="bloque activo" id="tab_1">
-			<div class="clipboard">
 	{% if include.bloque_1 %}
+		<div class="bloque activo">
+			<div class="clipboard">
 	{{ include.bloque_1 }}
-	{% endif %}
 			</div>
 		</div>
-		<div class="bloque" id="tab_2">
-			<div class="clipboard">
+	{% endif %}
 	{% if include.bloque_2 %}
-	{{ include.bloque_2 }}
-	{% endif %}
-			</div>
-		</div>
-		<div class="bloque" id="tab_3">
+		<div class="bloque">
 			<div class="clipboard">
-	{% if include.bloque_3 %}
-	{{ include.bloque_3 }}
-	{% endif %}
+	{{ include.bloque_2 }}
 			</div>
 		</div>
+	{% endif %}
+	{% if include.bloque_3 %}
+		<div class="bloque">
+			<div class="clipboard">
+	{{ include.bloque_3 }}
+			</div>
+		</div>
+	{% endif %}
 	</div>
 </div>
 

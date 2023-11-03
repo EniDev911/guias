@@ -379,10 +379,19 @@ dt {
     }
   }
 }
-
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
 
 
 @media (min-width: 768px) {
+  .flex {
+    flex-direction: row;
+    gap: 10px;
+  }
 
 }
 

@@ -13,18 +13,21 @@ title: Python
 
 ## Tipos de datos
 
-<!-- <ul style="list-style: none; padding: 0">
- {% for item in site.data.python.tipos %}
-  {% include card-paper.html 
-  	title=item.name
-  	img=item.img
-  	href=item.link
-  	%}
- {% endfor %}	
-</ul>
- -->
 <ul style="list-style: none; padding: 0">
  {% for item in site.data.python.tipos %}
  	<li style="margin: 8px 0">{{ forloop.index }} <a href="{{ item.link }}">{{ item.name | upcase }}</a></li>
  {% endfor %}	
 </ul>
+
+
+## Tutoriales
+
+<div class="flex">
+ {% for item in site.data.python.tutoriales %}
+  {% include card-paper.html 
+  	title=item.title
+  	img=item.img
+  	href=item.link
+  	%}
+ {% endfor %}	
+</div>

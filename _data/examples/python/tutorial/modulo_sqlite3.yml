@@ -15,3 +15,12 @@ create_table_student: |-
     print('Error in operation')
     db.rollback()
   db.close()
+inspect_cursor: |-
+  import sqlite3
+  from sqlite3 import Error
+  import inspect
+
+  con = sqlite3.connect(':memory:')
+  cursor = con.cursor()
+  print(inspect.getdoc(cursor))
+  [print(x[0]) for x in inspect.getmembers(cursor)]

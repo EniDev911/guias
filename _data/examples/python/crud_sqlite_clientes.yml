@@ -1,3 +1,13 @@
+schema_sql: |-
+  CREATE TABLE IF NOT EXISTS clientes(
+      id INTEGER PRIMARY KEY,
+      nombre VARCHAR(50) NOT NULL,
+      apellido VARCHAR(50) NOT NULL,
+      telefono VARCHAR(12) NOT NULL,
+      email VARCHAR(50) NOT NULL,
+      direccion VARCHAR(100),
+      ciudad VARCHAR(50)
+  );
 conexion: |
   import sqlite3
   from sqlite3 import Error
@@ -18,18 +28,9 @@ conexion: |
           except Error as e:
               print('Error: ', e)
 
-  sql = """
-      CREATE TABLE IF NOT EXISTS clientes(
-          id INTEGER PRIMARY KEY,
-          nombre VARCHAR(50) NOT NULL,
-          apellido VARCHAR(50) NOT NULL,
-          telefono VARCHAR(12) NOT NULL,
-          email VARCHAR(50) NOT NULL,
-          direccion VARCHAR(100),
-          ciudad VARCHAR(50))
-      """
-
-  ejecutar_query(sql)
+  with open('db/schema.sql', 'r') as sql_file:
+      sql_script = sql_file.read()
+      ejecutar_query(sql_script)
 
 ej_insertar: |
   from modelos.cliente import Cliente
@@ -216,15 +217,19 @@ ejecutar_opcion: |
               else:
                   print("id no válido")
                   continue
-      else:
+      elif opciones[opcion][1] == 'salir':
           print("Gracias por usar el programa")
+          exit()
+      else:
+          print("Opción no disponible")
 menu: |
   def menu():
       opciones = {
           '1': ('Crear un cliente', 'crear'),
           '2': ('Consultar clientes', 'consultar'),
           '3': ('Actualizar a un cliente', 'actualizar'),
-          '4': ('Eliminar a un cliente', 'eliminar')
+          '4': ('Eliminar a un cliente', 'eliminar'),
+          '5': ('Salir del programa', 'salir')
       }
       mostrar_menu(opciones)
       opcion = leer_opcion(opciones)

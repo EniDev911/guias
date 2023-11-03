@@ -6,6 +6,9 @@ css:
     strong, h3 { color: #5397D2 }
     .entityTitleText { fill: #fff !important }
     svg[id^="mermaid-"] { min-width: 280px; max-width: 530px; font-size: 20px; }
+libs:
+  - name: fontAwesone
+    cdn: //kit.fontawesome.com/6b8f0c7049.js
 ---
 
 ## Contexto
@@ -173,7 +176,9 @@ Para facilitarnos un poco la existencia de repetir el proceso de abrir una conex
 {% include tabs_python.html
     id='modulo_conexion'
     tab_1='db/conexion.py'
+    tab_2='db/schema.sql'
     bloque_1=site.data.examples.python.crud_sqlite_clientes.conexion
+    bloque_2=site.data.examples.python.crud_sqlite_clientes.schema_sql
 %}
 
 En el código anterior, el método **.execute()** del cursor se envuelve dentro del bloque **with** y así no necesitemos ejecutar el método **commit()** de la conexión y de paso nos garantiza el cierre de los recursos como la conexión que estamos usando. Y por último estamos invocando a la función para crear la tabla y estar seguro que existirá la tabla cada vez que usemos estas funciones en el futuro. 
@@ -367,3 +372,9 @@ Y finalmente la función menu que llamará al resto de las funciones para inicia
     bloque_2=site.data.examples.python.crud_sqlite_clientes.conexion
     bloque_3=site.data.examples.python.crud_sqlite_clientes.clase_cliente
 %}
+
+## Descargar el proyecto
+
+<a href="https://github.com/EniDev911/crud-python-sqlite-consola/archive/refs/heads/main.zip">
+    <i class="fa-solid fa-download"></i> Descargar
+</a>

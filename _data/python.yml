@@ -1,8 +1,6 @@
 papers:
   - name: "Entornos virtuales con pipenv"
     link: pipenv
-  - name: "Crud Python - Sqlite"
-    link: python-crud-sqlite
   - name: "Usando entradas estándar - input"
     link: input/
   - name: "Trabajando con archivos - open"
@@ -21,3 +19,11 @@ tipos:
   - name: "Diccionarios"
     link: tipos-de-datos/diccionarios
     img: /assets/images/python/diccionarios.jpg
+
+tutoriales:
+  - title: "crud sqlite consola"
+    link: tutorial/crud-sqlite-consola
+    img: /assets/images/python/crud-sqlite-consola.png
+  - title: "crud mysql consola"
+    link: tutorial/crud-mysql-consola
+    img: /assets/images/python/crud-mysql-consola.png

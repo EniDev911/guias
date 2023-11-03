@@ -1,0 +1,126 @@
+clase_visita: |-
+  class Visita:
+      def __init__(self, rut, nombre, apellido, tel, direccion):
+          self.rut = rut
+          self.nombre = nombre
+          self.apellido = apellido
+          self.telefono = tel
+          self.direccion = direccion
+
+      @property
+      def nombre_completo(self):
+          return "{} {}".format(self.nombre, self.apellido)
+iniciar_conexion: |-
+  import mysql.connector
+
+  # Configuración de la base de datos
+  db_config = {
+      "host": "localhost",
+      "user": "root",
+      "password": "root",
+      "database": "visitas_db",
+  }
+
+  # Creamos una conexión usando la configuración
+  try:
+      connection = mysql.connector.connect(**db_config)
+
+      if connection.is_connected():
+          print("Conexión exitosa a MySQL")
+
+  except mysql.connector.Error as e:
+      print(f"Error: {e}")
+schema_sql: |-
+  CREATE TABLE IF NOT EXISTS visitas(
+      rut VARCHAR(12) PRIMARY KEY,
+      nombre VARCHAR(50) NOT NULL,
+      apellido VARCHAR(50) NOT NULL,
+      telefono VARCHAR(12) NOT NULL,
+      direccion VARCHAR(100)
+  );
+ej_insertar: |-
+  import mysql.connector
+  from modelos.visita import Visita
+
+  db_config = {
+      "host": "localhost",
+      "user": "root",
+      "password": "root",
+      "database": "visitas_db",
+  }
+
+  try:
+      connection = mysql.connector.connect(**db_config)
+
+      if connection.is_connected():
+          print("Conexión exitosa a MySQL")
+          cursor = connection.cursor()
+          nueva_visita = Visita(
+              "14.797.793-4", "marco", "contreras", "+569-84687949", "Av suecia #327"
+          )
+          cursor.execute(
+              """
+          INSERT INTO visitas (rut, nombre, apellido, telefono, direccion)
+          VALUES (%(rut)s, %(nombre)s, %(apellido)s, %(telefono)s, %(direccion)s);
+              """,
+              {
+                  "rut": nueva_visita.rut,
+                  "nombre": nueva_visita.nombre,
+                  "apellido": nueva_visita.apellido,
+                  "telefono": nueva_visita.telefono,
+                  "direccion": nueva_visita.direccion,
+              },
+          )
+          connection.commit()
+          print("Registro insertado correctamente")
+  except mysql.connector.Error as e:
+      print(f"Error: {e}")
+
+  connection.close()
+clase_database: |-
+  import mysql.connector
+  from dotenv import dotenv_values
+
+  config = dotenv_values()
+
+  class Database:
+      # Atributos de clase privados (no se ha de acceder a ellos desde fuera de la clase)
+      # para definir la instancia de conexión
+      __SERVIDOR = config["MYSQL_HOST"]
+      __USUARIO = config["MYSQL_USER"]
+      __CONTRASENA = config["MYSQL_PASSWORD"]
+      __BASE_DATOS = config["MYSQL_DBNAME"]
+
+      def __init__(self):
+          # Al ser atributos de clase no se pasan como parámetros del método
+          self.config = {
+              "host": Database.__SERVIDOR,
+              "user": Database.__USUARIO,
+              "password": Database.__CONTRASENA,
+              "database": Database.__BASE_DATOS,
+          }
+
+      def conexion_bd(self):
+          try:
+              con = mysql.connector.connect(**self.config)
+
+              if con.is_connected():
+                  print("Conexión exitosa a MySQL")
+                  return con
+
+          except mysql.connector.Error as e:
+              print(f"Error: {e}")
+
+      def ejecutar_query(self, sql, params=""):
+          with self.conexion_bd() as con:
+              cursor = con.cursor()
+              try:
+                  return cursor.execute(sql, params)
+              except mysql.connector.Error as e:
+                  print(f"Error: {e}")
+
+  with open("db/schema.sql", "r") as sql_file:
+      db = Database()
+      sql_script = sql_file.read()
+      db.ejecutar_query(sql_script)
+      print("Tabla 'visitas' creada exitosamente")

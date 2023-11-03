@@ -3,23 +3,50 @@
 		border-radius: 10px;
 		max-width: 18rem;
 		overflow: hidden;
+		transition: transform .2s ease;
+		border: 1px solid #ccc;
+	}
+	.card-header {
+		margin: 0;
+		padding: 0;
+		height: 170px;
+	}
+	.card-body {
+		margin: 0;
+		padding: 0;
 	}
 	.card-header img {
 		object-fit: cover;
+		padding: 0;
+		margin: 0;
+		height: 100%;
 	}
-	.card-title: {
+	.card-title {
 		color: #ff2c0c;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 5px;
+		margin: 0;
+		background-color: #000;
+	 }
+	 @media(hover: hover){
+	 	.card:hover{
+	 		transform: scale(1.018);
+	 		box-shadow: 2px 4px 8px #ccc;
+	 		cursor: pointer;
+	 	 }
 	 }
 
 </style>
 
-
-<div class="card" onclick='window.location.href = '''>
+<div class="card" onclick="window.location.href = '{{ include.href }}'">
 	<div class="card-header">
 		<img src="{{ include.img }}" alt="{{ include.title }}">
 	</div>
 	<div class="card-body">
 		<h4 class="card-title">{{ include.title }}</h4>
-		<p class="card-body">{{ include.body }}</p>
+		{% if include-body %}
+		<p class="card-text">{{ include.body }}</p>
+		{% endif %}
 	</div>
 </div>

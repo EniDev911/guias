@@ -104,20 +104,20 @@ Para seleccionar un esquema de colores que este paquete incorpora, podemos cambi
 
 ---
 
-## <a name="markdown-preview"></a>Visualizar archivos de Markdown en el navegador &#9875;
+## Visualizar archivos de Markdown en el navegador &#9875;
 
 Ya tenemos instalada la extensión que nos provee la edición de archivos Markdown en SublimeText, esta extensión no tiene forma de ver nuestro archivo específico de Markdown en el navegador. Para ello debemos de instalar otro complemento que es fundamental para la previsualización en el navegador de nuestros archivos Markdown, el complemento lo buscamos con el nombre de **MarkdownPreview** y nos ayudará para obtener una vista previa en el navegador de nuestros archivos Markdown.
 
 
 **1)** Abrimos **package control** (<kbd>Crtl</kbd>+<kbd>Shift</kbd>+<kbd>p</kbd>) luego escribimos **install** y seleccionamos la opción ***Install Package***
 
-![install-package](./assets/install_package.png)
+![img - install-package](./assets/install_package.png)
 
 
 **2)** Escribir el nombre del paquete, en este caso tiene el nombre de ***MarkdownPreview***
 
 
-![markdown-preview](./assets/markdown_preview.png)
+![img - markdown-preview](./assets/markdown_preview.png)
 
 
 **3)** Renicia ***SublimeText***.
@@ -125,8 +125,7 @@ Ya tenemos instalada la extensión que nos provee la edición de archivos Markdo
 
 ---
 
-<a name="configurar-keybinding"></a>
-### Configurar un atajo para la previsualización
+## Configurar un atajo para la previsualización
 
 Para aprovechar su capacidad podemos configurar un atajo de teclado de la siguiente manera:
 
