@@ -214,4 +214,8 @@ Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **
     bloque_2=clase_visita
 %}
 
+## Crear una clase para las operaciones del CRUD
+
+
+
 
