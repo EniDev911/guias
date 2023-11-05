@@ -3,6 +3,22 @@ layout: default
 title: "Contenido"
 ---
 
+## Instalación
+
+<table>
+	<thead>
+		<th>Windows</th>
+		<th>Linux</th>
+	</thead>
+	<tbody>
+	{% for article in site.data.mysql.install %}
+	<tr>
+		<td onclick="window.open('{{ article.window_link }}', '_parent')" style="cursor:pointer"><a>{{ article.window }}</a></td>
+		<td onclick="window.open('{{ article.linux_link }}', '_parent')" style="cursor:pointer"><a>{{ article.linux }}</a></td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
 
 ## PAPERS
 

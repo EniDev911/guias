@@ -1,3 +1,8 @@
+install:
+  - window: "desde los binarios - zip"
+    window_link: "instalacion/zip"
+    linux: "ubuntu"
+    linux_link: "instalacion/ubuntu"
 papers:
   - name: "mysql: cliente de línea de comandos"
     link: "cliente-mysql"
