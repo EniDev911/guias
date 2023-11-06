@@ -15,6 +15,8 @@ papers:
     link: tutorial/errores-y-excepciones
   - name: "Módulo sqlite3"
     link: tutorial/modulo-sqlite3
+  - name: "Trasformación de string"
+    link: transformacion-de-strings
 tipos:
   - name: "Diccionarios"
     link: tipos-de-datos/diccionarios
