@@ -127,3 +127,48 @@ ALTER USER USER() IDENTIFIED BY 'proPassword123';
 Estamos usando la función `user()` para referirnos a nuestra propia cuenta sin nombrar literalmente la cuenta. A continuación vamos a ver una ilustración aplicando el cambio de password al usuario `root@localhost` con el que accedemos con la password generada temporalmente por el servidor al momento de su primera iniciación:
 
 ![img - alter password](assets/alter_password.png)
+
+---
+
+## CONFIGURAR MYSQL COMO SERVICIO
+
+Nos posicionamos dentro del directorio de instalación e ingresamos a la carpeta **bin** y ejecutamos los siguientes comandos. Para llevar a cabo estos pasos es necesario **abrir la sesión de CMD con privilegios de administrador**.
+
+El siguiente es comando es para asegurarte de no tener ninguna instancia del servidor corriendo actualmente:
+
+{: .clipboard }
+```bash
+mysqladmin -u root shutdown
+```
+
+El siguiente comando registra MySQL como servicio:
+
+{: .clipboard }
+```bash
+mysqld --install "MySQL8"
+```
+
+Ahora ya podemos iniciar el servicio o detenerlo desde la línea de comandos, abrir una nueva CMD como administrador.
+
+Iniciar el servicio con el comando net:
+
+{: .clipboard }
+```bat
+net start MySQL8
+```
+
+Detener el servicio:
+
+{: .clipboard }
+```bat
+net stop MySQL8
+```
+
+![img - start service](assets/start_service.png)
+
+Eliminar el servicio:
+
+{: .clipboard }
+```bat
+sc delete MySQL8
+```
