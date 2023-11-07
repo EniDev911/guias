@@ -172,3 +172,19 @@ Eliminar el servicio:
 ```bat
 sc delete MySQL8
 ```
+
+---
+
+## CONECTARSE AL SERVIDOR
+
+Para realizar la conexión con el servidor es necesario especificar varios parámetros:
+
+{: .clipboard }
+```bat
+mysql –u root –h localhost -p
+```
+
+- `mysql`: gracias a que agregamos la ruta del ejecutable de MySQL a las variables del sistema podemos acceder directamente.
+- `-u`: este parámetro indica que debemos introducir el nombre de usuario con el que nos conectaremos, en este caso es **root**.
+- `-h`: parámetro que indica el nombre o dirección del servidor al cual deseamos conectarnos, en este caso podemos usar **localhost** o **127.0.0.1**.
+- `-p`: este parámetro es para especificar la contraseña del usuario con el que nos conectamos al servidor.

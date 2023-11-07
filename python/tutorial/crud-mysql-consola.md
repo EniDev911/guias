@@ -48,6 +48,14 @@ Para poder comunicarnos con **MySQL** necesitamos un controlador que permita esa
 pip install mysql-connector-python
 ```
 
+Pero para que podamos añadir el paquete al **Pipfile** debemos instarlo de la siguiente manera:
+
+{: .clipboard }
+```bash
+pipenv install mysql-connector-python
+```
+
+
 ---
 
 ## Conectarse a MySQL
@@ -214,6 +222,10 @@ Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **
 {% endhighlight %}
 {% endcapture %}
 
+Para evitar que nos aparezcan advertencias si estamos en visual studio code,tenemos que cambiar de interprete y seleccionar el que estemos trabajando actualmente:
+
+![img - cambiar interprete](assets/cambiar_interprete_vscode.png)
+
 {% include tabs.html
     id='clase_conexion'
     tab_1='db/conexion.py'
@@ -226,6 +238,6 @@ Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **
 
 ## Crear una clase para las operaciones del CRUD
 
-
+Si podemos modificar nuestra clase del modelo para añadirle las operaciones del **CRUD**
 
 

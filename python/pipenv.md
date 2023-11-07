@@ -9,13 +9,8 @@ css:
 
 [![badge](https://badges.aleen42.com/src/python.svg)](./)
 
-<a name="top"></a>
-
-
-
 ---
 
-<a name="que-es"></a>
 ## ¿Qué es Pipenv?
 **Pipenv** es una herramienta que a punta a traer lo mejor del mundo de empaquetado.
 
@@ -38,22 +33,19 @@ Por defecto, Pipenv inicializará un proyecto usando cualquier versión de pytho
 
 --- 
 
-<a name="instalacion"></a>
 ## Instalación
-
 
 [![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pipenv/)
 
 {: .clipboard }
-{% highlight bash %}
+```bash
 pip install --user pipenv
-{% endhighlight %}
+```
 
 >**Nota**: Esto se hace para prevenir romper cualquier paquete de sistema. Si **pipenv** no esta disponible en tu shell después de la instalación, vas a necesitar agregar la carpeta raiz de binarios del usuario a tu **PATH** en mi caso `C:\Users\home\AppData\Roaming\Python\Python38\Scripts`
 
 ---
 
-<a name="crear-entorno-virtual"></a>
 ## Crear un entorno virtual con Pipenv
 
 Crea un entorno virtual con la versión 3 de Python:
