@@ -103,7 +103,6 @@ clase_database: |-
       def conexion_bd(self):
           try:
               con = mysql.connector.connect(**self.config)
-
               if con.is_connected():
                   print("Conexión exitosa a MySQL")
                   return con
@@ -115,7 +114,12 @@ clase_database: |-
           with self.conexion_bd() as con:
               cursor = con.cursor()
               try:
-                  return cursor.execute(sql, params)
+                  cursor.execute(sql, params)
+                  print("Se está ejecutando:", sql)
+                  # Si nos piden devolver los datos
+                  if "SELECT" in sql.upper():
+                      return cursor.fetchall()
+                  con.commit()
               except mysql.connector.Error as e:
                   print(f"Error: {e}")
 

@@ -189,14 +189,22 @@ Las variables de entorno nos permiten gestionar la configuración de nuestras ap
 
 Una vez instalado el paquete debemos crear un nuevo archivo en la raíz del proyecto llamado `.env` (***es importante agregar este archivo a la lista de nuestro .gitignore si estamos trabajando con el control de versiones git***) la definición de variables de entorno es muy simple, en cada línea, definimos una variable de entorno y le asignamos su valor mediante el operador `=`. **Ejemplo**:
 
-{: .clipboard }
-```plaintext
+
+{% capture variables_env %}
+{% highlight ini %}
 MYSQL_USER=root
 MYSQL_PASSWORD=root
 MYSQL_DBNAME=visitas_db
 MYSQL_HOST=localhost
 MYSQL_PORT=3306
-```
+{% endhighlight %}
+{% endcapture %}
+
+
+<div style="position: relative">
+{{ variables_env }}
+<enidev-button></enidev-button>
+</div>
 
 Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **db** y con el nombre de **conexion.py**:
 
@@ -210,8 +218,10 @@ Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **
     id='clase_conexion'
     tab_1='db/conexion.py'
     tab_2='modelos/visita.py'
+    tab_3='.env'
     bloque_1=clase_conexion
     bloque_2=clase_visita
+    bloque_3=variables_env
 %}
 
 ## Crear una clase para las operaciones del CRUD
