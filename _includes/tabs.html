@@ -9,6 +9,9 @@
 	{% if include.tab_3 %}
 		<li class="li">{{ include.tab_3 }}</li>
 	{% endif %}
+	{% if include.tab_4 %}
+		<li class="li">{{ include.tab_4 }}</li>
+	{% endif %}
 	</ul>
 	<div class="subcontenedor">
 	{% if include.bloque_1 %}
@@ -30,6 +33,11 @@
 			<div class="clipboard">
 	{{ include.bloque_3 }}
 			</div>
+		</div>
+	{% endif %}
+	{% if include.bloque_normal %}
+		<div class="bloque">
+	{{ include.bloque_normal }}
 		</div>
 	{% endif %}
 	</div>

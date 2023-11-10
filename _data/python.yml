@@ -29,3 +29,6 @@ tutoriales:
   - title: "crud mysql consola"
     link: tutorial/crud-mysql-consola
     img: /assets/images/python/crud-mysql-consola.png
+  - title: "Conector MySQl Python"
+    link: tutorial/modulo-mysql-connector-python
+    img: /assets/images/python/mysql-connector.png
