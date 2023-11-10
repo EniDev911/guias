@@ -38,7 +38,6 @@ SELECT CHARSET('abc');
 %}
 
 
-
 ---
 
 <!-- ## CURRENT_ROLE()
