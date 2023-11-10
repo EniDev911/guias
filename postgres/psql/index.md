@@ -7,7 +7,7 @@ css:
     h3 { color: #dd5; } 
     thead { background: #000; border: 1px solid #AAA }
     tbody { border: 1px solid #AAA }
-    tbody tr:hover { background: #030303; cursor: pointer; }    
+    tbody tr:hover { background: #cfcfcf30; cursor: pointer; }    
 author: Marco Contreras Herrera
 ---
 
@@ -15,16 +15,12 @@ author: Marco Contreras Herrera
 
 ---
 
-<a name="intro"></a>
 ## INTRODUCCIÓN
 
 **Psql** es una aplicación cliente que viene incluido en el paquete de PostgreSQL regular y está basado en la terminal. Nos permite establecer una conexión a un servidor de PostgreSQL donde debemos proporcionar las opciones de conexión como **argumentos** correctamente a través de la línea de comandos, establecida la conexión se abre una sesión interactiva para realizar consultas [**`SQL`**](https://es.wikipedia.org/wiki/SQL){:target="_blank" class="link"} y enviarlas a nuestro servidor y ver los resultados. Además, psql proporciona una serie de [**`matacomandos`**](#metacommand) y varias funciones similares a las de un shell para facilitar la escritura de scripts y la automatización de una amplia variedad de tareas.
 
-
 ---
 
-
-<a name="opciones-en-linea-de-comandos"></a>
 ## Opciones en línea de comandos
 
 Para conectarse al servidor, necesita saber el **nombre de la base de datos de destino**, **el nombre de host**, **nombre de usuaurio**, **puerto del servidor**, etc..., y con que **nombre de usuario** desea conectarse. Se puede informar a **psql** sobre esos parámetros a través de las **opciones de la línea de comandos** `-d`, `-h`, `-U`, `-p` respectivamente.
@@ -34,9 +30,9 @@ Para conectarse al servidor, necesita saber el **nombre de la base de datos de d
 Conectarse a postgres con el usuario `postgres`, al host `localhost`, y a la base de datos `postgres`
 
 {: .clipboard }
-{% highlight bash %}
+```bash
 psql -h localhost -U postgres -d postgres
-{% endhighlight %}
+```
 
 Si se encuentra un argumento que no pertenece a ninguna opción, se interpretará como el nombre de la base de datos (o el nombre de usuario, si el nombre de la base de datos ya está dado). 
 
@@ -63,7 +59,7 @@ El nombre de usuario predeterminado es el nombre de usuario de su sistema operat
 
 Esta utilidad de línea de comandos acepta las siguientes opciones al momento de invocarla:
 
-{% highlight bash %}
+```bash
 Empleo:
 psql [OPCIONES]... [BASE-DE-DATOS [USUARIO]]
         
@@ -111,15 +107,10 @@ Opciones de conexión:
   -U, --username=NOMBRE # nombre de usuario (por omisión: «postgres»)
   -w, --no-password # nunca pedir contraseña
   -W, --password # forzar petición de contraseña (debería ser automático)
-{% endhighlight %}
-
-
-
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%23316192?style=for-the-badge)](#top)
+```
 
 ---
 
-<a name="variables-de-conexion"></a>
 ## Estableciendo variables de entornos con valores de conexión
 
 Cuando los valores predeterminado no son del todo correctos, puede ahorrarse algo de escritura configurando las siguientes variables de entorno:  
@@ -128,27 +119,24 @@ Cuando los valores predeterminado no son del todo correctos, puede ahorrarse alg
 **`PGUSER`** : (windows cmd) 
 
 {: .clipboard }
-{% highlight bat %}
+```bat
 setx PGUSER postgres
-{% endhighlight %}
+```
 
 **`PGPASSWORD`** : (windows cmd)
 
 {: .clipboard }
-{% highlight bat %}
+```bat
 setx PGPASSWORD postgre
-{% endhighlight %}
+```
 
 ![img - set variables](assets/setx_variables.png)
 
 > **NOTA**: Considere usar mejor un **archivo pgpass**
 
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%23316192?style=for-the-badge)](#top)
 
 ---
 
-
-<a name="formato-uri-conexion"></a>
 ## Conexión en formato de URI
 
 Una forma alternativa de especificar los parámetros de conexión es una cadena o un URI tipo `conninfo`, que se usa en lugar del nombre de una base de datos. Este mecanismo le da un control muy amplio sobre la conexión.
@@ -156,20 +144,17 @@ Una forma alternativa de especificar los parámetros de conexión es una cadena 
 Un ejemplo sería:
 
 {: .clipboard }
-{% highlight cmd %}
+```bash
 psql postgresql://hostname:5432/mydb?user=username
-{% endhighlight %}
+```
 
 ### Demostración
 
 ![img - gif](assets/connect_uri_cmd.gif)
 
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%23316192?style=for-the-badge)](#top)
 
 ---
 
-
-<a name="archivo-pgpass"></a>
 ## Archivo de contraseñas
 
 El archivo `.pgpass` se debe almacenar en el directorio de inicio de un usuario puede contener contraseñas que se utilizarán si la conexión requiere una contraseña (y si no se ha especificado ninguna contraseña). En Windows, el archivo se nombra en el directorio de datos `%APPDATA%\postgresql\pgpass.conf` (donde **`%APPDATA%`** se refiere al subdirectorio de Datos de la aplicación en el perfil del usuario). 
@@ -193,10 +178,10 @@ Podemos agregar un comentario en una línea precediéndola con un `#`. Cada uno 
 Un ejemplo sería:  
 
 {: .clipboard }
-{% highlight bash %}
+```ini
 # hostname:port:database:username:password
 localhost:5432:*:postgres:postgre
-{% endhighlight %}
+```
 
 
 Aunque este artículo es completamente de **psql**, te voy a dejar un ejemplo de como establecer este archivo desde el programa **PgAdmin** en la siguiente ilustración:
@@ -285,7 +270,7 @@ Cualquier cosa que ingrese en psql que comience con una barra invertida **`\`** 
           Activa o Desactiva la visualización del tiempo en milisegundos que tarda cada instrucción SQL.
       </th>
     </tr>
-    <tr onclick="location.href = '#mc-x">
+    <tr onclick="location.href = '#mc-x'">
       <th>
           <code class="language-plaintext">\x</code>
       </th>
@@ -355,12 +340,13 @@ Si el formato de salida de la tabla no está alineado, se cambia a alineado. Est
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
+---
 
 <a name="mc-connect"></a>
 ### Meta Comando para cambiar de conexión
 
 
-Establece una nueva conexión a un servidor de PostgreSQL. Los parámetros de conexión se pueden especificar usando la sintaxis posicional o usando una cadena de conexión.
+Establece una nueva conexión a un servidor de **PostgreSQL**. Los parámetros de conexión se pueden especificar usando la sintaxis posicional o usando una cadena de conexión como lo muestra la siguiente ilustración:
 
 ![img -- cambiar conexión](https://raw.githubusercontent.com/EniDev911/assets/main/png/db/postgres/meta-comando-connect.png)
 
@@ -372,9 +358,9 @@ Establece una nueva conexión a un servidor de PostgreSQL. Los parámetros de co
 ### Meta Comando para para establecer un título a las tablas
 
 
-Establece o Anula el título de las tablas que se imprimen en los resultados de una consulta.
+Establece o Anula el título de las tablas que se imprimen en los resultados de una consulta. Ej:
 
-![img - mc-title](./assets/meta-comando-title.png)
+![img - mc-title](./assets/meta-comando-title.png){:height='400'}
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -385,7 +371,7 @@ Establece o Anula el título de las tablas que se imprimen en los resultados de 
 
 Muestra los términos de copyright y distribución de PostgreSQL  
 
-![png mc-copyright](assets/copyright.png)
+![img - mc-copyright](assets/copyright.png){:height='400'}
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -396,10 +382,11 @@ Muestra los términos de copyright y distribución de PostgreSQL
 
 Activa o Desactiva la visualización del tiempo en milisegundos que tarda cada instrucción SQL.
 
-![img - timing png](https://raw.githubusercontent.com/EniDev911/assets/main/png/db/postgres/meta-comando-timing.png)
+![img - timing png](https://raw.githubusercontent.com/EniDev911/assets/main/png/db/postgres/meta-comando-timing.png){:height='400'}
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
+---
 
 <a name="mc-x"></a>
 ### Meta Comando para cambiar la orientación de la salida
@@ -446,7 +433,7 @@ Activa o Desactiva el formato de tabla expandido en el resultado de cada instruc
 
 Una característica clave de las **variables en psql** es que pueden sustituirlas (*interpolarlas*) en sentencias SQL normales, así como en los argumentos de los **meta-comandos**. Además psql proporciona funciones para garantizar que los valores de las variables utilizados como identificadores y literales de SQL se cite correctamente. La sintaxis para interpolar un valor sin comillas es anteponer dos puntos (`:`) al nombre de la variable. Por ejemplo:  
 
-```txt
+```shell
 \set var 'usuarios'
 SELECT * FROM :var;
 ```

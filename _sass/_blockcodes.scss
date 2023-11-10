@@ -17,6 +17,7 @@ code[class*='lang'] > * {
 	tab-size: 2;
 }
 
+
 pre {
   display: flex;
   align-items: center;
@@ -44,4 +45,40 @@ pre {
     padding: 0;
     font-size: 16px;
   }
+}
+
+div[class*='bash'] pre {
+  border-top-left-radius: 0;
+  border-top-right-radius:0;
+}
+div[class*='bash'] {
+  overflow: hidden;
+}
+
+div[class*='bash']::before {
+  content:'Terminal';
+  padding: 5px 10px;
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #ccc;
+  color: #000;
+}
+
+div[class*='bat'] pre {
+  border-top-left-radius: 0;
+  border-top-right-radius:0;
+}
+div[class*='bat'] {
+  overflow: hidden;
+}
+
+div[class*='bat']::before {
+  content:'CMD';
+  padding: 5px 10px;
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #ccc;
+  color: #000;
 }
