@@ -2,10 +2,12 @@
 layout: default
 title: "Cliente de línea de comandos Mysql"
 css:
-  custom: >-
-    strong { color: #da3; }
-    tbody tr:hover { background: #111; cursor: pointer }
-    h3 { color: #dd5; }
+  custom: |-
+    strong { color:  #d94; }
+    h3 { color: #dd5; } 
+    thead { background: #000; border: 1px solid #AAA }
+    tbody { border: 1px solid #AAA }
+    tbody tr:hover { background: #cfcfcf30; cursor: pointer; }
 ---
 
 [comment]: <> (Author: Marco Contreras Herrera)
@@ -13,21 +15,10 @@ css:
 
 [![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
 
-## CONTENIDO
-
-<ul>
-  <li><a href="#introduccion">Introducción</a></li>
-  <li><a href="#localizar-cliente">Localizar instalación</a></li>
-  <li><a href="#conexion">Conectarse al servidor</a></li>
-  <li><a href="#opciones-linea-de-comandos">Opciones de línea de comandos</a></li>
-  <li><a href="#optionssesion">Opciones en la sesión interactiva</a></li>
-  <li><a href="#optionsprompt">Opciones para el prompt</a></li>
-</ul>
 
 
 ---
 
-<a name="introduccion"></a>
 ## INTRODUCCIÓN
 
 Cuando instalamos MySQL, dentro del paquete de instalación contiene un programa para conectarnos al servidor mediante la línea de comandos, que se llama **mysql** y nos permite abrir una sesión como cliente para ejecutar sentencias **SQL** con capacidades de edición. Es compatible con el uso interactivo y no interactivo. Cuando se usa de forma interactiva, los resultados de la consulta se presentan en un formato de tabla [ASCII](https://es.wikipedia.org/wiki/ASCII). Cuando se usa de forma no interactiva (por ejemplo, como filtro), el resultado se presenta en formato separado por tabuladores. El formato de salida se puede cambiar usando las [opciones de comando](#optionscmd).
@@ -55,23 +46,21 @@ De acuerdo al modo de instalación las rutas de la ubicación de MySQL puede var
 ![img - path-manual](assets/path-manual.png)
 
 
-<a href="#top">![](https://img.shields.io/badge/regresar%20contenido%20principal-%E2%86%A9-blue?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)</a>
-
 ---
 
-<a name="conexion"></a>
 ## CONECTARSE AL SERVIDOR
 
-Una vez tenemos localizado el programa podemos conectar con el servidor de MySQL por línea de comandos. Desde la consola o terminal invocamos al programa **mysql.exe** y le indicamos en los argumentos las opciones básicas de conexión (**host**, **usuario**, **puerto**, etc). Ej: 
+Una vez tenemos localizado el programa podemos conectar con el servidor de MySQL por línea de comandos. Desde la consola o terminal invocamos al programa **mysql** y le indicamos en los argumentos las opciones básicas de conexión (**host**, **usuario**, **puerto**, etc).
+
+**Ejemplo**: 
 
 {: .clipboard }
-{% highlight cmd %}
-mysql.exe -h localhost -u root -P 3306 -p
-{% endhighlight %}
+```bash
+mysql -h localhost -u root -P 3306 -p
+```
 
-<p align="center">
-  <img src="assets/connect.png" alt="connection">
-</p>
+{:align='center'}
+![img - connect](assets/connect.png){:height='340'}
 
 Estos parámetros son sencillo, aunque dependiendo del método de autenticación podría variar pero simplemente necesitamos especificar 2:  
 
@@ -80,8 +69,6 @@ Estos parámetros son sencillo, aunque dependiendo del método de autenticación
 
 Si su servidor se ejecuta en su propia máquina, no es necesario especificar el parámetro `-h` ya que mysql por defecto usa la opción de **localhost**.
 
-
-<a href="#top">![](https://img.shields.io/badge/regresar%20contenido%20principal-%E2%86%A9-blue?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)</a>
 
 ---
 
@@ -98,64 +85,132 @@ Si su servidor se ejecuta en su propia máquina, no es necesario especificar el 
     <th align="left">Valor Predeterminado</th>
   </thead>
   <tbody>
-    <tr onclick="location.href = '#autorehash">
+    <tr onclick="location.href = '#autorehash'">
       <th>
         <code class="language-plaintext">--auto-rehash</code>
       </th>
       <th>Habilita la terminación automática.</th>
       <th>True</th>
     </tr>
+    <tr onclick="location.href = '#autovertical'">
+      <th>
+        <code class="language-plaintext">--auto-vertical-output</code>
+      </th>
+      <th>Habilita la visualización de conjuntos de resultados verticales.</th>
+      <th>False</th>
+    </tr>
+    <tr onclick="location.href = '#batch'">
+      <th>
+        <code class="language-plaintext">--batch</code>
+      </th>
+      <th>No utiliza el archivo de historial.</th>
+      <th>False</th>
+    </tr>
+    <tr onclick="location.href = '#database'">
+      <th>
+        <code class="language-plaintext">--database</code>
+      </th>
+      <th>La base de datos que desea conectarse.</th>
+      <th>None</th>
+    </tr>
+    <tr onclick="location.href = '#opt-delimiter'">
+      <th>
+        <code class="language-plaintext">--delimiter</code>
+      </th>
+      <th>Establece el delimitador de consultas.</th>
+      <th>;</th>
+    </tr>
+    <tr onclick="location.href = '#execute'">
+      <th>
+        <code class="language-plaintext">--execute | -e</code>
+      </th>
+      <th>Ejecuta la sentencia, devuele la salida y se cierra.</th>
+      <th>;</th>
+    </tr>
+    <tr onclick="location.href = '#host'">
+      <th>
+        <code class="language-plaintext">--host | -h</code>
+      </th>
+      <th>Indica el host para la conexión.</th>
+      <th>localhost</th>
+    </tr>
+    <tr onclick="location.href = '#html'">
+      <th>
+        <code class="language-plaintext">--html | -H</code>
+      </th>
+      <th>Producir salida html.</th>
+      <th></th>
+    </tr>
+    <tr onclick="location.href = '#user'">
+      <th>
+        <code class="language-plaintext">--user | -u</code>
+      </th>
+      <th>El usuario que se conectará.</th>
+      <th>ODBC</th>
+    </tr>
+    <tr onclick="location.href = '#password'">
+      <th>
+        <code class="language-plaintext">--password | -p</code>
+      </th>
+      <th>Solicitara el password al usuario que se conectará.</th>
+      <th>None</th>
+    </tr>
+    <tr onclick="location.href = '#namedcommands'">
+      <th>
+        <code class="language-plaintext">--named-commands</code>
+      </th>
+      <th>Habilita comandos mysql con nombres.</th>
+      <th></th>
+    </tr>
+    <tr onclick="location.href = '#port'">
+      <th>
+        <code class="language-plaintext">--named-commands</code>
+      </th>
+      <th>El número de puerto TCP/IP para la conexión.</th>
+      <th>3306</th>
+    </tr>
+    <tr onclick="location.href = '#silent'">
+      <th>
+        <code class="language-plaintext">--silent | -s</code>
+      </th>
+      <th>Modo silencioso.</th>
+      <th>False</th>
+    </tr>
   </tbody>
 </table>
 
-|Opción|Descripción|Valor Predeterminado|
-|------|----------|:------------:|
-|[**`--auto-rehash`**](#autorehash)|Habilita la terminación automática.|True|
-|[**`--auto-vertical-output`**](#autovertical)|Habilita la visualización de conjuntos de resultados verticales.|False|
-|[**`--batch`** \| **`-B`**](#batch)|No utiliza el archivo de historial|False|
-|[**`--database`** \| **`-D`**](#database)|La base de datos que desea conectarse|None|
-|[**`--delimiter`**](#delimiter)|Establece el delimitador de consultas.|;|
-|[**`--execute`** \| **`-e`**](#execute)|Ejecuta la sentencia y se cierra.||
-|[**`--host`** \| **`-h`**](#host)|Indica el host para la conexión.|localhost|
-|[**`--html`** \| **`-H`**](#html)|Producir salida html||
-|[**`--user`** \| **`-u`**](#user)|El usuario que se conectará|ODBC|
-|[**`--password`** \| **`-p`**](#password)|Solicitara el password al usuario que se conectará|None|
-|[**`--execute`** \| **`-e`**](#execute)|Ejecuta una sentencia y devuelve la salida y se cierra|Opcional|
-|[**`--named-commands`**](#namedcommands)|Habilita comandos mysql con nombres||
-|[**`--port`** \| **`-P`**](#)|el número de puerto TCP/IP para la conexión.|3306| 
-|[**`--silent`** \| **`-s`**](#silent)|Modo silencioso.|False|
 
->Si quiere ver todas las opciones posibles puede ir a la [documentación oficial](https://dev.mysql.com/doc/refman/8.0/en/mysql-command-options.html)
+>Si quiere ver todas las opciones posibles puede ir a la [documentación oficial](https://dev.mysql.com/doc/refman/8.0/en/mysql-command-options.html){:target='_blank' class='link'}
 
+---
 
 <a name="autorehash"></a>
 ### -\-auto-rehash
 
 Esta opción está activada de forma predeterminada, lo que **permite completar el nombre de la base de datos**, **la tabla** y **la columna**. Para deshabilitar use `--disable-auto-rehash`. Eso hace que mysql se inicie más rápido.
->Nota: Esta función requiere un cliente MySQL compilado con la biblioteca readline . Por lo general, la biblioteca readline no está disponible en Windows.
+>**Nota**: Esta función requiere un cliente MySQL compilado con la biblioteca readline . Por lo general, la biblioteca readline no está disponible en Windows.
 
 ### Ejemplos
 
 **En la línea de comando**  
 
-```bat
+```bash
 mysql -u root -p  --auto-rehash
 ```
 
 **En el archivo de opciones:** 
 
-```bash
+{: .clipboard }
+```ini
 # para el programa mysql
 [mysql]
-auto-rehash
+auto-rehash=True
 # para deshabilitarlo
-no-auto-rehash
+no-auto-rehash=True
 ```
 
-<p align="center">
-  <img src="assets/auto_rehash.png" alt="auto rehash">
-</p>
-
+{:align='center'}
+![img - auto-rehash](assets/auto_rehash.png){:height='400'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -171,7 +226,7 @@ Esta opción permite visualizar los resultados al modo de salida vertical si el 
 
 **En la línea de comando**  
 
-```bat
+```bash
 mysql -u root -p  --auto-vertical-output
 ```
 > Adicionalmente podemos obtener resultados en este formato en la sesión interactiva terminando cada declaración con `\G`
@@ -179,17 +234,17 @@ mysql -u root -p  --auto-vertical-output
 
 **En el archivo de opciones:** 
 
-```bash
+{: .clipboard }
+```ini
 # para el programa mysql
 [mysql]
 auto-vertical-output=True
 # o de forma abreviada
-auto-vertical-output
+# auto-vertical-output
 ```
 
-<p align="center">
-  <img src="assets/auto_vertical_output.png" alt="auto vertical output">
-</p>
+{:align='center'}
+![img - auto-vertical-output](assets/auto_vertical_output.png){:height='400'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -200,13 +255,13 @@ auto-vertical-output
 
 Imprime los resultados usando la pestaña como separador de columnas, con cada fila en una nueva linea. Con esta opción, **mysql** no usa el archivo de historial ni imprime mensajes adicionales tampoco muestra el prompt al conectarse.
 
-```bat
+```bash
 mysql -u root -p  -B
 ```
 
 En el archivo de opciones: 
 
-```bash
+```ini
 # para el programa mysql
 [mysql]
 batch=True
@@ -219,21 +274,23 @@ batch=True
 <a name="database"></a>
 ### -\-database | -D
 
-La base de datos a utilizar. Esta opción también es útil principalmente en un archivo de opciones establecer a que bases de datos pueden conectarse las aplicaciones o el programa en sí.  
+La base de datos a utilizar. Esta opción también es útil principalmente en un archivo de opciones establecer a que bases de datos pueden conectarse las aplicaciones o el programa en sí.
 
-#### Ejemplos
+### Ejemplos
 
-**En la línea de comando**    
+**En la línea de comando**
 
-```bat
+{: .clipboard }
+```bash
 mysql -u root -p -D test
 ```
 
-**En el archivo de opciones**  
+**En el archivo de opciones**
 
 >En caso de que no especifique otra base de datos, intentará conectarse a la que esteblece este archivo  
 
-```bash
+{: .clipboard }
+```ini
 # para los programas externos
 [client]
 database=test
@@ -241,37 +298,34 @@ database=test
 [mysql]
 database=test
 ```
-
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
-<a name="delimiter"></a>
+<a name="opt-delimiter"></a>
 ### -\-delimiter
 
 Establece el delimitador el delimitador de sentencias. El valor predeterminado es el punto y coma (`;`).  
-
 
 ### Ejemplos
 
 **En la línea de comando**    
 
-```bat
+```bash
 mysql -u root -p --delimiter .
 ```
 
 **En el archivo de opciones**  
 
-```
+```ini
 [mysql]
 delimiter=.
-silent
-table
+silent=True
+table=True
 ```
 
-<p align="center">
-  <img src="assets/delimiter.png" alt="delimiter">
-</p>
+{:align='center'}
+![img - delimiter](assets/delimiter.png){:height='400'}
 
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
@@ -285,14 +339,15 @@ Ejecuta la sentencia y sale. El formato es el mismo que genera el producido por 
 
 ### Ejemplo
 
-Volcar la salida en un archivo y con formato HTML
+Volcar la salida en un archivo y con formato HTML:
+
+{: .clipboard }
 ```bash
 mysql -u root -p -e "SELECT * FROM tablename;" -H > results.html
 ```
 
-<p align="center">
-  <img src="assets/execute-cli.png" alt="execute cli">
-</p>
+{:align='center'}
+![img - execute option](assets/execute-cli.png){:height='330'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -308,7 +363,8 @@ La contraseña de la cuenta de MySQL utilizada para conectarse al servidor. El v
 
 **En la línea de comando**  
 
-```bat
+{: .clipboard }
+```bash
 mysql -u root -p 
 ```
 > Se considera inseguro proporcionar el password mediante la línea de comandos, en versiones posterios a la 5.6 ya no se puede proporcionar el valor en la misma línea. Por lo que solo puede colocar este valor cuando se lo solicita MySQL.  
@@ -316,7 +372,8 @@ mysql -u root -p
 
 **En el archivo de opciones** 
 
-```bash
+{: .clipboard }
+```ini
 # para el programa mysql
 [mysql]
 database=test
@@ -336,12 +393,12 @@ El modo silencioso da como resultado un formato de salida no tabular y el escape
 
 **En la línea de comando**  
 
-```bat
+```bash
 mysql -u root -p -s 
 ```
 **En el archivo de opciones**  
 
-```bash
+```ini
 [mysql]
 database=test
 silent
@@ -362,12 +419,14 @@ La opción `--dns-srv-name` tiene prioridad sobre la opción `--host` en caso de
 
 **En la línea de comando**  
 
+{: .clipboard }
 ```bash
 mysql -h 127.0.0.1 -u root -p 
 ```
 **En el archivo de opciones**  
 
-```text
+{: .clipboard  }
+```ini
 [mysql]
 database=test
 host=localhost
@@ -386,9 +445,8 @@ SELECT num_factura, fecha_factura, item, cantidad FROM facturas;
 INTO OUTFILE 'c:/temp/facturas.txt'
 ```
 
-<p align="center">
-  <img src="assets/html-output.png" alt="html print output" width="800">
-</p>
+{:align='center'}
+![img - html-output](assets/html-output.png){:height='250'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -424,7 +482,6 @@ Habilite los comandos **mysql con nombre**. Se permiten comandos de formato larg
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
-<a href="#top">![](https://img.shields.io/badge/regresar%20contenido%20principal-%E2%86%A9-blue?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)</a>
 
 ---
 
@@ -437,9 +494,7 @@ Ahora que estamos conectado **mysql** envía cada instrucción SQL que emite al 
 
 **Lista de los comandos del cliente:**  
 
-<p align="center">
-  <img src="assets/command-help.png" width="900">
-</p>
+![img - command-session](assets/command-help.png)
 
 **Traducido**
 
