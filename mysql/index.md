@@ -27,3 +27,15 @@ title: "Contenido"
  	<li style="margin: 8px 0"><a href="{{ paper.link }}"><img height="25" src="{{ '/assets/images/logos/mysql.png' | relative_url }}" style="margin-right: 15px; vertical-align: middle;"> {{ paper.name }}</a></li>
  {% endfor %}	
 </ul>
+
+## Tutoriales
+
+<div class="flex">
+ {% for item in site.data.mysql.tutoriales %}
+  {% include card-paper.html 
+  	title=item.title
+  	img=item.img
+  	href=item.link
+  	%}
+ {% endfor %}	
+</div>

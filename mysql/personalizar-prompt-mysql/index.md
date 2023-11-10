@@ -127,7 +127,8 @@ Buscamos la sección mysql y añadimos lo siguiente:
 prompt=[✨\u |💾 \d]>\_
 ```
 
-![set archivo de opciones](assets/03.png)
+{:align='center'}
+![img - set archivo de opciones](assets/03.png){:height='350'}
 
 
 

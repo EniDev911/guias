@@ -8,3 +8,7 @@ papers:
     link: "cliente-mysql"
   - name: "mysql: personalizar el prompt de mysql"
     link: "personalizar-prompt-mysql"
+tutoriales:
+  - title: "Guía básica con ejemplos"
+    link: tutorial/guia-basica
+    img: /assets/images/mysql/guia-mysql.png

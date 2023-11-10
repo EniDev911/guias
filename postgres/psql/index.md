@@ -59,7 +59,7 @@ El nombre de usuario predeterminado es el nombre de usuario de su sistema operat
 
 Esta utilidad de línea de comandos acepta las siguientes opciones al momento de invocarla:
 
-```bash
+```text
 Empleo:
 psql [OPCIONES]... [BASE-DE-DATOS [USUARIO]]
         
