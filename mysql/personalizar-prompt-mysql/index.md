@@ -1,6 +1,9 @@
 ---
 layout: default
 title: Personalizar el prompt del cliente mysql
+css:
+  custom: |-
+    strong {color: #dd6}
 ---
 
 [comment]: <> (Author: Marco Contreras Herrera)
@@ -8,14 +11,7 @@ title: Personalizar el prompt del cliente mysql
 
 [![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
 
-## Contenido
 
-- [¿Que es el prompt?](#que-es)
-- [Cambiar el prompt desde la sesión interactiva](#cambiar-desde-sesion)
-- [Cambiar el prompt desde archivo de opciones](#personalizar-desde-archivo)
-
-
-<a name="que-es"></a>
 ## ¿Qué es el prompt?
 
 Visualmente es el conjunto de caracteres que se muestra en la línea de comandos para indicar que está a la espera de órdenes. En todos los intérpretes de comandos esto suele variar y a su vez suele configurar para dar información de interés.
@@ -28,32 +24,34 @@ Por ejemplo, mediante la variable **MYSQL_PS1**
 **Windows-CMD**:  
 
 {: .clipboard }
-{% highlight shell %}
+```bat
 set MYSQL_PS1=[(\u@\h)][(\d)]^> 
-{% endhighlight %}
+```
 
 **Linux-bash**:
 
 {: .clipboard }
-{% highlight bash %}
+```bash
 MYSQL_PS1='[(\u@\h)][(\d)]>' 
-{% endhighlight %}
+```
 
 indicamos al cliente de mysql que queremos que nos muestre el usuario con el que estamos conectado, el host al que se conecta y la base de datos. Algunas opciones de información son:
 
-- **\\U** : nombre del usuario conectado y host (Ej: root@localhost)
-- **\\u** : nombre del usuario conectado (Ej: root)
+- **\\U** : nombre del usuario conectado y host (Ej: `root@localhost`)
+- **\\u** : nombre del usuario conectado (Ej: `root`)
 - **\\h** : nombre del host (Ej: localhost)
-- **\\d** : nombre de la base de datos en uso (Ej: test)
-- **\\D** : Fecha y hora actual (Ej: Sun Jan 30 13:38:52 2022)
+- **\\d** : nombre de la base de datos en uso (Ej: `test`)
+- **\\D** : Fecha y hora actual (Ej: `Sun Jan 30 13:38:52 2022`)
 
-Ejemplo en el símbolo de sistema de Windows
+Ejemplo en el símbolo de sistema de Windows:
 
-![img set variables](assets/01.png){: height="450"}
+{:align='center'}
+![img set variables](assets/01.png){:height='450'}
 
 Como resultados obtendremos lo siguiente cuando nos conectemos:  
 
-![img - mysql prompt](assets/02.png){: height="450" }
+{:align='center'}
+![img - mysql prompt](assets/02.png){:height='450'}
 
 >**Nota**: Al establecer el valor de la variable mediante el comando **`set`** solo estará disponible en esa sesión o instancia de la ventana de CMD.  
 
@@ -61,40 +59,40 @@ Como resultados obtendremos lo siguiente cuando nos conectemos:
 Si queremos establecer el valor a la variable de forma permanente en Windows lo hacemos por medio del comando **setx**:  
 
 {: .clipboard }
-{% highlight shell %}
+```bat
 setx MYSQL_PS1 "[(\u@\h)][(\d)]> "
-{% endhighlight %}
+```
 
 ---
 
-<a name="cambiar-desde-sesion"></a>
 ## Personalizar dentro del cliente mysql
 
 Una vez dentro de la sesión interactiva podemos cambiar el prompt usando el comando **prompt** o el método abreviado **\R**.  
 
 
 {: .clipboard }
-{% highlight shell %}
+```bash
 prompt [✨\u |💾 \d]> 
-{% endhighlight %}
-
+```
 
 {: .clipboard }
-{% highlight shell %}
+```bash
 prompt 📅 (\w-\o-\Y)> 
-{% endhighlight %}
+```
 
 {: .clipboard }
-{% highlight shell %}
+```bash
 prompt (🐬 mysql \v)\n🔌->(\d)>
-{% endhighlight %}
+```
 
 {: .clipboard }
-{% highlight shell %}
-prompt [\'contador de consulta\'(\c)]>
-{% endhighlight %}
+```bash
+prompt [\'contador de consulta\'(\c)]> 
+```
 
 ![img - set prompt](assets/04.png)
+
+> **OJO**: El que se muestre o no los símbolos de emoji, dependerá de la fuente usada para el terminal.
 
 ---
 
@@ -108,27 +106,26 @@ Editamos el archivo de opciones de MySQL/MariaDB
 Modifique el path según su instalación:
 
 {: .clipboard }
-{% highlight bash %}
+```bash
 sudo nano /etc/mysql/my.cnf
-{% endhighlight %}
+```
 
 **Windows**
 
 Modifique el path según su instalación:
 
 {: .clipboard }
-{% highlight cmd %}
+```cmd
 notepad.exe C:\MySQL_8\my.ini
-{% endhighlight %}
+```
 
 Buscamos la sección mysql y añadimos lo siguiente:  
 
 {: .clipboard }
-{% highlight ini %}
+```ini
 [mysql]
 prompt=[✨\u |💾 \d]>\_
-{% endhighlight %}
-
+```
 
 ![set archivo de opciones](assets/03.png)
 
