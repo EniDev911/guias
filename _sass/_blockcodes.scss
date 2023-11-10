@@ -51,6 +51,13 @@ div[class*='bash'] pre {
   border-top-left-radius: 0;
   border-top-right-radius:0;
 }
+div[class*='bash'] code::before {
+  content: '$';
+  display: inline-block;
+  margin-right: 10px;
+  color: yellow ;
+}
+
 div[class*='bash'] {
   overflow: hidden;
 }

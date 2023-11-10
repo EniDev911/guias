@@ -200,8 +200,8 @@ Una vez instalado el paquete debemos crear un nuevo archivo en la raíz del proy
 
 {% capture variables_env %}
 {% highlight ini %}
-MYSQL_USER=root
-MYSQL_PASSWORD=root
+MYSQL_USER=user_app
+MYSQL_PASSWORD=user_pass
 MYSQL_DBNAME=visitas_db
 MYSQL_HOST=localhost
 MYSQL_PORT=3306
@@ -236,8 +236,85 @@ Para evitar que nos aparezcan advertencias si estamos en visual studio code,tene
     bloque_3=variables_env
 %}
 
-## Crear una clase para las operaciones del CRUD
+---
 
-Si podemos modificar nuestra clase del modelo para añadirle las operaciones del **CRUD**
+## Desarrollar las operaciones del CRUD
 
+Si podemos modificar nuestra clase del modelo para añadirle las operaciones del **CRUD**. Esto debido a que nuestro modelo representa la parte de la aplicación que implementa la lógica de negocio. Esto significa que es responsable de la recuperación de datos, así como su procesamiento, validación y cualquier otra tarea relativa a la manipulación de los datos.
 
+A primera vista los objetos del modelo pueden ser considerados como la primera capa de interacción con cualquier fuente de datos que podría estar utilizando una aplicación.
+
+Primer método para implementar será el de recuperar todos los registros:
+
+{: .clipboard }
+```py
+@staticmethod
+def obtener_visitas():
+    return Visita.__DB.ejecutar_query("SELECT * FROM visitas")
+```
+
+> En python para definir un método estático es necesario usar el decorador `@staticmethod`
+
+Para llamar al método estático no necesitamos crear uns instancia:
+
+{: .clipboard }
+```py
+print(Visita.obtener_visitas())
+```
+
+Ahora podemos hacer un método estático para obtener un cliente a través de su rut:
+
+{: .clipboard }
+```py
+@staticmethod
+def obtener_visita(rut):
+    return Visita.__DB.ejecutar_query(
+        "SELECT * FROM visitas WHERE rut=%(rut)s", {"rut": rut}
+    )
+```
+
+Ahora para almacenar nuevos registros tenemos que implementar el siguiente método:
+
+{: .clipboard }
+```py
+@staticmethod
+def guardar_visita(self):
+    return Visita.__DB.ejecutar_query(
+        """INSERT INTO visitas(rut, nombre, apellido, telefono, direccion) 
+        VALUES (%(rut)s, %(nombre)s, %(apellido)s, %(telefono)s, %(direccion)s)""",
+        {
+            "rut": self.rut,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "telefono": self.telefono,
+            "direccion": self.direccion,
+        },
+    )
+```
+
+Lo mismo para actualizar registros existentes, lo implementamos de la siguiente manera:
+
+{: .clipboard }
+```py
+@staticmethod
+def actualizar_visita(rut, visita):
+    return Visita.__DB.ejecutar_query(
+        """
+    UPDATE visitas
+    SET rut=%(nuevo_rut)s,
+        nombre=%(nombre)s,
+        apellido=%(apellido)s,
+        telefono=%(telefono)s,
+        direccion=%(direccion)s
+    WHERE rut=%(rut)s
+    """,
+        {
+            "nuevo_rut": visita.rut,
+            "nombre": visita.nombre,
+            "apellido": visita.apellido,
+            "telefono": visita.telefono,
+            "direccion": visita.direccion,
+            "rut": rut,
+        }
+    )
+```

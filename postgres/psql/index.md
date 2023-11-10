@@ -459,15 +459,15 @@ INSERT INTO my_table VALUES (:'content');
 Otro ejemplo, es almacenando una setencia completa SQL en una variable y luego solo llamar a la variable:  
 
 {: .clipboard }
-{% highlight psql %}
+```sql
 \set dbs 'SELECT datname FROM pg_database;'
 :dbs
-{% endhighlight %}
+```
 
 <a href="personalizar-prompt"></a>
 ## Personalizar el prompt
 
 {: .clipboard }
-{% highlight psql %}
+```sql
 \set PROMPT1 '%[%033[1;33;40m%]%n@%/%R%[%033[0m%]%# '
-{% endhighlight %}
+```

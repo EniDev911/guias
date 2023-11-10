@@ -115,16 +115,9 @@ clase_database: |-
               cursor = con.cursor()
               try:
                   cursor.execute(sql, params)
-                  print("Se está ejecutando:", sql)
-                  # Si nos piden devolver los datos
-                  if "SELECT" in sql.upper():
+                  # print("Se está ejecutando:", sql, params)
+                  if cursor.with_rows:
                       return cursor.fetchall()
                   con.commit()
               except mysql.connector.Error as e:
                   print(f"Error: {e}")
-
-  with open("db/schema.sql", "r") as sql_file:
-      db = Database()
-      sql_script = sql_file.read()
-      db.ejecutar_query(sql_script)
-      print("Tabla 'visitas' creada exitosamente")
