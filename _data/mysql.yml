@@ -12,3 +12,6 @@ tutoriales:
   - title: "Guía básica con ejemplos"
     link: tutorial/guia-basica
     img: /assets/images/mysql/guia-mysql.png
+  - title: "Funciones de información"
+    link: tutorial/funciones-informacion
+    img: /assets/images/mysql/guia-mysql.png
