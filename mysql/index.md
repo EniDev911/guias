@@ -32,10 +32,12 @@ title: "Contenido"
 
 <div class="flex">
  {% for item in site.data.mysql.tutoriales %}
+ <div class="col">
   {% include card-paper.html 
   	title=item.title
   	img=item.img
   	href=item.link
   	%}
- {% endfor %}	
+ </div>
+ {% endfor %}
 </div>

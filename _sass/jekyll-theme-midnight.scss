@@ -362,11 +362,13 @@ dt {
     }
   }
 }
+
 .flex {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
 }
 
 
@@ -374,10 +376,11 @@ dt {
   .flex {
     flex-direction: row;
     gap: 10px;
+    .col {
+      width: calc(100% / 3.2);
+    }
   }
-
 }
-
 
 @media print, screen and (max-width: 720px) {
 

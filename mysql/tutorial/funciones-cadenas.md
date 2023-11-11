@@ -559,7 +559,6 @@ SELECT LENGTH('HELLO');
 	bloque_normal=result_char_length
 %}
 
-
 <p align="center">
 <a href="https://www.buymeacoffee.com/9111592" target="_blank">
 <img src="https://raw.githubusercontent.com/EniDev911/assets/main/png/support/buymeacoffee.png" height="80"></a>

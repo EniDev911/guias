@@ -18,3 +18,6 @@ tutoriales:
   - title: "Funciones de cadena"
     link: tutorial/funciones-cadenas
     img: /assets/images/mysql/guia-mysql.png
+  - title: "Operadores"
+    link: tutorial/operadores
+    img: /assets/images/mysql/guia-mysql.png
