@@ -7,6 +7,7 @@ code.language-plaintext {
 	font-family: monospace;
 }
 
+
 div.highlight {
 	position: relative;
 }
@@ -23,8 +24,6 @@ pre {
   align-items: center;
   font-size: 0;
   font-variant-ligatures: none;
-  white-space: pre-wrap;
-  overflow: auto;
 }
 
 .language-liquid pre {
@@ -37,7 +36,6 @@ pre {
   border-radius: 2px;
   border:1px solid #ccc;
   box-shadow: 0 3px 6px rgba(0,0,0,.3);
-  white-space: pre-wrap;
   code {
     color: #efefef;
     text-shadow: 0px 1px 0px #000;
@@ -66,7 +64,7 @@ div[class*='bash']::before {
   content:'Terminal';
   padding: 5px 10px;
   display: block;
-  position: relative;
+  top: -25px;
   width: 100%;
   background: #ccc;
   color: #000;

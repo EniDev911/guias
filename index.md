@@ -27,6 +27,7 @@ title: EniDev
         <kbd><img 
             src="{{ item.logo | relative_url }}"
             alt="{{ item.name }}"
+            title="{{ item.name }}" 
             height="80"></kbd>
     </a>
   {% endfor %}

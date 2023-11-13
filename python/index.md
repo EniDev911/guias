@@ -24,10 +24,12 @@ title: Python
 
 <div class="flex">
  {% for item in site.data.python.tutoriales %}
+ <div class="col">
   {% include card-paper.html 
   	title=item.title
   	img=item.img
   	href=item.link
   	%}
+  </div>
  {% endfor %}	
 </div>

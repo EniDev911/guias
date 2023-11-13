@@ -1,0 +1,82 @@
+  .contenedor{
+    position: relative;
+      .ul {
+        list-style: none;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+  }
+
+  .contenedor .li {
+    background: #ccc;
+    color: #222;
+    padding: 6px 10px;
+    margin: 0 1em 0 0;
+    cursor: pointer;
+    position: relative;
+  }
+  .contenedor .li::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    transform: translateY(2px);
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 9999;
+  }
+  .contenedor .li.activo {
+    background: #F2B142;
+    border: solid #ccc;
+    border-width: 2px 2px 0 2px;
+    color: #111;
+    position: relative;
+  }
+  .contenedor .li.activo::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #F2B142;
+    transform: translateY(2px);
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+  }
+  .contenedor .subcontenedor {
+    position: relative;
+    width: 100%;
+  }
+  .contenedor .bloque{
+    background: #191919;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: none;
+  }
+  .contenedor .bloque.activo {
+    opacity: 1;
+    display: block;
+    position: relative;
+  }
+  .contenedor .bloque.activo pre {
+    border: solid #ccc;
+    border-width: 2px 2px 2px 2px;
+    border-radius: 0;
+    overflow: scroll;
+  }

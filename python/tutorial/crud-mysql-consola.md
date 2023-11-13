@@ -39,6 +39,31 @@ Primero pensemos en una clase para definir la estructura de una visita y así fa
 
 ---
 
+## Configurar el entorno virtual
+
+**Pipenv** su mayor cualidad es que **crea** y (gestiona) **entornos virtuales exclusivos en un directorio separado** del proyecto y **nos facilita la gestión de paquete mediante un archivo**.
+
+Instalar Pipenv:
+
+{: .clipboard }
+```bash
+pip install pipenv
+```
+
+Activar el entorno virtual:
+
+{: .clipboard }
+```bash
+pipenv shell
+```
+
+Para evitar que nos aparezcan advertencias si estamos en visual studio code,tenemos que cambiar de interprete y seleccionar el interprete que estemos trabajando actualmente:
+
+![img - cambiar interprete](assets/cambiar_interprete_vscode.png)
+
+---
+
+
 ## Instalar el conector
 
 Para poder comunicarnos con **MySQL** necesitamos un controlador que permita esa comunicación y para ello, tenemos el paquete [`mysql-connector-python`](https://pypi.org/project/mysql-connector-python/){:target='_blank' class='link'} que es un controlador escrito en Python y no depende de bibliotecas adicionales como **client C MySQL** y además implementa la especificación **DB API v2.0** su instalación es simplemente a través del siguiente comando:
@@ -222,9 +247,6 @@ Ahora podemos crear la clase en un nuevo archivo dentro de la carpeta llamada **
 {% endhighlight %}
 {% endcapture %}
 
-Para evitar que nos aparezcan advertencias si estamos en visual studio code,tenemos que cambiar de interprete y seleccionar el que estemos trabajando actualmente:
-
-![img - cambiar interprete](assets/cambiar_interprete_vscode.png)
 
 {% include tabs.html
     id='clase_conexion'

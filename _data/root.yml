@@ -18,6 +18,9 @@ programming:
   - name: javascript
     logo: /assets/images/logos/javascript.png
     link: /javascript
+  - name: bash
+    logo: /assets/images/logos/bash.png
+    link: /bash
 editors:
   - name: vs_code
     link: /vs-code

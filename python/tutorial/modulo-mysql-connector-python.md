@@ -26,6 +26,25 @@ from mysql.connector import MySQLConnection
 cnx = MySQLConnection(user='joe', database='test')
 ```
 
+A partir de la **versión 2.0.0**, el conector tiene la capacidad de leer [archivos de opciones](https://dev.mysql.com/doc/refman/8.0/en/option-files.html){:target='_blank' class='link'} :
+
+{: .clipboard }
+```py
+import mysql.connector
+cnx = mysql.connector.connect(option_files='path/mysql/connector.cnf')
+```
+
+El siguiente ejemplo especifica varios archivos de opciones como una secuencia:
+
+{: .clipboard}
+```py
+mysql_option_files = [
+    '/etc/mysql/connectors.cnf',
+    './development.cnf',
+]
+cnx = mysql.connector.connect(option_files=mysql_option_files)
+```
+
 ---
 
 ## Propiedad mysql.connector.apilevel
@@ -118,6 +137,18 @@ Resultados producidos por la declaración 'select 2':
 
 ---
 
+## método MySQLConnection.commit()
+
+Este método envía la declaración `COMMIT` al servidor de **MySQL**, confirmando la transacción actual. Dado que, de forma predeterminada no se confirma automáticamente, es importante llamar a este método después de cada transacción que modifique datos:
+
+
+```py
+cursor.execute("INSERT INTO employees (first_name) VALUES (%s), (%s)", ('Mary', 'Jane'))
+cnx.commit()
+```
+
+---
+
 ## MySQLCursor.fetchall()
 
 El método recupera todas (o todas las filas restantes) de un conjunto de resultados de una consulta a la base de datos y retorna una **lista de tuplas**. Si no hay más filas disponibles, devuelve una **lista vacía**.
@@ -159,6 +190,53 @@ print(remaining_rows)
 > **Nota**: debemos recuperar todas las filas de la consulta actual antes de ejecutar nuevas sentencias utilizando la misma conexión.
 
 ---
+
+## MySQLCursor.colum_names
+
+Esta propiedad es de solo lectura y nos devuelve los nombre de las columnas de un conjunto de resultados como una secuencia de cadenas:
+
+{% capture ej_column_names %}
+{% highlight python %}
+from prettytable import PrettyTable  # pip install prettytable
+import mysql.connector
+
+cnx = mysql.connector.connect(user="root", password="root", db="visitas_db")
+cursor = cnx.cursor()
+cursor.execute("SELECT * FROM visitas")
+p_table = PrettyTable()
+p_table.field_names = cursor.column_names
+p_table.add_rows(cursor.fetchall())
+p_table.align = 'l'
+print(p_table)
+{% endhighlight %}
+{% endcapture %}
+
+{% capture result_ej_column_names %}
+{% highlight text %}
++--------------+---------------+------------+---------------+----------------+
+| rut          | nombre        | apellido   | telefono      | direccion      |
++--------------+---------------+------------+---------------+----------------+
+| 8.278.115-3  | zunilda       | herrera    | +569-45857964 | av suecia #327 |
+| 12.214.921-1 | manuel        | tapia      | +569-65214635 | av china #462  |
+| 14.797.793-4 | marco         | contreras  | +569-84687949 | Av suecia #327 |
+| 14464465     | conchetumadre | carajo     | 45684794      | av puebla      |
+| 17.794.784-5 | marco         | contreras  | 84687949      | av china       |
+| 177977934    | marco         | contreras  | 84+87949      | av suecia      |
+| 19.144.134-6 | claudia       | villalobos | 984687949     | costanero 213  |
++--------------+---------------+------------+---------------+----------------+
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='ej_column_names'
+	tab_1='script.py'
+	tab_2='Resultado'
+	bloque_1=ej_column_names
+	bloque_normal=result_ej_column_names
+%}
+
+---
+
 
 ## MySQLCursor.store_result()
 
