@@ -194,3 +194,36 @@ Estos enlaces pueden ser útiles cuando necesitamos que en la carpeta actual exi
 
 
 ## Borrar archivos
+
+Probablemente, otro de los comandos más utilizados en la terminal es `rm` (*remove*), que sirve para **eliminar archivos o carpeta** de nuestro sistema. Hay que tener mucho cuidado con él, ya que una vez un archivo es eliminado, aunque no es imposible, es complicado recuperarlo.
+
+<table>
+  <thead>
+    <th>Parámetro</th>
+    <th>Significado</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th><code class="language-plaintext">-f</code> (<em>force</em>)</th>
+      <th>Fuerza a hacer el borrado, sin preguntar.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-r</code> (<em>recursive</em>)</th>
+      <th>Elimina recursivamente carpetas y su contenido.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-d</code> (<em>dir</em>)</th>
+      <th>Elimina carpetas vacías.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-v</code> (<em>verbose</em>)</th>
+      <th>Por defecto, este comando trabaja en silencio. Con este parámetro muestra lo que está haciendo.</th>
+    </tr>
+  </tbody>
+</table>
+
+
+Como se menciona anteriormente, el comando `rm` realmente no borra un archivo, sino que lo **&lt;&lt;marca&gt;&gt;** en el disco como reutilizable. Si la zona donde residía es sobrescrita con otro archivo, probablemente sea imposible de recuperar, en caso contrario hay cierta posibilidad.
+
+
+>**Nota**: Si desea eliminar por completo un archivo, sin posibilidad de recuperación, es mejor utilizar el comando `shred -u` seguido del nombre del archivo. Este comando sobreescribe con información aleatoria el archivo, y luego lo elimina.
