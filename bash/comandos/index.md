@@ -6,7 +6,7 @@ css:
       strong { color: #aa2;}
       thead { background: #000; border: 1px solid #AAA }
       tbody { border: 1px solid #AAA }
-      tbody tr:hover { background: #cfcfcf30; cursor: pointer; }   
+      tbody tr:hover { background: #cfcfcf30; }   
 ---
 
 
@@ -85,3 +85,106 @@ cp origen.txt /home/destino.txt
 ```
 
 En este sencillo ejemplo hemos copiado el archivo **origen.txt** a la carpeta **/home** cambiándole el nombre a **destino.txt**.
+
+
+La forma en la que especificamos las rutas, pueden simplificarse y hacerse más flexible dependiendo de si utilizamos **rutas absolutas** o **rutas relativas**:
+<table>
+  <thead>
+    <th>Tipo</th>
+    <th>Descripción</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th><strong>Ruta absoluta</strong></th>
+      <th>Ruta completa de la carpeta o archivo desde la raíz. Ej: (<code class="language-plaintext">/home/user</code>)</th>
+    </tr>
+    <tr>
+      <th><strong>Ruta actual</strong></th>
+      <th>Ruta donde nos encontramos actualmente. Ej: (<code class="language-plaintext">.</code>)</th>
+    </tr>
+    <tr>
+      <th><strong>Ruta padre</strong></th>
+      <th>Ruta a la carpeta anterior de donde nos encontramos actualmente. Ej: (<code class="language-plaintext">..</code>)</th>
+    </tr>
+    <tr>
+      <th><strong>Ruta relativa</strong></th>
+      <th>Ruta completa, pero sólo a partir de la carpeta donde nos encontramos. Ej: (<code class="language-plaintext">../bin</code>)</th>
+    </tr>
+  </tbody>
+</table>
+
+Por otro lado, es importante conocer los parámetros del comando `cp` que pueden resultar útiles, como por ejemplo el parámetro `-r` que nos permite hacer **copias recursivas**, esto es, no sólo copiar archivos, sino **carpetas y su contenido**, ya que por defecto `cp` solo copia archivos.
+
+
+Los parámetros más importante son los siguientes:
+
+
+<table>
+  <thead>
+    <th>Parámetro</th>
+    <th>Significado</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th><code class="language-plaintext">-r</code> (<em>recursive</em>)</th>
+      <th>Permite copiar carpetas y su contenido.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-u</code> (<em>update</em>)</th>
+      <th>Copia sólo cuando no hay un archivo de destino. Si existe, sólo cuando el origen es más nuevo.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-n</code> (<em>no clobber</em>)</th>
+      <th>No sobreescribe en el destino un archivo que ya existe.</th>
+    </tr>
+    <tr>
+      <th><code class="language-plaintext">-v</code> (<em>verbose</em>)</th>
+      <th>Por defecto, este comando trabaja en silencio. Con este parámetro muestra lo que está haciendo.</th>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## CREAR CARPETA O ARCHIVOS
+
+### El comando mkdir
+
+Mediante el comando `mkdir`, seguido de un nombre de carpeta, podemos crear nuevas carpetas vacías.
+
+Si queremos crear una estructura de varias carpetas una dentro de otra, en vez de hacerlo una por una. El siguiente ejemplo vamos a crear una nueva estructura con una carpeta **parent**, que dentro tiene una carpeta **child** y dentro de ella, una carpeta **grandchild**:
+
+
+{: .clipboard }
+```bash
+mkdir -p parent/child/grandchild
+```
+
+### El comando touch
+
+Por otro lado, el comando `touch` sería la versión de `mkdir` orientada a los archivos en vez de carpetas. Si necesitamos crear un archivo vacío, por ejemplo, para editar más tarde, podemos hacerlo simplemente con:
+
+{: .clipboard }
+```bash
+touch file.txt
+```
+
+El comando anterior crearía un archivo vacío con el nombre de `file.txt`. Si ya existiera el archivo, simplemente actualiza su fecha de modificación.
+
+
+## CREAR ENLACES
+
+### El comando ln
+
+El comando `ln` (*link names*) permite crear **enlaces entre archivos**, una especie de referencias o acceso directos a los archivos, rutas o carpetas. Existen dos tipos de enlaces:
+
+- **Los enlaces duros**: son los archivos que apuntan a otro archivo basándose en su número interno. Se crean utilizando el comando `ln`. De esta forma podemos tener varios archivos con el mismo contenido, pero sus copias no duplican el contenido de los archivos originales, sino que son una referencia al primero. Son poco utilizados.
+
+- **Los enlaces simbólicos** (*enlaces blandos*): son un tipo de referencia a otros archivos, pero esta vez basándose en su ubicación. Se crean utilizando el comando y parámetro `ln -s`. De esta forma, cuando accedemos a un enlace simbólico, realmente estamos accediendo al archivo que apunta. Si creamos un enlace símbolico y borramos su archivo original, el enlace se muestra en rojo y se considerará un **enlace simbólico roto**.
+
+
+```bash
+ln -s original.txt link
+```
+
+Como podemos ver, con el mando `ln` creamos el enlace, y con el parámetro `-s` indicamos que sea simbólico.
