@@ -48,6 +48,7 @@ graph LR
   linkStyle default stroke: #f2f5a6
   classDef default fill:#191919,stroke:#f2f5a6,stroke-width:1px,color:#ccc
 {% endcapture %}
+
 {% include flowchart.html
 	body=fw_ej1
  %}
@@ -174,6 +175,7 @@ if [[ -f $foo ]]
 then
 	echo "$foo: es un archivo"
 elif [[ -d $foo ]]
+then
 	echo "$foo: es una carpeta"
 else
 	echo "No existe"
