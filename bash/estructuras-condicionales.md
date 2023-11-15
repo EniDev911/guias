@@ -87,6 +87,51 @@ Par
 	bloque_normal=result_ej_par_impar
 %}
 
+Otro caso es comprar si dos cadenas son iguales. Para ello podemos crear un nuevo archivo y darle permisos de ejecución:
+
+{: .clipboard }
+```bash
+touch comparar-cadenas.sh && chmod +x $_
+```
+
+Comparar dos cadenas:
+
+{% capture ej_comparar_string %}
+{% highlight shell %}
+#!/bin/bash
+
+VAR1="Bourne Again"
+VAR2="bourne again"
+
+if [[ "$VAR1" == "$VAR2" ]]
+then
+	echo "Las cadenas son iguales"
+else
+	echo "Las cadenas no son iguales"
+fi
+{% endhighlight %}
+<enidev-button 
+	data-btn='compiler' 
+	data-lang='bash'
+	data-ext='sh'>
+</enidev-button>
+{% endcapture %}
+{% capture result_ej_comparar_string %}
+{% highlight shell %}
+Las cadenas no son iguales
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='ej_comparar_string'
+	tab_1='comparar-cadenas.sh'
+	tab_2='Resultado'
+	bloque_1=ej_comparar_string
+	bloque_2=result_ej_comparar_string
+%}
+
+Como podemos observar `$VAR1` no es igual a `$VAR2` a pesar de que tengan el mismo texto, como podemos imaginar es porque se distingue mayúsculas de minúsculas.
+
 ---
 
 ## Saber si un archivo o carpeta existe
@@ -99,7 +144,6 @@ Así, si queremos saber si una carpeta existe, por ejemplo, para evitar crearla 
 {% highlight shell %}
 #!/bin/bash
 directory="test"
-
 if [[ -d $directory ]]
 then
 	echo "Ya existe el directorio: $directory"
@@ -199,4 +243,34 @@ Se creo el archivo: test.txt
 	tab_2='Resultado'
 	bloque_1=ej_if__elif_file_dir
 	bloque_normal=result_ej_if__elif_file_dir
+%}
+
+## Más ejemplos practicos
+
+Conectarse con servidor mediante una clave ssh si esta clave existe:
+
+{% capture ej_if_ssh %}
+{% highlight shell %}
+#!/bin/bash
+
+eval $(ssh-agent -s)
+if [[ -f "$HOME/.ssh/github_rsa" ]]
+then
+	ssh-add "$HOME/.ssh/github_rsa"
+fi
+{% endhighlight %}
+{% endcapture %}
+{% capture result_ej_if_ssh %}
+{% highlight shell %}
+Agent pid 834
+Identity added: /home/.ssh/github_rsa (enidev911@email.com)
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='ej_ej_if_ssh'
+	tab_1='script.sh'
+	tab_2='Resultado'
+	bloque_1=ej_if_ssh
+	bloque_normal=result_ej_if_ssh
 %}
