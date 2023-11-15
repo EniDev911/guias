@@ -221,8 +221,10 @@ Como podemos ver, con el mando `ln` creamos el enlace, y con el parámetro `-s` 
 
 Estos enlaces pueden ser útiles cuando necesitamos que en la carpeta actual exista el contenido de otra carpeta, pero no queremos duplicar la información (*son carpetas con mucho espacio ocupado*) o queremos mantenerlo actualizado y simplemente queremos una referencia de una carpeta a otra.
 
+---
 
 ## Borrar archivos
+### El comando rm
 
 Probablemente, otro de los comandos más utilizados en la terminal es `rm` (*remove*), que sirve para **eliminar archivos o carpeta** de nuestro sistema. Hay que tener mucho cuidado con él, ya que una vez un archivo es eliminado, aunque no es imposible, es complicado recuperarlo.
 
