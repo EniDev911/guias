@@ -92,7 +92,7 @@ Par
 
 En un script, para saber si un archivo existe o no, como es una comparación, debemos usar los operadores correspondiente que se listan [aquí](#otros-comparadores).
 
-Así, si queremos saber si una carpeta existe, por ejemplo, para evitar crearla de nuevo o para borrarla en caso de que exista, podemos lograrlo con el siguiente script:
+Así, si queremos saber si una carpeta existe, por ejemplo, para evitar crearla de nuevo o intentar borrarla en caso de asi desearlo, podemos lograrlo con el siguiente script:
 
 {% capture ej_if_file_dir %}
 {% highlight shell %}
@@ -126,4 +126,77 @@ Se creo la el directorio: test
 	tab_2='Resultado'
 	bloque_1=ej_if_file_dir
 	bloque_normal=result_ej_if_file_dir
+%}
+
+Del mismo modo, podemos comprobar si tenemos un determinado archivo o no:
+
+{% capture ej_if_file %}
+{% highlight shell %}
+#!/bin/bash
+filename="test.txt"
+
+if [[ -d $filename ]]
+then
+	echo "Ya existe el archivo: $filename"
+else
+	touch $filename
+	echo "Se creo el archivo: $filename"
+fi
+{% endhighlight %}
+<enidev-button 
+	data-btn='compiler' 
+	data-lang='bash'
+	data-ext='sh'>
+</enidev-button>
+{% endcapture %}
+
+{% capture result_ej_if_file %}
+{% highlight shell %}
+Se creo el archivo: test.txt
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='ej_if_file'
+	tab_1='script.sh'
+	tab_2='Resultado'
+	bloque_1=ej_if_file
+	bloque_normal=result_ej_if_file
+%}
+
+Ahora si quisieramos evaluar en la misma estructura si es un archivo, directorio o no existe, lo podemos lograr añadiendo una declaración más en el bloque `if / elif / else`:
+
+{% capture ej_if__elif_file_dir %}
+{% highlight shell %}
+#!/bin/bash
+foo="foobar"
+
+if [[ -f $foo ]]
+then
+	echo "$foo: es un archivo"
+elif [[ -d $foo ]]
+	echo "$foo: es una carpeta"
+else:
+	echo "No existe"
+fi
+{% endhighlight %}
+<enidev-button 
+	data-btn='compiler' 
+	data-lang='bash'
+	data-ext='sh'>
+</enidev-button>
+{% endcapture %}
+
+{% capture result_ej_if__elif_file_dir %}
+{% highlight shell %}
+Se creo el archivo: test.txt
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='ej_if__elif_file_dir'
+	tab_1='script.sh'
+	tab_2='Resultado'
+	bloque_1=ej_if__elif_file_dir
+	bloque_normal=result_ej_if__elif_file_di
 %}
