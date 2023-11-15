@@ -170,13 +170,12 @@ Ahora si quisieramos evaluar en la misma estructura si es un archivo, directorio
 {% highlight shell %}
 #!/bin/bash
 foo="foobar"
-
 if [[ -f $foo ]]
 then
 	echo "$foo: es un archivo"
 elif [[ -d $foo ]]
 	echo "$foo: es una carpeta"
-else:
+else
 	echo "No existe"
 fi
 {% endhighlight %}
@@ -186,7 +185,6 @@ fi
 	data-ext='sh'>
 </enidev-button>
 {% endcapture %}
-
 {% capture result_ej_if__elif_file_dir %}
 {% highlight shell %}
 Se creo el archivo: test.txt
@@ -198,5 +196,5 @@ Se creo el archivo: test.txt
 	tab_1='script.sh'
 	tab_2='Resultado'
 	bloque_1=ej_if__elif_file_dir
-	bloque_normal=result_ej_if__elif_file_di
+	bloque_normal=result_ej_if__elif_file_dir
 %}
