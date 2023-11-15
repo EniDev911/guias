@@ -1,3 +1,5 @@
 papers:
   - name: "Manipular archivos y carpetas"
     link: comandos/manipular-archivos-carpetas
+  - name: "Condicionales"
+    link: estructuras-condicionales

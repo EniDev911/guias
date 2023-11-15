@@ -51,12 +51,12 @@ div[class*='bash'] pre {
   border-top-right-radius:0;
   padding: 10px;
 }
-div[class*='bash'] code::before {
-  content: '$';
-  display: inline-block;
-  margin-right: 10px;
-  color: yellow ;
-}
+// div[class*='bash'] code::before {
+//   content: '$';
+//   display: inline-block;
+//   margin-right: 10px;
+//   color: yellow ;
+// }
 
 div[class*='bash'] {
   overflow: hidden;
