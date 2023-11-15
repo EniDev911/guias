@@ -36,7 +36,7 @@ pre {
   border-radius: 2px;
   border:1px solid #ccc;
   box-shadow: 0 3px 6px rgba(0,0,0,.3);
-  overflow: scroll;
+  overflow: auto;
   code {
     color: #efefef;
     text-shadow: 0px 1px 0px #000;
@@ -49,6 +49,7 @@ pre {
 div[class*='bash'] pre {
   border-top-left-radius: 0;
   border-top-right-radius:0;
+  padding: 6px 10px;
 }
 div[class*='bash'] code::before {
   content: '$';

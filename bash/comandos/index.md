@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Comandos Bash"
+title: "Bash - Manipular archivos y carpetas"
 css:
   custom: |-
+      h3 { padding: 0 9px; border-left: 3px solid #f2f5a6; background: #181918; display: inline-block; margin-top: 6px; color: lightgreen }
       strong { color: #aa2;}
       thead { background: #000; border: 1px solid #AAA }
       tbody { border: 1px solid #AAA }
@@ -59,8 +60,10 @@ pwd
 
 Si no sabemos cual es la estructura de carpetas donde estamos, podemos utilizar el comando `tree`, el cuál nos muestra un árbol
 
-## Identificar archivos
 
+---
+
+## Identificar archivos
 ### El comando file
 
 Existe un comando no demasiado conocido llamado `file` con el cuál puedes saber que tipo de archivo estás trabajando. En principio identificamos los archivos por sus extensiones, si es un `.txt` es un archivo de texto y si es `.mp3` se trata de un archivo de audio. Sin embargo, estas extensiones son una convención. Nada nos impide renombrar un archivo `.txt` como `.mp3`:
@@ -73,8 +76,9 @@ listado.mp3: Unicode text, UTF-8 text
 
 Como podemos observar el comando `file` no se guiará por la extensión, sino que analizará su contenido, más concretamente a su [`número mágico`](https://es.wikipedia.org/wiki/N%C3%BAmero_m%C3%A1gico_(inform%C3%A1tica)){:target='_blank' class='link'}.
 
+---
 
-<a name="c-cp"></a>
+## Copiar archivos
 ### El comando cp
 
 Una operación básica a la hora de usar una terminal es la de **copiar archivos**. Nos encontramos continuamente haciendo copias de archivos o carpetas, ya sea de una ruta a otra o sobre la misma carpeta donde nos encontramos. Para ello usamos el comando `cp` (*`copy`*), que se suele utilizar de la siguiente forma:
@@ -146,8 +150,33 @@ Los parámetros más importante son los siguientes:
 
 ---
 
-## CREAR CARPETA O ARCHIVOS
+## Mover o renombrar archivos
+### El comando mv
 
+El comando `mv` tiene dos funciones importantes. Su función principal es la de **mover archivos de un directorio o carpeta a otro**, su función secundaria es la de renombrar archivos o carpetas. A diferencia del comando `cp` en lugar de mantener el archivo original como lo hace `cp`, lo elimina tras la copia.
+
+**Ejemplo**: mover un archivo
+
+```bash
+mv /home/user/info.txt /home/foo/
+```
+
+**Ejemplo**: mover y renombrar un archivo
+
+```bash
+mv /home/user/info.txt /home/foo/data.txt
+```
+
+**Ejemplo**: renombrar un archivo
+
+```bash
+mv -v foo.txt bar.txt
+renamed 'foo.txt' -> 'bar.txt'
+```
+
+---
+
+## CREAR CARPETA O ARCHIVOS
 ### El comando mkdir
 
 Mediante el comando `mkdir`, seguido de un nombre de carpeta, podemos crear nuevas carpetas vacías.
@@ -197,6 +226,7 @@ Estos enlaces pueden ser útiles cuando necesitamos que en la carpeta actual exi
 
 Probablemente, otro de los comandos más utilizados en la terminal es `rm` (*remove*), que sirve para **eliminar archivos o carpeta** de nuestro sistema. Hay que tener mucho cuidado con él, ya que una vez un archivo es eliminado, aunque no es imposible, es complicado recuperarlo.
 
+
 <table>
   <thead>
     <th>Parámetro</th>
@@ -222,8 +252,14 @@ Probablemente, otro de los comandos más utilizados en la terminal es `rm` (*rem
   </tbody>
 </table>
 
-
 Como se menciona anteriormente, el comando `rm` realmente no borra un archivo, sino que lo **&lt;&lt;marca&gt;&gt;** en el disco como reutilizable. Si la zona donde residía es sobrescrita con otro archivo, probablemente sea imposible de recuperar, en caso contrario hay cierta posibilidad.
 
+**Ejemplo**: eliminar una carpeta y todo su contenido
+
+```bash
+rm -rv folder
+removed directory 'folder/subfolder'
+removed directory 'folder/'
+```
 
 >**Nota**: Si desea eliminar por completo un archivo, sin posibilidad de recuperación, es mejor utilizar el comando `shred -u` seguido del nombre del archivo. Este comando sobreescribe con información aleatoria el archivo, y luego lo elimina.
