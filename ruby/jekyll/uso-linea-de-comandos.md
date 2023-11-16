@@ -133,6 +133,6 @@ Ya se que puede resultar complicado entender pero vamos a ilustrar mejor este c�
 
 1. **`{% raw %}{% for item in site.data.navigation %}{% endfor %}{% endraw %}`** : dentro de estas etiquetas estamos iterando sobre un conjunto de datos que están disponibles en `_data/navigation.yml`.
 2. **`<a href="{% raw %}{{ item.link }}{% endraw %}">`** : por cada miembro del conjunto estamos creando un enlace y estamos definiendo su atributo `href` con el valor que tiene la clave `link` del item actual.
-3. **`<a {% if page.url == item.link %}style="color: lightsalmon;"{% endif %}{% endraw %}">`** : estamos evaluando si la url que de la página actual coincide con la definida el valor de la clave `item.link` y le asignamos un estilo diferente al link visitado actualmente de la navegación.
+3. **`<a {% raw %}{% if page.url == item.link %}style="color: lightsalmon;"{% endif %}{% endraw %}">`** : estamos evaluando si la url que de la página actual coincide con la definida el valor de la clave `item.link` y le asignamos un estilo diferente al link visitado actualmente de la navegación.
 
 
