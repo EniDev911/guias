@@ -40,5 +40,16 @@ SSH_AUTH_SOCK=/tmp/ssh-Lrq7OvjMDwzY/agent.1420
 SSH_AGENT_PID=1421
 ```
 
+---
+
 ## VARIABLES ESPECIALES
 
+Algunas de las variables especiales disponible en bash son:
+
+|Variable|Descripción|
+|:-------|:----------|
+|`$0`|Asigna la **variable** al nombre del script que se ejecuta|
+|`$1`, `$2`, `$3`, ...|Asigna la **variable** a los parámetros de posición pasado al script que se ejecuta|
+|`$_`|Asigna la **variable** al último argumento pasado al último comando ejecutado|
+|`$-`|Asigna la **variable** a la lista de opciones del shell|
+|`$!`|Asigna la **variable** al PID del último comando ejecutado en segundo plano|

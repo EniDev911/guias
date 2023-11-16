@@ -5,6 +5,7 @@ code.language-plaintext {
 	font-weight: 600;
 	color: #8dcafe;
 	font-family: monospace;
+  white-space: pre;
 }
 
 
@@ -26,9 +27,6 @@ pre {
   font-variant-ligatures: none;
 }
 
-.language-liquid pre {
-    white-space: pre-wrap;
-}
 
 pre {
   padding: 8px 12px;
