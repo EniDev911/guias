@@ -30,7 +30,6 @@ jekyll command [argument] [option] [argument_to_option]
 
 ## Comenzar un proyecto desde 0
 
-
 Crear un nuevo proyecto en blanco de jekyll
 
 {: .clipboard }
@@ -51,7 +50,19 @@ Para entonces, podemos entrar al proyecto con el comando `cd`:
 cd portfolio
 ```
 
-Dentro del proyecto ejecutamos vamos ahora a construir el proyecto y servirlo en local:
+## Añadir Jekyll
+
+Dentro del proyecto usamos **Bundler** para crear un **Gemfile** vacío y luego agregamos Jekyll como dependencia:
+
+{: .clipboard }
+```bash
+bundle init
+bundle add jekyll
+```
+
+## Servir el sitio
+
+Ahora ejecutamos **Bundler** para construir el proyecto y servirlo en local:
 
 {: .clipboard }
 ```bash
@@ -63,9 +74,15 @@ Por último abrimos el navegador en [`http://127.0.0.1:4000/`](http://127.0.0.1:
 ![img - nuevo_proyecto](assets/nuevo_proyecto.png)
 
 
-Antes de empezar a ver la estructura de carpeta y contenido de los archivos, es altamente recomendable instalar la siguiente extensión para <abbr title="visual studio code">vs code</abbr>:
+Antes de empezar a ver la estructura de carpeta y contenido de los archivos, es altamente recomendable instalar la siguiente extensión para tener soporte de sintaxis de Liquid. 
 
-![img - extension](assets/extension_sintaxis_vscode.png)
+Para <abbr title="visual studio code">vs code</abbr>:
+
+![img - extension vs code](assets/extension_sintaxis_vscode.png)
+
+Para <abbr title="Sublime Text">ST3 - ST4</abbr>:
+
+![img - extension st](assets/extension_sintaxis_sublimetext.png)
 
 ---
 
@@ -132,7 +149,54 @@ Ya se que puede resultar complicado entender pero vamos a ilustrar mejor este c�
 
 
 1. **`{% raw %}{% for item in site.data.navigation %}{% endfor %}{% endraw %}`** : dentro de estas etiquetas estamos iterando sobre un conjunto de datos que están disponibles en `_data/navigation.yml`.
-2. **`<a href="{% raw %}{{ item.link }}{% endraw %}">`** : por cada miembro del conjunto estamos creando un enlace y estamos definiendo su atributo `href` con el valor que tiene la clave `link` del item actual.
-3. **`<a {% raw %}{% if page.url == item.link %}style="color: lightsalmon;"{% endif %}{% endraw %}">`** : estamos evaluando si la url que de la página actual coincide con la definida el valor de la clave `item.link` y le asignamos un estilo diferente al link visitado actualmente de la navegación.
+2. **`"{% raw %}{{ item.link }}{% endraw %}"`** : por cada miembro del conjunto estamos creando un enlace y estamos definiendo su atributo `href` con el valor que tiene la clave `link` del item actual.
+3. **`{% raw %}{% if page.url == item.link %}{% endif %}{% endraw %}`** : estamos evaluando si la url que de la página actual coincide con la definida el valor de la clave `item.link` y le asignamos un estilo diferente al link visitado actualmente de la navegación.
+4. **`{% raw %}{{ item.name }}{% endraw %}`** : estamos mostrando el nombre del enlace que se mostrará en la navegación.
+
+Explicado las etiquetas anteriores, el resto solo es HTML de toda la vida y estilos de bootstrap.
+
+---
+
+## Crear datos para la navegación
+
+Ya teniendo la navegación creada, si visitamos el sitio nos daremos cuenta que aún no se muestra y es por dos razones:
+
+- Debemos crear los datos del menú
+- Debemos añadir el partial al layout principal
+
+Ya que hemos visto la explicación sobre las equitas que iteraban sobre un conjunto de datos, pero ese conjunto no lo hemo creado aún y para trabajar con esos datos de forma estructurada debemos desplegar la carpeta destinada para los archivos de datos `📁 _data`.
 
 
+Antes de eso para poder facilitar los datos para la navegación veamos la disposición para los datos:
+
+```shell
+📂 portfolio
+└── 📂 _data
+    └── navigation.yml # 👈 datos del menu
+```
+
+Nuestro menu en un principio tendra los siguientes datos:
+
+{: .clipboard }
+```yml
+- name: "Home"
+  link: /
+- name: "About"
+  link: about.html
+- name: "Proyectos"
+  link: projects.html
+```
+
+---
+
+## Agregar la nevagación al layout principal
+
+Ahora si volvemos abrir el layour principal y agregamos la etiqueta de Liquid que permitirá renderizar el menú:
+
+```shell
+📂 portfolio
+└── 📂 _layouts
+    └── default.yml # 👈 layout principal
+```
+
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_layouts%2Fdefault1.html&style=vs2015&type=code&showFullPath=on&showCopy=on"></script>
