@@ -10,7 +10,8 @@ css:
     div.language-shell pre code { border: 0; background: #111; }
     .highlight .err { color: #a5d6ff !important; background-color: transparent !important; }
     .emgithub-file .code-area td.hljs-ln-line { font-size: 18px !important }
-    .emgithub-file .code-area pre code.hljs { background: #191919 }
+    .emgithub-file .code-area pre code.hljs { border: none; background: #191919; border-radius: 0; }
+    .emgithub-file { border-radius: 0 !important; border: none; }
 ---
 
 La gema **jekyll** pone a nuestra disposición un ejecutable para la terminal.
@@ -83,11 +84,15 @@ Los números indicados se explican a continuación:
 3. **`{% raw %}{{ "/assets/css/main.css" | relative_url }}{% endraw %}`** : este filtro es bastante útil ya que carga el archivo de estilo en caso de que el sitio sea servido en local partiendo desde la raíz del proyecto o si el sitio esta alojado por ejemplo en **github pages** y se muestra desde un repositorio, quiere decir desde una subcarpeta.
 4. **`{% raw %}{{ content }}{% endraw %}`** esta es la variable global que va representar el contenido de la publicación o página que se está cargando actualmente.
 
-Lo que tenemos entonces es nuestro contenedor para las páginas o publicaciones que escribamos en un futuro, cuando visitamos el sitio por primera vez tenía algo de contenido que no es más que lo siguiente:
+Lo que tenemos entonces es nuestro contenedor para las páginas o publicaciones que escribamos en un futuro, cuando hemos visitado el sitio por primera vez tenía algo de contenido como un título y un parrado, que no es más que lo siguiente:
 
-![img - index](assets/front_matter_index.png)
+![img - default_index](assets/index_root.png)
 
-Como podemos observar el front matter es la zona de un documento para indicar que layout vamos a usar, es un sistema bien simple además podemos definir más datos en formato de **clave** - **valor** y usarlo como más nos acomode, en breve vamos a ver más casos para añadir datos en las páginas
+Como podemos observar el **front matter** es la zona de un documento para indicar que layout vamos a usar, es un sistema bien simple además podemos definir más datos en formato de **clave** - **valor** y usarlo como más nos acomode, en breve vamos a ver más casos para añadir datos en las páginas por ahora entendemos que nuestra página esta cargando el layout predeterminado que se generó cuando creamos el proyecto:
+
+![img - default_layout_index](assets/front_matter_index.png)
+
+
 
 ---
 
@@ -119,5 +124,15 @@ Agregado boostrap. Veamos la disposición para el partial:
 Y dentro vamos a colocar una navegación simple como la siguiente:
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_includes%2Fnavigation.html&style=vs2015&type=code&showCopy=on"></script>
+
+
+Ya se que puede resultar complicado entender pero vamos a ilustrar mejor este código vamos explicar por parte:
+
+![img - navigation liquid](assets/navigation_liquid.png)
+
+
+1. **`{% raw %}{% for item in site.data.navigation %}{% endfor %}{% endraw %}`** : dentro de estas etiquetas estamos iterando sobre un conjunto de datos que están disponibles en `_data/navigation.yml`.
+2. **`<a href="{% raw %}{{ item.link }}{% endraw %}">`** : por cada miembro del conjunto estamos creando un enlace y estamos definiendo su atributo `href` con el valor que tiene la clave `link` del item actual.
+3. **`<a {% if page.url == item.link %}style="color: lightsalmon;"{% endif %}{% endraw %}">`** : estamos evaluando si la url que de la página actual coincide con la definida el valor de la clave `item.link` y le asignamos un estilo diferente al link visitado actualmente de la navegación.
 
 
