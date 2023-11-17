@@ -199,4 +199,7 @@ Ahora si volvemos abrir el layour principal y agregamos la etiqueta de Liquid qu
     └── default.yml # 👈 layout principal
 ```
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_layouts%2Fdefault1.html&style=vs2015&type=code&showFullPath=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_layouts%2Fdefault1.html%23L12-L18&style=vs2015&type=code&showLineNumbers=on&showCopy=on"></script>
+
+Como se puede observar
+
