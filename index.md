@@ -55,7 +55,7 @@ title: EniDev
     title=article.title
     img=article.img
     href=article.url
-    %}
+  %}
     </div>
     {% endfor %}
 </div>

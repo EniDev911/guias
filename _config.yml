@@ -2,6 +2,7 @@ title: Guías
 description: "Guías sobre temas de bases de datos y programación"
 url: "https://enidev911.github.io"
 base_url: "/guias"
+basewebsite: /guias
 google_analytics:
 theme: jekyll-theme-midnight
 markdown: kramdown
