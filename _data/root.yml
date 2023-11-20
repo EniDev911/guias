@@ -29,5 +29,5 @@ editors:
     link: /sublimetext
     logo: /assets/images/logos/sublimetext.png
   - name: markdown
-    link: /markdown-papers/index
+    link: /markdown
     logo: /assets/images/logos/markdown.png

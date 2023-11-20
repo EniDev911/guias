@@ -3,7 +3,6 @@ layout: default
 title: EniDev
 ---
 
-
 <!-- Databases -->
 <p align="center">
     {% for item in site.data.root.db %}
@@ -48,15 +47,3 @@ title: EniDev
     <a href="{{ '/mermaidjs' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
 </p>
 
-<div class="flex">
-{% for article in site.markdown_papers %}
-{% assign url = article.url | relative_url %}
- <div class="col">
-  {% include card-paper.html
-    title=article.title
-    img=article.img
-    href=url
-  %}
-    </div>
-    {% endfor %}
-</div>

@@ -18,7 +18,7 @@ libs:
 - [Badges](#badges)
 
 
-# Lista de badges
+### Lista de badges
 
 - [Inteligencia Artificial y Bots](#ai_bots)
 - [Bases de datos](#databases)
@@ -30,7 +30,6 @@ libs:
 - [Sistemas operativos](#operating-system)
 - [Social](#social)
 - [Otros](#others)
-
 
 
 ### Uso
@@ -203,10 +202,10 @@ https://shields.io/badge/style-flat-green?logo=appveyor&style=flat
 ### <a name="databases"></a> 💾 Bases de datos
 
 <table style="text-align: center;">
-	<caption><strong>Badges</strong> 💾</caption>
+	<caption><strong>Badges</strong></caption>
 	<colgroup>
 		<col span="1">
-		<col span="1">
+		<col span="2">
 		<col span="1">
 	</colgroup>
 	<thead>
@@ -217,174 +216,19 @@ https://shields.io/badge/style-flat-green?logo=appveyor&style=flat
 		</tr>
 	</thead>
 	<tbody>
-		<!-- Amazon DynamoDB  -->	
+{% for badge in site.data.markdown.badges.databases %}
 		<tr>
-			<td align="center">Amazon DynamoDB</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Amazon%20DynamoDB-4053D6?style=for-the-badge&logo=Amazon%20DynamoDB&logoColor=white" height="25">
+			<td align="center">{{ badge.name }}</td>
+			<td>
+			<img src="{{ badge.image }}" height="25">
 			</td>
 			<td align="left">
 				<code>
-					 ![AmazonDynamoDB](https://img.shields.io/badge/Amazon%20DynamoDB-4053D6?style=for-the-badge&logo=Amazon%20DynamoDB&logoColor=white)
+				![{{ badge.name }}]({{ badge.image }})
 				</code>
 			</td>
-		</tr>
-		<!-- Cassandra -->
-		<tr>
-			<td align="center">Cassandra</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/cassandra-%231287B1.svg?style=for-the-badge&logo=apache-cassandra&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![ApacheCassandra](https://img.shields.io/badge/cassandra-%231287B1.svg?style=for-the-badge&logo=apache-cassandra&logoColor=white)    
-				</code>
-			</td>
-		</tr>
-		<!-- Cockroach Labs -->
-		<tr>
-			<td align="center">Cockroach Labs</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Cockroach%20Labs-6933FF?style=for-the-badge&logo=Cockroach%20Labs&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![CockroachLabs](https://img.shields.io/badge/Cockroach%20Labs-6933FF?style=for-the-badge&logo=Cockroach%20Labs&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Couchbase -->
-		<tr>
-			<td align="center">Couchbase</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Couchbase-EA2328?style=for-the-badge&logo=couchbase&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Couchbase](https://img.shields.io/badge/Couchbase-EA2328?style=for-the-badge&logo=couchbase&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Firebase -->
-		<tr>
-			<td align="center">Firebase</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- InfluxDB -->
-		<tr>
-			<td align="center">InfluxDB</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=for-the-badge&logo=InfluxDB&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![InfluxDB](https://img.shields.io/badge/InfluxDB-22ADF6?style=for-the-badge&logo=InfluxDB&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- MariaDB -->
-		<tr>
-			<td align="center">MariaDB</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Microsoft SQL Server -->
-		<tr>
-			<td align="center">Microsoft SQL Server</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- MongoDB -->
-		<tr>
-			<td align="center">MongoDB</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- MySQL -->
-		<tr>
-			<td align="center">MySQL</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/mysql-%23000.svg?style=for-the-badge&logo=mysql&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![MySQL](https://img.shields.io/badge/mysql-%23000.svg?style=for-the-badge&logo=mysql&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Neo4J -->
-		<tr>
-			<td align="center">Neo4J</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Neo4J](https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Postgres -->
-		<tr>
-			<td align="center">Postgres</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Redis -->
-		<tr>
-			<td align="center">Redis</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- SQLite -->
-		<tr>
-			<td align="center">SQLite</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-				</code>
-			</td>
-		</tr>
+		</tr>	
+{% endfor %}
 	</tbody>
 </table>
 
@@ -395,10 +239,10 @@ https://shields.io/badge/style-flat-green?logo=appveyor&style=flat
 ### <a name="social"></a> 💬 Social
 
 <table style="text-align: center;">
-	<caption><strong>Badges</strong> 💬</caption>
+	<caption><strong>Badges</strong></caption>
 	<colgroup>
 		<col span="1">
-		<col span="1">
+		<col span="2">
 		<col span="1">
 	</colgroup>
 	<thead>
@@ -409,208 +253,19 @@ https://shields.io/badge/style-flat-green?logo=appveyor&style=flat
 		</tr>
 	</thead>
 	<tbody>
-		<!-- Discord  -->	
+{% for badge in site.data.markdown.badges.social %}
 		<tr>
-			<td align="center">Discord</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white" height="25">
+			<td align="center">{{ badge.name }}</td>
+			<td>
+			<img src="{{ badge.image }}" height="25">
 			</td>
 			<td align="left">
 				<code>
-					 ![Discord](https://img.shields.io/badge/discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)
+				![{{ badge.name }}]({{ badge.image }})
 				</code>
 			</td>
-		</tr>
-		<!-- Facebook -->
-		<tr>
-			<td align="center">Facebook</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white)    
-				</code>
-			</td>
-		</tr>
-		<!-- Gmail -->
-		<tr>
-			<td align="center">Gmail</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Google Meet -->
-		<tr>
-			<td align="center">Google Meet</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Google%20Meet-00897B?style=for-the-badge&logo=google-meet&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Google Meet](https://img.shields.io/badge/Google%20Meet-00897B?style=for-the-badge&logo=google-meet&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Instagram -->
-		<tr>
-			<td align="center">Instagram</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Instagram-2 -->
-		<tr>
-			<td align="center">Instagram</td>
-			<td align="center">
-				<img src="https://badges.aleen42.com/src/instagram.svg" height="25">
-			</td>
-			<td align="left">
-				<code>![Instagram](https://badges.aleen42.com/src/instagram.svg)
-				</code>
-			</td>
-		</tr>
-		<!-- LinkedIn -->
-		<tr>
-			<td align="center">LinkedIn</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Messenger -->
-		<tr>
-			<td align="center">Messenger</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Messenger](https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Skype -->
-		<tr>
-			<td align="center">Skype</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Skype-%2300AFF0.svg?style=for-the-badge&logo=Skype&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Skype](https://img.shields.io/badge/Skype-%2300AFF0.svg?style=for-the-badge&logo=Skype&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Slack -->
-		<tr>
-			<td align="center">Slack</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Telegram -->
-		<tr>
-			<td align="center">Telegram</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- TikTok -->
-		<tr>
-			<td align="center">TikTok</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=TikTok&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=TikTok&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Twitch -->
-		<tr>
-			<td align="center">Twitch</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Twitch-%239146FF.svg?style=for-the-badge&logo=Twitch&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Twitch](https://img.shields.io/badge/Twitch-%239146FF.svg?style=for-the-badge&logo=Twitch&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Twitter -->
-		<tr>
-			<td align="center">Twitter</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- WhatsApp -->
-		<tr>
-			<td align="center">WhatsApp</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- YouTube -->
-		<tr>
-			<td align="center">YouTube</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
-				</code>
-			</td>
-		</tr>
-		<!-- Zoom -->
-		<tr>
-			<td align="center">Zoom</td>
-			<td align="center">
-				<img src="https://img.shields.io/badge/Zoom-2D8CFF?style=for-the-badge&logo=zoom&logoColor=white" height="25">
-			</td>
-			<td align="left">
-				<code>
-					![Zoom](https://img.shields.io/badge/Zoom-2D8CFF?style=for-the-badge&logo=zoom&logoColor=white)
-				</code>
-			</td>
-		</tr>
+		</tr>	
+{% endfor %}
 	</tbody>
 </table>
 

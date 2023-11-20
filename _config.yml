@@ -17,8 +17,3 @@ kramdown:
 
 plugins:
   - jemoji
-
-collections:
-  markdown_papers:
-    output: true
-    permalink: markdown/:path

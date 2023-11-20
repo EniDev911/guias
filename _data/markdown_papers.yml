@@ -1,0 +1,6 @@
+- name: "Guía general"
+  url: guia-general
+  img: https://mach-911.github.io/guias/assets/png/banner.png
+- name: "Badges"
+  url: badges
+  img: https://mach-911.github.io/guias/assets/png/banner.png
