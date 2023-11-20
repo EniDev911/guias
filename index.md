@@ -50,11 +50,12 @@ title: EniDev
 
 <div class="flex">
 {% for article in site.markdown_papers %}
+{% assign url = article.url | relative_url %}
  <div class="col">
   {% include card-paper.html
     title=article.title
     img=article.img
-    href=article.url
+    href=url
   %}
     </div>
     {% endfor %}
