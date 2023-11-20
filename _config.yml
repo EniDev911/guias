@@ -22,4 +22,3 @@ plugins:
 collections:
   markdown_papers:
     output: true
-    permalink: markdown/:path
