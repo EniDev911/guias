@@ -201,5 +201,55 @@ Ahora si volvemos abrir el layour principal y agregamos la etiqueta de Liquid qu
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_layouts%2Fdefault1.html%23L12-L18&style=vs2015&type=code&showLineNumbers=on&showCopy=on"></script>
 
-Como se puede observar
+Como se puede observar, si vamos al navegador y actualizamos tendríamos que ver nuestra navegación:
 
+![img - nav1](assets/nav_1.png)
+
+---
+
+## Crear una sección hero
+
+La idea ahora consiste en diseñar el área para el banner ( *hero* ) de la página que se debe colocar entre la navegación y el inicio de su contenido. El banner de la sección hero suele ser algo de texto acompañada de una imagen, pero no tiene por qué serlo. Asi que simplemente crearemos algo donde podamos establecer un título y subtítulo como lo muestra el siguiente concepto:
+
+{:align="center"}
+![img - mockup_nav](assets/mockup_hero.png)
+
+Lo primero que haremos es abrir el layout principal para trabajarlo, podríamos perfectamente hacerlo a través de un documento parcial pero eso queda a gusto del consumidor, así que nos ponemos dentro del archivo y agregamos lo siguiente a continuación del **include** de la navegación:
+
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FEniDev911%2Fassets%2Fblob%2Fmain%2Fjekyll%2F_layouts%2Fdefault2.html%23L15-L30&style=vs2015&type=code&showLineNumbers=on&showFullPath=on&showCopy=on"></script>
+
+Con esto, podemos poner en marcha la página de **about** para jugar haber se nos muestra el título y subtítulo dinámicamente:
+
+![img - fm-about](assets/fm_about.png)
+
+Si vamos al navegador y actualizamos tendríamos ahora ir a la página de **about** y ver el título y subtítulo:
+
+![img - about](assets/about_w_ti_sub.png)
+
+---
+
+## Separar el contenido del diseño
+
+Generalmente se considera una buena práctica mantener el contenido separado de la lógica y el diseño.
+
+Lograr la separación usando Jekyll es bastante sencillo usando [`colecciones`](https://jekyllrb.com/docs/collections/){:target='_blank' class='link'} ya tenemos nuestra plantilla predeterminada que luego usaremos para inyectar el contenido desde un archivo [**markdown**](https://es.wikipedia.org/wiki/Markdown){:target='_blank' class='link'} aquí se nos abre un sinfín de formas de controlar aspectos del diseño a a partir desde el **front matter** del archivo como por ejemplo el añadir una imagen de fondo por decir algo pero aquí vamos ir a lo fácil y vamos a dejar solo lo justo y necesario para que el portafolio se vea minimalista pero convincente.
+
+Las colecciones en Jekyll son ideales para gestionar el contenido repetido que no está ordenado naturalmente por fechas.
+
+Para nuestro portafolio va ser muy simple ya que el contenido lo divideremos en lo que de aquí en adelante le llamaremos **secciones**, y el contenido de cada sección se agrupará usando una colección de Jekyll que llamaremos con el mismo nombre.
+
+Para comenzar, definimos una colección dentro del archivo `_config.yml`:
+
+
+{% capture config_yamel %}
+{% highlight yml %}
+collections:
+  sections:
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html 
+  id='config_yamel'
+  tab_1='&#95;config.yml'
+  bloque_1=config_yamel
+%}

@@ -1,0 +1,24 @@
+ai_bots:
+  - name: Amazon Alexa
+    image: https://img.shields.io/badge/amazon%20alexa-52b5f7?style=for-the-badge&logo=amazon%20alexa&logoColor=white
+  - name: Dependabot
+    image: https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white
+  - name: Google Assistant
+    image: https://img.shields.io/badge/google%20assistant-4285F4?style=for-the-badge&logo=google%20assistant&logoColor=white
+browsers:
+  - name: Brave
+    image: https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white
+  - name: Edge
+    image: https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white
+  - name: Firefox
+    image: https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white
+  - name: Google Chrome
+    image: https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white
+  - name: Opera
+    image: https://img.shields.io/badge/Opera-FF1B2D?style=for-the-badge&logo=Opera&logoColor=white
+  - name: Safari
+    image: https://img.shields.io/badge/Safari-000000?style=for-the-badge&logo=Safari&logoColor=white
+  - name: Tor
+    image: https://img.shields.io/badge/Tor-7D4698?style=for-the-badge&logo=Tor-Browser&logoColor=white
+  - name: Vivaldi
+    image: https://img.shields.io/badge/Vivaldi-EF3939?style=for-the-badge&logo=Vivaldi&logoColor=white

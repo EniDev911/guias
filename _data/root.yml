@@ -28,3 +28,6 @@ editors:
   - name: sublimetext
     link: /sublimetext
     logo: /assets/images/logos/sublimetext.png
+  - name: markdown
+    link: /markdown-papers/index
+    logo: /assets/images/logos/markdown.png

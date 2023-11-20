@@ -3,9 +3,6 @@ layout: default
 title: EniDev
 ---
 
-[comment]: <> (author: enidev911)
-[comment]: <> (theme: https://github.com/pages-themes/midnight)
-
 
 <!-- Databases -->
 <p align="center">
@@ -50,3 +47,15 @@ title: EniDev
     <!-- MermaidJS -->
     <a href="{{ '/mermaidjs' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
 </p>
+
+<div class="flex">
+{% for article in site.markdown_papers %}
+ <div class="col">
+  {% include card-paper.html
+    title=article.title
+    img=article.img
+    href=article.url
+    %}
+    </div>
+    {% endfor %}
+</div>
