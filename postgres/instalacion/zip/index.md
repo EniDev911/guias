@@ -240,9 +240,6 @@ También puede a través de un CMD normal (para que sea disponible para nivel de
 setx PATH "%path%;"C:\pgsql_14\bin\
 ```
 
-    
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#top)
-
 ---
 
 <a name="connect"></a>
