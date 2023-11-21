@@ -95,12 +95,97 @@ ___Esto también es negrita y cursiva___
 {% endcapture %}
 
 {% include tabs.html
-	id='enlaces'
+	id='formato'
 	tab_1='file.md'
 	bloque_1=formato
 	tab_2='Resultado'
 	bloque_2=result_formato
 %}
+
+---
+
+## Listas
+
+Markdown permite crear dos tipos de listas, ordenadas y desordenadas, es decir numeradas o listas de puntos. Para distinguir los tipos y como se crean, nada mejor que verlo con ejemplos:
+
+{% capture listas %}
+{% highlight text %}
+Lista numerada (ordenada)
+
+1. Este es el primer elemento
+2. Este es el segundo elemento
+3. Este es el tercer elemento
+
+Lista de puntos (desordenada)
+
+* Un elemento de la lista
+* Otro elemento de la lista
+* Tercer elemento de la lista
+
+Se pueden emplear también + y - en vez de *
+
+* Un elemento de la lista
++ Otro elemento de la lista
+- Tercer elemento de la lista
+
+Se pueden mezclar distintos tipos de listas y anidar unas dentro de otras.
+
+1. Esto es una lista ordenada
+2. Segundo elemento de la lista ordenada
+    1. Esta es una lista ordenada
+ anidada dentro de otra
+        * Lista desordenada anidada a tercer nivel
+        * Segundo elemento de esta lista
+    2. Este es el segundo elemento
+de la lista ordenada anidada
+{% endhighlight %}
+{% endcapture %}
+{% capture result_listas %}
+{% highlight html %}
+<ol>
+	<li>Este es el primer elemento</li>
+	<li>Este es el segundo elemento</li>
+	<li>Este es el tercer elemento</li>
+</ol>
+<p>Lista de puntos (desordenada)</p>
+<ul>
+	<li>Un elemento de la lista</li>
+	<li>Otro elemento de la lista</li>
+	<li>Tercer elemento de la lista</li>
+</ul>
+<p>Se pueden emplear también + y - en vez de *</p>
+<ul>
+	<li>Un elemento de la lista</li>
+	<li>Otro elemento de la lista</li>
+	<li>Tercer elemento de la lista</li>
+</ul>
+<p>Se pueden mezclar distintos tipos de listas y anidar unas dentro de
+otras.</p>
+<ol>
+	<li>Esto es una lista ordenada</li>
+	<li>Segundo elemento de la lista ordenada
+		<ol>
+			<li>Esta es una lista ordenada anidada dentro de otra
+				<ul>
+					<li>Lista desordenada anidada a tercer nivel</li>
+					<li>Segundo elemento de esta lista</li>
+				</ul>
+			</li>
+		<li>Este es el segundo elemento de la lista ordenada anidada</li>
+		</ol>
+	</li>
+</ol>
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='listas'
+	tab_1='file.md'
+	bloque_1=listas
+	tab_2='Resultado'
+	bloque_2=result_listas
+%}
+
 
 ---
 
@@ -147,3 +232,4 @@ Puede crear una lista de casillas de verificación usando la siguiente sintaxis:
 	tab_2='Resultado'
 	bloque_2=result_casillas_verificacion
 %}
+
