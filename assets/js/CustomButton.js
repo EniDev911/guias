@@ -75,7 +75,7 @@ export class CustomButton extends HTMLElement {
         }
         else {
             this.button.style.top = "10px"
-            this.button.style.background = "url(".concat(ASSETS, "clone-regular.svg", ")")
+            this.button.style.background = "url(".concat(ASSETS, "clone-regular.svg", "), #191919")
             this.button.title = "Copiar"
         }
         // handleOnclick
@@ -102,10 +102,10 @@ export class CustomButton extends HTMLElement {
 
             // After 3 seconds, remove the show class from DIV
                 setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-                this.button.style.background = "url(".concat(ASSETS, "clone-solid.svg", ")")
+                this.button.style.background = "url(".concat(ASSETS, "clone-solid.svg", "), #191919")
                 this.copyClipboard(this.parentNode.firstElementChild.textContent);
                 setTimeout(() => {
-                    this.button.style.background = "url(".concat(ASSETS, "clone-regular.svg", ")")
+                    this.button.style.background = "url(".concat(ASSETS, "clone-regular.svg", "), #191919")
                 }, 1000)
             }
         })
