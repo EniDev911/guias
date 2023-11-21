@@ -189,6 +189,49 @@ otras.</p>
 
 ---
 
+## Imágenes
+
+La manera de enlazar imágenes es básicamente la misma de crear enlaces, con una única diferencia de que se añade el carácter de exclamación `!` al principio de la pareja de corchetes que definen el nombre del enlace:
+
+{% capture imagenes %}
+{% highlight text %}
+![Con título](pictures/logo.png "logo")
+![Sin título](pictures/logo.png)
+
+Por referencia 
+
+![Imagen 1][1]  ![Imagen 2][2]
+
+[1]: pictures/logo.png
+[2]: pictures/logo_bg.png "logo"
+{% endhighlight %}
+{% endcapture %}
+{% capture result_imagenes %}
+{% highlight html %}
+<img alt="Con título" src="pictures/logo.png" title="logo" />
+<img alt="Sin título" src="pictures/logo.png" />
+<p>Por referencia </p>
+<img alt="Imagen 1" src="pictures/logo.png" />
+<img alt="Imagen 2" src="pictures/logo_bg.png" title="logo" />
+{% endhighlight %}
+{% endcapture %}
+
+{% include tabs.html
+	id='imagenes'
+	tab_1='file.md'
+	bloque_1=imagenes
+	tab_2='Resultado'
+	bloque_2=result_imagenes
+%}
+
+---
+
+## Abreviaturas
+
+Para crear abreviaturas HTML lo único necesario es crear una lista de ellas (normalmente al final del texto) y en cualquier lugar del texto que aparezca la abreviatura se aplicará automáticamente. Las listas de abreviaturas se crean como las listas de enlaces, pero precedidas por un asterisco
+
+---
+
 ## Casillas de verificación
 
 Puede crear una lista de casillas de verificación usando la siguiente sintaxis:
@@ -233,3 +276,6 @@ Puede crear una lista de casillas de verificación usando la siguiente sintaxis:
 	bloque_2=result_casillas_verificacion
 %}
 
+
+
+*[HTML]: Hyper Text Markup Language
