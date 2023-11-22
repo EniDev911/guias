@@ -2,3 +2,5 @@
   link: cli-sqlite
 - name: "Sqlite: RowID"
   link: rowid
+- name: "DB Browser"
+  link: db-browser
