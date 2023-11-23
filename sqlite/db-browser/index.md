@@ -89,6 +89,25 @@ Luego tenemos que revisar las opciones que vienen marcadas y ajustarlas de acuer
 
 ---
 
+## Exportar
+
+DB Browser también nos permite exportar tablas que tengamos en la base de datos a distintos formatos como **SQL**, **CSV**, **JSON** asi como para importar desde otra fuente, debemos ir a menú y seleccionar la opción exportar (debemos tener una conexión a un archivo de base de datos previamente):
+
+{:align='center'}
+![img - export as json](assets/export-as-json.png){:height='500'}
+
+Como podemos observar tenemos la opción para exportar a **JSON**, seleccionamos la opción y a continuación debemos considerar lo siguiente:
+
+{:align='center'}
+![img - options export as json](assets/options-export-json.png){:height='400'}
+
+1. Seleccionar las tablas que queremos exportar.
+2. Habilita un formato legible, de lo contrario lo comprime en una sola línea.
+3. Al dar guardar, nos abrirá una modal para seleccionar el destino del archivo.
+
+
+---
+
 ## Crear vistas
 
 En caso de que no sepas que es una vista, una vista simplemente es un conjunto de resultados de una consulta almacenada. Una vista es la forma de empaquetar una consulta en un objeto con nombre almacenado en la base de datos.
@@ -111,4 +130,8 @@ Luego colocamos un nombre a la vista:
 
 {:align='center'}
 ![img - export as view](assets/named-view.png){:height='170'}
+
+Tenemos entonces la vista creada, podemos verla al desplegar la listas de tablas y acceder a ella:
+
+![img - find view](assets/find-view-browse-data.png)
 
