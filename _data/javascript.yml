@@ -3,7 +3,8 @@ storage:
     link: indexedDB_API/usando-indexedDB
   - name: "Uso de LocalStorage"
     link: local-storage
-
+  - name: Api Navigator
+    link: hacer-boton-compartir
 libs:
   - name: "SweetAlert2: ventanas emergentes"
     link: sweetalert2
