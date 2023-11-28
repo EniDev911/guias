@@ -4,3 +4,5 @@
   link: rowid
 - name: "DB Browser"
   link: db-browser
+- name: "Relaciones entre tablas"
+  link: relaciones-de-tablas
