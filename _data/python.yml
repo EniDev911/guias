@@ -32,3 +32,6 @@ tutoriales:
   - title: "Conector MySQl Python"
     link: tutorial/modulo-mysql-connector-python
     img: /assets/images/python/mysql-connector.png
+  - title: "crud sqlite - prettytable"
+    link: tutorial/crud-sqlite-python-prettytable
+    img: /assets/images/python/crud-sqlite-consola.png
