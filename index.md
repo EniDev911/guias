@@ -47,3 +47,13 @@ title: EniDev
     <a href="{{ '/mermaidjs' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
 </p>
 
+<br>
+<h3 align="center">Recursos web</h3>
+<!-- Recursos web -->
+<p align="center">
+    {% for item in site.data.recursos_web %}
+        <a href="{{ item.link | relative_url }}">
+            <kbd>{{ item.name }}</kbd>
+        </a>
+    {% endfor %}
+</p>
