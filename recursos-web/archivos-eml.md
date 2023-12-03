@@ -143,6 +143,36 @@ Como vemos cuando agregamos una imagen automáticamente Thunderbird la convierte
 
 Hay muchas más opciones, como adjuntarle un enlace al darle clic sobre la imagen, etc. Por ahora esto sería la parte superior de nuestro mensaje.
 
+Para la siguiente fila, voy agregar código HTML, ya de una vez te digo que el HTML para los correos electrónicos es muy diferente, en medida es porque está algo atrasado por lo que vamos a tener que utilizar esas viejas etiquetas sobretodo tablas de HTML4 y estilos en línea para crear un diseño. Esto se debe a razones obvias de seguridad donde los clientes de correo electrónico suelen alterar los correos electrónico HTML cuando llegan a la bandeja de entrada como por ejemplo eliminan el CSS y JavaScript entre otras cosas.
 
-Para la siguiente fila, voy agregar código HTML que si vamos 
+La mejor opción para la compatibilidad es usando los estilos en línea, no vamos a seguir profundizando estos temas, ya que perfectamen podría hacer artículo dedicado solo a este tema, vamos a ir al menú y darle insertar
+
+
+{: .clipboard }
+```html
+
+<!DOCTYPE PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title></title>
+	</head>
+	<body>
+		<table role="presentation" align="center">
+			<tr>
+				<td>
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD10lEQVR4nO3X3U9bZRwH8DMoGzC0W3kZjDI2Xlvjjbe+XmnEzSXbzP4I7xZ10UQ4HeOthRZHq+uQtaVFNhrDH6AxJkaDidFtmnhhS0tLTzk9LT3ltGyjxX7NITEZnJ63whJj9k2a9OJcfHKe5/k930MQz/K/jx+VRg/3eq+Hs/Z4uKVuVybR5WbznS423zmTTnTMsEunp9MTZ6bTr/HPPjWH3o8ag4/72ODNMr2zHHo8HLrdG+h2Z9DlyqDzNouOGRZnvkzj9HQa7bfW0eZMJfQ3k1f11mjNgWKMvuxlo4+LGbxZKMWccqbQdjMF/RdJtDqYaKsj8d7+JcAhoy9rMnq5YtmYz5M46WBw0k4Xm6foMYJERXkYEhUvzOUWjL4s9o1xJNBiT6B5ikbTDfpuWSjjXHb0oDEnbtBo+mwNjTZqqIw9ow5zfjEDzx+P8MtaHn+mCnjAFHb+X/luYzdmMo4GK1XUWeOXlJ8mLxdVg5n69SHEcuve5m6MLY56K4Xj41SshaRqZUEGL/eJGsz733KQivO3TQFGN8GDYtBaqKvSGj8q1cyZU84UfmcKAgT76G88SOR3fgM/cCUxxywxaM2rtOTwNMxyb6jBvOhaR3EP5pvwY7Ta9+yZ0hhozVHUjUVeFQX1znI2NafprQVW8HbO+tcVY54fi6JuNDIuCupxcz+rOdoXFjMCUI+TUYx5bjSCoyORn0RB3e4Mo2bOXFwUvqE2O60YUzcSQe3QCi0K6nKxW2qG3sXFtACkt68pxhwdXkHt9fBjUVDnbXZLDpPL793G0vn0+4w4ZiiMmkEJUMdMmpF7MzmVoMtfJ8Ux18M4ci0kvmR8uZJbppxK0EvTcVFM9WAIh02hH0VBfNOTuyhzKkBb20XoLOKYI9dCqDItm0VBfO1Uc2uf96cEiBM2SnrPPIE5bFqGhgy8LArixzhfOxVViMk43l0oAbLGFGOqyAAt2412OrACTIMtjnMLyRKgVYWYIDQDgQ8IubS7w9WtDiYih6m3Ujh3VwhqmlhViAmuElcUln++kPMduEUCww+9s3eEoMbxqCymigwUK/uDFwg1abYnhqUw/AR+Z14IarBEZTBBVPYHBgnVIVHBF3Kpi7JvnhGA6s0RSYxm4K875X95AIcaJykT34FL3U198wkBSDe2IrFMgX18Bj0RnTV+STdORfdelH1fCUHHR1dKnaaI6j0jl3YyXK01xz7ia+e/c+btOVoAOjYS3jVnNGTgQ4IMVxNPLSQq+NrJN7035+j7sY3C9ma+iIeFIuJcYVs7HFqqIpctmv7gKweyPM/yX88/BL4qn749jCgAAAAASUVORK5CYII=" alt="facebook">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFJ0lEQVR4nO2Y+28UVRTH6yO+4//gH2Fi1KigiUZDLC2plWLKIwhCrGgQLAQfVDSWBI1StUhFVKI2CFhSnySNUktL293t7t3XvO7ss/vqzm67u33szhxzpsylu+202235xXCS+8vsmTOfnnvu95zbqqqb9n+3ToDbbB7xUSLIHQ6ecoSXo27Jl3BTf8wl+fxEkN1OUf7a4uIe7+npuf2GgfRQepeDp+86BV8kEI1nM7lJ0GBhw9+C0XjOJfmihKctQ0Ohe1YVxiHQeqcoh+JKqqBpZhjzDT0TSlp1ib5ROyduWjEIANzi4KVjNDg6oarXQQpaASyKHT6XTsEB5wew07YPdlj3QrPzCBwXO2BIGYG8lmf+qqYBDUUyDoEeB4BbK4YhvNwdSSSnjcB5rQDnwt1Q3b8Znri8ftH1fH8jdAa7YEadYWDRseQ0EeifFUFhZiKJ5JQRLJALQePwq0uClK5NQ7tBzgYYVCSRnMFMLQvGzkt1NBjJGEFsKQLrrry0bBhjPXelAYaVEQaF22fnxIayTxMWsKqqLDMrgTHWs30bgWb9rKacoi/c5/ffvXR2OOmduJLKGzXTONzEgq65XAOfiifhfPhXqLu6vaLtM2oqoaQLDp4eXhQGiw2PqHG0z4W7iwJ+JX/P0v5X7O+KMnU2dJFJgkvyRRYVT4ubf9gfiWdn06pCzcAWFuiZvhchV5hkQPiXlnPaSld1f6OeeTQUz2Gv9zFTIIdAT0xkc7qzNeUoCrTVsmee8LXTbyvKklHgqOjYgkyBCC+7je36suRjL1x9eR7QZ2JHRUBt0qnZbdM0BHItAkQjxscOuT4qCoIFHZwMM5iBpEV/VgkQqrth2JBNgVySL2Y47rLtnxfoKN9WBFSpBGCbMQynBFMgN/VHDced1jfnBcKMjKSdLBhKQCVA2PvmZChuniHRHzIc95OWBYPVD+6A1Ex6VuBAgxbPsXk+DYO7dCE0Azro+pABEV6OmNeQSAmqKNoJ+p1pwCb7QZi+JnAaaPBj8AI8/W+9/ts2y+swWZiE8fwEnPZ36k229P0vpG+uFzUve0yBcNLDo4g2qFgXTfse+yHIFnTJ0i05o8CZwM8QmWJlOHu081nYOPhK0bvYG9FQYhwCbTcFsnmEtaFoPGcIY+3A1kWhtlvfKDp5ZlY7sI29g2KL8xSaPxLLDLm4h0yBUMbnto6zoYtLFihu1Un5DCjX6qrULsX+KfK/EP6NbRd+a8nZCBseNj6jPdSV2USf6t0Abznfh67RP8A17tUnyo+FdljbW8t8Ng83sbYRS6byDp4eqFrKrB7hEUylsW3rVmH0wIVxArnZ7cXRxinKAY7j7lwSyM7T1nRmtlid495Vg5mrX1JwdMLhpTVV5Rjeq4zh7LTvp6LAT/ZuWDbMluHXigp/ND42TXjaWhZMP8fd75UDCePlvY73YB85DD8EzgM3IcKUOqUX+txTY7bQ55fR39mJYjAC7cILRFlAVg9fjUO4EaAwJ9hcw9oaVGy6eKKiYyvYPdIMb7tb9We4tPejD/FUVpGA4QwR6tGwYNKfg68xNsYsGs0JBBSU9oY2lxrVlXRQ1DWJJJY8FbBfo+rJBGJAo6/cVbB/jmZw+0WE3JoJswVnbzklHcDjH56joRpsphUAFxpOKvnaeNhNC7lg2jM1mu9fO07RXDow5BdlNePoJjpelwVA8rW5+DU56RJTteEPBKQH/4UAEivBuIshtFo/44LK2Z0Eoj+cBQsh9Kwpy06purP0H0T9cdUSdY1gAAAAASUVORK5CYII=" alt="whatsapp">
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+```
+
 
