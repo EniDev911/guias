@@ -66,7 +66,7 @@ Ahora se puede acceder al menú de aplicaciones dando clic en la barra superior 
 
 ## Configurar Google Calendar
 
-Ir Complementos y temas:
+Ir a Complementos y Temas.
 
 En el buscador vamos a buscar el complemento usando la palabra clave **Provider for Google Calendar**:
 
