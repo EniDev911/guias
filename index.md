@@ -52,7 +52,7 @@ title: EniDev
 <!-- Recursos web -->
 <p align="center">
     {% for item in site.data.recursos_web %}
-        <a href="{{ item.link | relative_url }}">
+        <a href="{{ item.link | relative_url }}" style="display: block; margin-bottom: 8px">
             <kbd>{{ item.name }}</kbd>
         </a>
     {% endfor %}
