@@ -13,3 +13,8 @@ Antes de usar cualquier APIs de Google, se debe activar en un [proyecto de Googl
 
 Si usas un proyecto de Google Cloud, necesitamos configurar la pantalla de consentimiento de OAuth y debemos agregarnos como usuario de prueba
 
+<button class="btn" onclick="{window.open('https://console.cloud.google.com/apis/credentials/consent?hl=es-419', '')}">Ir a la pantalla de consentimiento de OAuth</button>
+
+Luego debemos seleccionar el tipo de usuario para la app. Si usamos la cuenta normal de Gmail (no de una organización), en ese caso seleccionamos **Externo** como tipo de usuario y luego click sobre el botón **Crear**.
+
+En la siguiente ventana, debemos completar el formulario de registro de la app y, clic en **Guardar y continuar**. 
