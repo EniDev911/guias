@@ -221,6 +221,61 @@ En el archivo, agremos el siguiente código:
 </html>
 ```
 
+
+Bueno vamos a ir revisando lo anterior línea a línea, función por función.
+
+En primer lugar tenemos en las primeras líneas del script lo siguiente:
+
+```js
+const CLIENT_ID = '<YOUR_CLIENT_ID>';
+const API_KEY = '<YOUR_API_KEY>';
+```
+
+Simplemente estamos declarando dos constantes que almacenarán su respectivo código de **Cliente ID** y **API KEY**.
+
+Luego tenemos 3 variables que sirven como banderas para crear un estado de carga de módulos externos:
+
+```js
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+```
+
+Luego se selecciona dos elementos (los botones) y en principio permaneceran oculto, hasta que la carga de los módulos externos se complete:
+
+```js
+document.getElementById('authorize_button').style.visibility = 'hidden';
+document.getElementById('signout_button').style.visibility = 'hidden';
+```
+
+Después tenemos la función `gapiLoaded()` que se invocará automáticamente despues de la carga de **api.js** y ejecutará la iniciación del cliente gapi invocando a `initializeGapiClient`:
+
+```js
+function gapiLoaded() {
+  gapi.load('client', initializeGapiClient);
+}
+```
+
+Ahora se define la función `initializeGapiClient`:
+
+```js
+async function initializeGapiClient(){
+  await gapi.client.init({
+    apikey: API_KEY,
+    discoveryDocs: [DISCOVERY_DOC]
+  });
+  gapiInited = true;
+  maybeEnableButtons();
+}
+```
+
+Como se puede observar, cuando se llama a esta función asíncrona lo que hace es esperar a que se inicialice el cliente de gapi y a continuación cambiamos el estado de las variable `gapiInited` que ya teníamos definida anteriormente y se llama a la función `maybeEnableButton()` que como podemos imaginar se encargará de habilitar los botones que teníamos oculto.
+
+
+
+
+
+
 ## Agregar un evento
 
 Para crear un evento, se llama al método `events.insert()` y se proporciona los siguientes parámetros:
