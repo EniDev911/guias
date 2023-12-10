@@ -15,9 +15,16 @@ title: Contenido
 
 ## LIBS
 
-
 <ul style="list-style: none; padding: 0">
  {% for paper in site.data.javascript.libs %}
+ 	<li style="margin: 8px 0">{{ forloop.index }} <a href="{{ paper.link }}">{{ paper.name | upcase }}</a></li>
+ {% endfor %}	
+</ul>
+
+## APIS
+
+<ul style="list-style: none; padding: 0">
+ {% for paper in site.data.javascript.apis %}
  	<li style="margin: 8px 0">{{ forloop.index }} <a href="{{ paper.link }}">{{ paper.name | upcase }}</a></li>
  {% endfor %}	
 </ul>
