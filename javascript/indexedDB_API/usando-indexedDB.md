@@ -1,6 +1,9 @@
 ---
 layout: default
 title: Usando indexedDB API
+libs:
+  - name: Mermaidjs
+    cdn: https://cdn.jsdelivr.net/npm/mermaid@10.2.2/dist/mermaid.min.js
 css:
   custom: |
     strong, h3 { color: #f2f5a6 }
@@ -8,7 +11,7 @@ css:
     svg.mermaid{max-width: 100%}
     svg.mermaid:hover{max-width: none}
     marker { fill: #f2f5a6 !important }
-    .flowchartTitleText { fill: #f00 !important; text-transform: uppercase; stroke:#000; stroke-width:0.5em; paint-order:stroke; stroke-linejoin:round }
+    .flowchartTitleText { fill: #f2f592 !important; text-transform: uppercase; stroke:#000; stroke-width:0.5em; paint-order:stroke; stroke-linejoin:round }
     svg[id^="mermaid-"] { min-width: 80%; max-width: 900px; font-size: 20px; }
     img[alt*='img']{border: 1px solid #ccc}
 ---
@@ -70,9 +73,9 @@ Para empezara a utilizar indexedDB, primero necesitamos conectarnos o abrir una 
 **Sintaxis**
 
 {: .clipboard }
-{% highlight js %}
+```js
 const openRequest = window.indexedDB.open(name, version)
-{% endhighlight %}
+```
 
 - `name`: un string, el nombre de la base de datos
 - `version`: un entero positivo predeterminado en 1
@@ -98,7 +101,7 @@ El evento `upgradeneeded` también se dispara cuando la base de datos aún no ex
 Digamos que publicamos la primera versión, entonces podemos abrir la base de datos con versión 1 y hacer la inicialización en un manejador `upgradeneeded`:  
 
 {: .clipboard }
-{% highlight js %}
+```js
 let openRequest = indexedDB.open("store", 1);
 
 openRequest.onupgradeneeded = function() {
@@ -114,7 +117,7 @@ openRequest.onsuccess = function() {
   let db = openRequest.result;
   // continua trabajando con la base de datos usando el objeto db
 }
-{% endhighlight %}
+```
 
 Luego, más tarde, publicamos la segunda versión.
 
