@@ -4,6 +4,13 @@
 <!-- COMPONENTS -->
 <script type="module" src="{{ '/assets/js/CustomButton.js' | relative_url }}"></script>
 
+{% if page.libs %}
+  {% for i in page.libs %}
+    <script src="{{ i.cdn }}"></script>
+  {% endfor%}
+{% endif %}
+{% include head-custom.html %}
+
 {% if page.mermaid %}
   {% include mermaid.html %}
 {% endif %}

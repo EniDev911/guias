@@ -12,12 +12,6 @@
     <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/scrolls-anchors.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    {% if page.libs %}
-      {% for i in page.libs %}
-        <script src="{{ i.cdn }}"></script>
-      {% endfor%}
-    {% endif %}
-    {% include head-custom.html %}
     <style>
       {{ page.css.custom }}
     </style>
