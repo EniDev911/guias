@@ -115,3 +115,52 @@ flowchart LR
   };
 </script>
 
+---
+
+## Ampliando el uso con otras liberías
+
+Podemos mejorar el ejemplo anterior, añadiendo una librería como [SweerAler2](https://sweetalert2.github.io/){:target='blank' class='link'} para que las ventanas emergentes se vean mejor:
+
+{: .clipboard }
+```html
+<div class="mermaid">
+flowchart LR
+    A-->B
+    B-->C
+    click A callback "Tooltip for a callback"
+    click B call callback() "Tooltip for a callback"
+    click C call callback() "Tooltip for a callback"
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function callback(nodo) {
+    Swal.fire(`Un callback invocado por el nodo ${nodo}`);
+  };
+</script>
+```
+
+
+<fieldset>
+	<legend align='center' style="font-size: 28px; padding: 0 15px">Resultado</legend>
+	<div class="mermaid" align='center'>
+	%%{
+	  init: {
+	    'themeVariables': {
+	      'fontSize': '32px'
+	    }
+	  }
+	}%%
+	flowchart LR
+	    A-->B
+	    B-->C
+	    click A callbackSw "Tooltip para cuando pase por encima del nodo A"
+	    click B call callbackSw() "Tooltip para cuando pase por encima del nodo B"
+	    click C call callbackSw()
+	</div>
+</fieldset>
+
+<script>
+  function callbackSw(nodo) {
+    Swal.fire(`Un callback invocado por el nodo ${nodo}`);
+  };
+</script>
