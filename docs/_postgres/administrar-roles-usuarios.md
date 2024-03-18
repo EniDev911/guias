@@ -116,7 +116,7 @@ Asignandole una contraseña a el usuario **boba_fett** desde la sesión interact
 
 **DEMO**:
 
-![img - demo]({{ page.image_path }}{{ page.image_subpath }}/createuser-and-password.gif)
+![img - demo]({{ page.image_path | relative_url }}{{ page.image_subpath }}/createuser-and-password.gif)
 
 Crear un rol con una contraseña:  
 
@@ -129,24 +129,24 @@ Los **usuarios**, **grupos** y **roles** son lo mismo en PostgreSQL, y la única
 
 La siguiente instrucción SQL:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE USER myuser WITH PASSWORD 'secret_passwd';
 ```
 Es lo mismo que la siguiente instrucción SQL:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE ROLE myuser WITH LOGIN PASSWORD 'secret_passwd';
 ```
 
 **DEMO**:
 
-![img - demo](assets/create-role-user-login.gif)
+![img - demo]({{ page.image_path | relative_url }}{{ page.image_subpath }}/create-role-user-login.gif)
+
 
 Ambas sentencias crean exactamente lo mismo, un usuario. Este nuevo usuario no tiene ningún permiso aparte de los permisos predeterminados disponibles para el **rol public**. Todos los nuevos usuarios y roles heredan los permisos del **rol public**.
 
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#top)
 
 ---
 
@@ -156,7 +156,7 @@ Cuando se crea una nueva base de datos, PostgreSQL crea de forma predeterminada 
 
 PostgreSQL utiliza el concepto de [rutas de búsqueda](https://www.postgresql.org/docs/current/ddl-schemas.html#DDL-SCHEMAS-PATH). La ruta de búsqueda es una lista de nombres de esquema que PostgreSQL comprueba cuando no se utiliza un nombre calificado del objeto de bases de datos.  Por ejemplo, cuando selecciona de una tabla denominada “`mytable`”, PostgreSQL busca esta tabla en los esquemas enumerados en la ruta de búsqueda. Elige la primera coincidencia que encuentra. De forma predeterminada, la ruta de búsqueda contiene los siguientes esquemas:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 show search_path;
 ```
