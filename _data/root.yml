@@ -1,7 +1,7 @@
 db:
   - name: PostgreSQL
     logo: /assets/images/logos/postgresql.png
-    link: /postgres
+    link: /docs/postgres.html
   - name: MySQL
     logo: /assets/images/logos/mysql.png
     link: /mysql
@@ -31,3 +31,7 @@ editors:
   - name: markdown
     link: /markdown
     logo: /assets/images/logos/markdown.png
+generadores:
+  - name: jekyll
+    link: /docs/jekyll.html
+    logo: /assets/images/logos/jekyll.png

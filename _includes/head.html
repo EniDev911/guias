@@ -3,21 +3,23 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <!-- COMPONENTS -->
 <script type="module" src="{{ '/assets/js/CustomButton.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/custom_tabs.css' | relative_url }}">
 
 {% if page.libs %}
-  {% for i in page.libs %}
-    <script src="{{ i.cdn }}"></script>
-  {% endfor%}
+{% for i in page.libs %}
+<script src="{{ i.cdn }}"></script>
+{% endfor%}
 {% endif %}
 {% include head-custom.html %}
 
 {% if page.mermaid %}
-  {% include mermaid.html %}
+{% include mermaid.html %}
 {% endif %}
 
 {% if page.support %}
- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="9111592" data-description="Support me on Buy me a coffee!"
-    data-message="Gracias por visitar mi blog, solo basta un café para apoyarme." data-color="#5F7FFF"
-    data-position="left" data-x_margin="18" data-y_margin="18"></script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+data-id="9111592" data-description="Support me on Buy me a coffee!"
+data-message="Gracias por visitar mi blog, solo basta un café para apoyarme." data-color="#5F7FFF"
+data-position="left" data-x_margin="18" data-y_margin="18"></script>
 {% endif %}
+<script src="https://kit.fontawesome.com/6b8f0c7049.js" crossorigin="anonymous"></script>

@@ -1,105 +1,85 @@
 <!doctype html>
 <html lang="{{ site.lang | default: "es-CL" }}">
-  <head>
-    {% seo %}
-    {% include head.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/scrolls-anchors.js' | relative_url }}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <style>
-      {{ page.css.custom }}
-    </style>
-  </head>
-  <body>
-    <enidev-button data-btn="top"></enidev-button>
-    <div id="header">
-      <nav>
-        <ul>
-          <li class="fork"><a href="{{ '/' | relative_url }}">INICIO</a></li>
-        </ul>
-      </nav>
-    </div><!-- end header -->
-    <div class="wrapper">
-      <section>
-        <div id="title">
-          <h1 style="font-weight: bold; margin-bottom: 20px">{{ page.title | default: site.title }}</h1>
-          <p align="center">{{ site.description | default: site.github.project_tagline }}</p>
-          <hr>
-        </div>
+<head>
+  {% seo %}
+  {% include head.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/scrolls-anchors.js' | relative_url }}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+    {{ page.css.custom }}
+  </style>
+</head>
+<body>
+  <enidev-button data-btn="top"></enidev-button>
+  <div id="header">
+    <nav>
+      <ul>
+        <li class="fork"><a href="{{ '/' | relative_url }}">INICIO</a></li>
+      </ul>
+    </nav>
+  </div><!-- end header -->
+  <div class="wrapper">
+    <section>
+      <div id="title">
+        <h1>{{ page.title | default: site.title }}</h1>
+        <p align="center">{{ site.description | default: site.github.project_tagline }}</p>
+        <hr>
+      </div>
+      {{ content }}
 
-        {{ content }}
-
-      </section>
-    </div>
-    <!-- The actual snackbar -->
-    <div id="snackbar">Copiado!</div>
+    </section>
+  </div>
+  <script src="{{ '/assets/js/tabs.js' | relative_url }}"></script>
   <script type="text/javascript">
-     const div = document.createElement('div');
-     div.style.display = 'flex'
-     div.style.flexDirection = 'row'
-     div.style.flexWrap = 'wrap'
-     div.style.justifyContent = 'flex-start'
-     div.style.alignContent = 'flex-start'
-     document.querySelectorAll("h2").forEach(ele => {
-        let anchor = document.createElement("a");
-        anchor.textContent = ele.textContent.toUpperCase();
-        anchor.href = '#'+ele.id
-        anchor.classList.add('jump');
-        anchor.style.margin = '5px 10px';
-        anchor.style.fontSize = '14px';
-        anchor.style.padding = '.2em .6em';
-        anchor.style.display = 'inline-block';
-        div.appendChild(anchor)
+
+   document.querySelectorAll("img[alt*='img']").forEach(element => {
+    element.style.cursor = "zoom-in";
+    element.addEventListener('click', () => {
+      let params  = 'width='+screen.width;
+      params += ', height='+screen.height;
+      params += ', top=0, left=0'
+      params += ', fullscreen=yes';
+      params += ', directories=no';
+      params += ', location=no';
+      params += ', menubar=no';
+      params += ', resizable=no';
+      params += ', scrollbars=no';
+      params += ', status=no';
+      params += ', toolbar=no';
+      const popup = window.open(element.src, '_blank', params)
     })
-    document.querySelector("#title").appendChild(div);
+  })
 
-    document.querySelectorAll("img[alt*='img']").forEach(element => {
-        element.style.cursor = "zoom-in";
-        element.addEventListener('click', () => {
-          let params  = 'width='+screen.width;
-           params += ', height='+screen.height;
-           params += ', top=0, left=0'
-           params += ', fullscreen=yes';
-           params += ', directories=no';
-           params += ', location=no';
-           params += ', menubar=no';
-           params += ', resizable=no';
-           params += ', scrollbars=no';
-           params += ', status=no';
-           params += ', toolbar=no';
-          const popup = window.open(element.src, '_blank', params)
-        })
-      })
+   const contenedores = document.querySelectorAll(".contenedor");
+   const li = document.querySelectorAll(".li");
+   const bloque = document.querySelectorAll(".bloque");
+   const subcontenedor = document.querySelector(".subcontenedor");
 
-      const contenedores = document.querySelectorAll(".contenedor");
-      const li = document.querySelectorAll(".li");
-      const bloque = document.querySelectorAll(".bloque");
-      const subcontenedor = document.querySelector(".subcontenedor");
-
+   li.forEach((cadaLi, posicion) => {
+    cadaLi.addEventListener('click', () => {
       li.forEach((cadaLi, posicion) => {
-        cadaLi.addEventListener('click', () => {
-          li.forEach((cadaLi, posicion) => {
-            li[posicion].classList.remove('activo');
-            bloque[posicion].classList.remove('activo');
-          })
-
-          contenedores.forEach(contenedor => {
-            if(li[posicion].parentNode.parentNode.id != contenedor.id) {
-              contenedor.children[0].children[0].classList.add('activo')
-              contenedor.children[1].children[0].classList.add('activo')
-            }
-          })
-
-          li[posicion].classList.add('activo')
-          bloque[posicion].classList.add('activo')
-        })
+        li[posicion].classList.remove('activo');
+        bloque[posicion].classList.remove('activo');
       })
-    </script>
-  </body>
+
+      contenedores.forEach(contenedor => {
+        if(li[posicion].parentNode.parentNode.id != contenedor.id) {
+          contenedor.children[0].children[0].classList.add('activo')
+          contenedor.children[1].children[0].classList.add('activo')
+        }
+      })
+
+      li[posicion].classList.add('activo')
+      bloque[posicion].classList.add('activo')
+    })
+  })
+</script>
+</body>
 </html>

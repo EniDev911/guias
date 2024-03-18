@@ -3,6 +3,7 @@ layout: default
 title: EniDev
 ---
 
+
 <!-- Databases -->
 <p align="center">
     {% for item in site.data.root.db %}
@@ -48,6 +49,20 @@ title: EniDev
 </p>
 
 <br>
+
+<!-- Generadores -->
+<p align="center">
+  {% for item in site.data.root.generadores %}
+    <a href="{{ item.link | relative_url }}">
+        <kbd><img 
+            src="{{ item.logo | relative_url }}"
+            alt="{{ item.name }}"
+            height="80"></kbd>
+    </a>
+  {% endfor %}
+</p>
+
+
 <h3 align="center">Recursos web</h3>
 <!-- Recursos web -->
 <p align="center">
@@ -57,3 +72,4 @@ title: EniDev
         </a>
     {% endfor %}
 </p>
+

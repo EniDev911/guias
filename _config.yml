@@ -17,3 +17,18 @@ kramdown:
 
 plugins:
   - jemoji
+  - jekyll-tabs
+
+collections:
+  jekyll:
+    output: true
+  postgres:
+    output: true
+
+collections_dir: docs
+
+defaults:
+  - scope:
+      type: postgres
+    values:
+      image_path: /assets/images/postgres/

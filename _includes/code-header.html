@@ -1,0 +1,23 @@
+<div class="code-header">
+	{% if include.file %}
+	<div class="me-auto align-self-center">
+		<i class="fa-regular fa-file"></i>
+		{{ include.file }}
+	</div>
+	{% else %}
+	<div class="code-header__left">
+		<i class="fa fa-code"></i>
+	</div>
+	{% endif %}
+	<div class="code-header__center"></div>
+	{% if include.compiler == 'y' %}
+	<button class="code-play-button" data-bs-toggle="tooltip" data-bs-placement="top" title="Ejecutar">
+		<i class="fa-regular fa-circle-play"></i>
+	</button>
+	{% endif %}
+	<div class="code-header__right">
+		<button class="copy-code-button" data-tooltip-anchor="top" data-tooltip="Copiar">
+			<i class="fa-regular fa-clipboard rounded fs-5 p-1 px-2"></i>
+		</button>
+	</div>
+</div>

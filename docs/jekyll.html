@@ -1,0 +1,17 @@
+---
+layout: default
+title: Jekyll
+---
+
+{% for item in site.jekyll %}
+{% if item.categories contains 'plugin' %}
+<h2>Complementos</h2>
+<a href="{{ item.url }}">
+	{{ item.title }}
+</a><br>
+{% else %}
+<a href="{{ item.url }}">
+	{{ item.title }}
+</a><br>
+{% endif %}
+{% endfor %}

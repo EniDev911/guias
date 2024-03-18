@@ -11,6 +11,11 @@
 @import "tables";
 @import "extras";
 @import "lists";
+@import "code-header";
+@import "tooltips";
+
+$background: #171717;
+$color: #919191;
 
 body {
   padding:0px 0 20px 0px;
@@ -18,65 +23,11 @@ body {
   font-family: 'EncodeSansRegular', sans-serif;
   color:#f0e7d5;
   font-weight: normal;
-  background: #252525;
-  background-attachment: fixed !important;
-  background: #111;
-}
-
-.jump::after {
-  content: "\2693";
-  font-size: 1rem;
-  font-weight: normal;
-  margin-left: 0.3rem;
-}
-
-#snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
-}
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#snackbar.show {
-  visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  background: $background;
 }
 
 
-p, table, pre, dl {
+p, table, dl {
   margin:0 0 20px;
 }
 
@@ -112,11 +63,9 @@ kbd {
     transition: transform .2s ease;
     &:hover {
       transform: scale(1.1);
-      }
+    }
   }
 }
-
-
 strong {
   font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
@@ -126,16 +75,20 @@ strong {
   max-width:100%;
   margin:0 auto;
   position:relative;
-
+  p {
+    color: $color;
+    font-family: 'EncodeSansRegular', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: .5px;
+  }
   section {
-    max-width: 55%;
-    padding: 50px 30px;
+    max-width: 60%;
     margin: 20px auto;
-    margin-top: 70px;
     #title {
       border: 0;
       outline: none;
-      margin: 0 0 50px 0;
+      margin: 0 0 15px 0;
       padding: 0 0 5px 0;
 
       .credits {
@@ -143,7 +96,6 @@ strong {
         font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: normal;
         color: #696969;
-        margin-top: -10px;
 
         &.left {
           float: left;
@@ -160,15 +112,6 @@ strong {
 
 section img {
   max-width: 100%;
-}
-
-code {
-  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, monospace;
-  color:#efefef;
-  font-size:13px;
-  margin: 0 4px;
-  padding: 4px 6px;
-  border-radius: 2px;
 }
 
 
@@ -211,10 +154,9 @@ dt {
 #header {
   z-index: 99100;
   left:0;
-  top: 0px;
   height: 60px;
   width: 100%;
-  position: fixed;
+  position: sticky;
   background: url(../images/nav-bg.gif) #353535;
   border-bottom: 4px solid #434343;
   box-shadow: 0px 1px 3px rgba(0,0,0,.25);
@@ -222,7 +164,6 @@ dt {
   nav {
     max-width: 650px;
     margin: 0 auto;
-    padding: 0 10px;
     background: blue;
     margin: 6px auto;
     ul {
@@ -281,14 +222,6 @@ dt {
       }
     }
   }
-}
-
-.flex {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 10px;
-  width: 100%;
 }
 
 
