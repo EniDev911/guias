@@ -4,7 +4,7 @@ title: Tabs en Jekyll
 categories: ['plugin']
 ---
 
-## Instalación
+## INSTALACIÓN
 
 Añadir la siguiente línea en el `Gemfile`:
 
@@ -117,9 +117,9 @@ hello:
 
 ---
 
-## Resultado
+## RESULTADO
 
-### First tabs
+### Ejemplo 1 jekill-tabs
 
 {% tabs log %}
 
@@ -143,7 +143,7 @@ pputs 'hello'
 
 {% endtabs %}
 
-### Second tabs
+### Ejemplo 2 jekill-tabs
 
 {% tabs data-struct %}
 
