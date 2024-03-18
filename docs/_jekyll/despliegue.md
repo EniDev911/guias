@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 'Despliegue'
+categories: ["guía"]
 ---
 
 Es una buena practica tener un `Gemfile` para nuestro sitio. Esto garantiza que la versión de jekyll y otras gemas se mantenga constante en diferentes entornos.

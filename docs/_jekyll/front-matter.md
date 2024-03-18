@@ -2,6 +2,7 @@
 layout: default
 title: "Front matter"
 num: 5
+categories: ["guía"]
 ---
 
 El `Front Matter` es un fragmento de [YAML](https://yaml.org/) que se encuentra entre dos líneas de tres guiones (*-*) en la parte superior de un archivo. Una de las cosas que podemos establecer en este fragmento son variables para página. Por ejemplo:  

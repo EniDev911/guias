@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Archivo de datos
+categories: ["guía"]
 ---
 
 Además de las variables integradas disponibles de Jekyll, podemos crear nuestros propios datos personalizados en los siguientes formatos:

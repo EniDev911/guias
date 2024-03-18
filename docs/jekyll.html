@@ -3,15 +3,17 @@ layout: default
 title: Jekyll
 ---
 
-{% for item in site.jekyll %}
-{% if item.categories contains 'plugin' %}
-<h2>Complementos</h2>
-<a href="{{ item.url | relative_url }}">
-	{{ item.title }}
-</a><br>
-{% else %}
-<a href="{{ item.url | relative_url }}">
-	{{ item.title }}
-</a><br>
-{% endif %}
-{% endfor %}
+<table>
+	<thead>
+		<th>Tipo</th>
+		<th>Guía</th>
+	</thead>
+	<tbody>
+		{% for doc in site.jekyll %}
+		<tr onclick="window.open('{{ doc.url | relative_url }}', '_parent')" style="cursor:pointer">
+			<td><span class="badge">{{ doc.categories }}</span></td>
+			<td>{{ doc.title }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

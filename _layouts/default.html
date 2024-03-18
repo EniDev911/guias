@@ -26,6 +26,7 @@
     </nav>
   </div><!-- end header -->
   <div class="wrapper">
+    {% include sidebar.html content=page.content %}
     <section>
       <div id="title">
         <h1>{{ page.title | default: site.title }}</h1>
@@ -33,7 +34,6 @@
         <hr>
       </div>
       {{ content }}
-
     </section>
   </div>
   <script src="{{ '/assets/js/tabs.js' | relative_url }}"></script>

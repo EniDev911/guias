@@ -11,7 +11,7 @@ title: Postgres
 	<tbody>
 		{% for doc in site.postgres %}
 		<tr onclick="window.open('{{ doc.url }}', '_parent')" style="cursor:pointer">
-			<td>1</td>
+			<td>{{ forloop.index }}</td>
 			<td>{{ doc.title }}</td>
 		</tr>
 		{% endfor %}
