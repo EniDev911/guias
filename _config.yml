@@ -20,6 +20,8 @@ plugins:
   - jekyll-tabs
 
 collections:
+  bash:
+    output: true
   jekyll:
     output: true
   postgres:
