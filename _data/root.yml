@@ -20,7 +20,7 @@ programming:
     link: /docs/javascript.html
   - name: bash
     logo: /assets/images/logos/bash.png
-    link: /bash
+    link: /docs/bash.html
 editors:
   - name: vs_code
     link: /docs/vscode.html
