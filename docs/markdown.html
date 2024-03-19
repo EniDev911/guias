@@ -1,0 +1,19 @@
+---
+layout: default
+title: Markdown
+---
+
+<table>
+	<thead>
+		<th>Tipo</th>
+		<th>Guía</th>
+	</thead>
+	<tbody>
+		{% for doc in site.markdown %}
+		<tr onclick="window.open('{{ doc.url | relative_url }}', '_parent')" style="cursor:pointer">
+			<td><span class="badge">{{ doc.categories }}</span></td>
+			<td>{{ doc.title }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

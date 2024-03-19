@@ -1,0 +1,12 @@
+a {
+	color: #ddd;
+	font-weight:400;
+	text-decoration: 1px underline #ccc8;
+
+	&:hover {
+		color: #ee3;
+		background-size: 100% 100%;
+		cursor: pointer;
+	}
+
+}

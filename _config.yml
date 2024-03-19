@@ -24,11 +24,27 @@ collections:
     output: true
   postgres:
     output: true
+  javascript:
+    output: true
+  mysql:
+    output: true
+  markdown:
+    output: true
+  ruby:
+    output: true
+  vscode:
+    output: true
 
 collections_dir: docs
 
 defaults:
-  - scope:
+  -
+    scope:
       type: postgres
     values:
       image_path: /assets/images/postgres/
+  -
+    scope:
+      type: mysql
+    values:
+      image_path: /assets/images/mysql/

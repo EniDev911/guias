@@ -4,32 +4,32 @@ db:
     link: /docs/postgres.html
   - name: MySQL
     logo: /assets/images/logos/mysql.png
-    link: /mysql
+    link: /docs/mysql.html
   - name: SQLite3
     logo: /assets/images/logos/sqlite.ico
     link: /sqlite
 programming:
   - name: ruby
     logo: /assets/images/logos/ruby.png
-    link: /ruby
+    link: /docs/ruby.html
   - name: python
     logo: /assets/images/logos/python.png
     link: /python
   - name: javascript
     logo: /assets/images/logos/javascript.png
-    link: /javascript
+    link: /docs/javascript.html
   - name: bash
     logo: /assets/images/logos/bash.png
     link: /bash
 editors:
   - name: vs_code
-    link: /vs-code
+    link: /docs/vscode.html
     logo: /assets/images/logos/vs_code.png
   - name: sublimetext
     link: /sublimetext
     logo: /assets/images/logos/sublimetext.png
   - name: markdown
-    link: /markdown
+    link: /docs/markdown.html
     logo: /assets/images/logos/markdown.png
 generadores:
   - name: jekyll

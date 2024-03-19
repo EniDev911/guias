@@ -8,10 +8,10 @@ title: EniDev
 <p align="center">
     {% for item in site.data.root.db %}
         <a href="{{ item.link | relative_url }}">
-            <kbd><img 
+            <img 
                 src="{{ item.logo | relative_url }}" 
                 alt="{{ item.name }}"
-                height="80"></kbd>
+                height="80">
         </a>
     {% endfor %}
 </p>

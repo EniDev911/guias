@@ -231,7 +231,7 @@ document.querySelectorAll('.code-header')
     // console.log(element.classList[0].split('-')[1])
     const code = element.nextElementSibling;
     const span = document.createElement('span');
-    span.textContent = element.nextElementSibling.classList[0].split('-')[1];
+    span.textContent = element.nextElementSibling.classList[0].split('-')[1].toUpperCase();
     document.querySelectorAll('.code-header__center')[index].append(span);
     const copyButton =  element.querySelector('.copy-code-button');
     copyButton.onclick = () =>  {

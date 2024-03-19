@@ -1,5 +1,5 @@
 th img, td img {
-    display: none;
+	display: none;
 }
 
 td.item {
@@ -7,9 +7,16 @@ td.item {
 }
 
 @media (min-width: 992px) {
-  table {
-  }
-  th img, td img {
-    display: inline-block;
-  }
+	td, th {
+		border: 1px solid #ccc8;
+		padding: .4rem;
+		text-align: left;
+	}
+	th {
+		width: fit-content;
+	}
+
+	th img, td img {
+		display: inline-block;
+	}
 }

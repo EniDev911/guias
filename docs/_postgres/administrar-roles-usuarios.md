@@ -161,7 +161,8 @@ PostgreSQL utiliza el concepto de [rutas de búsqueda](https://www.postgresql.or
 show search_path;
 ```
 
-![gif search_path](assets/search_path.gif)
+![img - search_path]({{ page.image_path | relative_url }}{{ page.image_subpath }}/search_path.gif)
+
 
 El nombre de "**$user**" se refiere al nombre del usuario que ha iniciado sesión actualmente. De forma predeterminada, no existe ningún esquema con el mismo nombre de usuario. Por lo tanto, el esquema **public** se convierte en el esquema predeterminado siempre que se utiliza un nombre de objeto no calificado. Por este motivo, cuando un usuario intenta crear una nueva tabla sin especificar el nombre del esquema, la tabla se crea en el esquema **public**. Como se mencionó anteriormente, de forma predeterminada, todos los usuarios tienen acceso para crear objetos en el esquema **public** y, por lo tanto, la tabla se ha creado correctamente.
 
@@ -169,14 +170,14 @@ Esto se convierte en un problema si intenta crear un usuario de solo lectura. In
 
 Para solucionarlo, se debe revocar el permiso de creación predeterminado en el esquema **public** desde el **rol public** mediante la siguiente instrucción SQL:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
 ```
 
 La siguiente declaración revoca la capacidad del **rol público** de conectarse a la base de datos:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 REVOKE ALL ON DATABASE mydb FROM PUBLIC;
 ```
@@ -184,8 +185,6 @@ REVOKE ALL ON DATABASE mydb FROM PUBLIC;
 Esto garantiza que los usuarios no puedan conectarse a la base de datos de forma predeterminada a menos que se conceda explícitamente este permiso.
 
 La revocación de los permisos del **rol public** afecta a todos los usuarios y roles existentes. Los usuarios y roles que deberían de poder conectarse a la base de datos o crear objetos en el esquema público deben recibir los permisos explícitamente antes de revocar los permisos del rol **public** en el entorno de producción.  
-
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#top)
 
 ---
 
@@ -199,11 +198,11 @@ En esta sección se documenta el proceso de creación de nuevos roles y el proce
 
 El nombre sigue las reglas para los identificadores de SQL: sin adornor ni caracteres especiales o entre comillas dobles.
 
-## EJEMPLOS DE ASIGNACIÓN DE PERMISOS
+### ASIGNACIÓN DE PERMISOS EJEMPLOS
 
 Crear un rol de solo lectura. El primer paso consiste en crear un nuevo rol denominado **readonly** mediante la siguiente instrucción SQL:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE ROLE readonly;
 ```
