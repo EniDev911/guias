@@ -3,12 +3,11 @@
   overflow-x: auto;
   min-height: 100vh;
   padding-top: 20px;
-  flex-basis: 500rem;
+  flex-basis: 25rem;
   flex-grow: 1;
   display: flex;
   // display: none;
   flex-direction: column;
-  gap: 25px;
   top: 0;
   border: 1px solid red;
   &__content {
