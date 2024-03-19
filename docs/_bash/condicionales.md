@@ -21,7 +21,6 @@ Por otro lado, también se pueden utilizar los corchetes dobles `[[]]` para real
 - Es posible también con los corchetes dobles utilizar comodines. Ej: `[[ abc =  a* ]]`.
 
 
-<a name="otros-comparadores"></a>
 ## Otros comparadores
 
 |Operador|Descripción|
@@ -55,8 +54,8 @@ graph LR
 
 Para lograrlo, podemos hacer el siguiente script:
 
-{% capture ej_par_impar %}
-{% highlight shell %}
+{% include code-header.html %}
+```bash
 #!/bin/bash
 
 if [[ $((10 % 2)) == 0 ]]
@@ -65,39 +64,19 @@ then
 else
     echo Impar
 fi
-{% endhighlight %}
-<enidev-button 
-	data-btn='compiler' 
-	data-lang='bash'
-	data-ext='sh'>
-</enidev-button>
-{% endcapture %}
+```
 
-{% capture result_ej_par_impar %}
-{% highlight shell %}
-Par
-{% endhighlight %}
-{% endcapture %}
-
-{% include tabs.html
-	id='ej_par_impar'
-	tab_1='script.sh'
-	tab_2='Resultado'
-	bloque_1=ej_par_impar
-	bloque_normal=result_ej_par_impar
-%}
 
 Otro caso es comprar si dos cadenas son iguales. Para ello podemos crear un nuevo archivo y darle permisos de ejecución:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 touch comparar-cadenas.sh && chmod +x $_
 ```
 
 Comparar dos cadenas:
 
-{% capture ej_comparar_string %}
-{% highlight shell %}
+```bash
 #!/bin/bash
 
 VAR1="Bourne Again"
@@ -109,26 +88,8 @@ then
 else
 	echo "Las cadenas no son iguales"
 fi
-{% endhighlight %}
-<enidev-button 
-	data-btn='compiler' 
-	data-lang='bash'
-	data-ext='sh'>
-</enidev-button>
-{% endcapture %}
-{% capture result_ej_comparar_string %}
-{% highlight shell %}
-Las cadenas no son iguales
-{% endhighlight %}
-{% endcapture %}
+```
 
-{% include tabs.html
-	id='ej_comparar_string'
-	tab_1='comparar-cadenas.sh'
-	tab_2='Resultado'
-	bloque_1=ej_comparar_string
-	bloque_2=result_ej_comparar_string
-%}
 
 Como podemos observar `$VAR1` no es igual a `$VAR2` a pesar de que tengan el mismo texto, como podemos imaginar es porque se distingue mayúsculas de minúsculas.
 
@@ -140,8 +101,8 @@ En un script, para saber si un archivo existe o no, como es una comparación, de
 
 Así, si queremos saber si una carpeta existe, por ejemplo, para evitar crearla de nuevo o intentar borrarla en caso de asi desearlo, podemos lograrlo con el siguiente script:
 
-{% capture ej_if_file_dir %}
-{% highlight shell %}
+{% include code-header.html %}
+```bash
 #!/bin/bash
 directory="test"
 if [[ -d $directory ]]
@@ -151,32 +112,12 @@ else
 	mkdir $directory
 	echo "Se creo la el directorio: $directory"
 fi
-{% endhighlight %}
-<enidev-button 
-	data-btn='compiler' 
-	data-lang='bash'
-	data-ext='sh'>
-</enidev-button>
-{% endcapture %}
-
-{% capture result_ej_if_file_dir %}
-{% highlight shell %}
-Se creo la el directorio: test
-{% endhighlight %}
-{% endcapture %}
-
-{% include tabs.html
-	id='ej_if_file_dir'
-	tab_1='script.sh'
-	tab_2='Resultado'
-	bloque_1=ej_if_file_dir
-	bloque_normal=result_ej_if_file_dir
-%}
+```
 
 Del mismo modo, podemos comprobar si tenemos un determinado archivo o no:
 
-{% capture ej_if_file %}
-{% highlight shell %}
+{% include code-header.html %}
+```bash
 #!/bin/bash
 filename="test.txt"
 
@@ -187,27 +128,7 @@ else
 	touch $filename
 	echo "Se creo el archivo: $filename"
 fi
-{% endhighlight %}
-<enidev-button 
-	data-btn='compiler' 
-	data-lang='bash'
-	data-ext='sh'>
-</enidev-button>
-{% endcapture %}
-
-{% capture result_ej_if_file %}
-{% highlight shell %}
-Se creo el archivo: test.txt
-{% endhighlight %}
-{% endcapture %}
-
-{% include tabs.html
-	id='ej_if_file'
-	tab_1='script.sh'
-	tab_2='Resultado'
-	bloque_1=ej_if_file
-	bloque_normal=result_ej_if_file
-%}
+```
 
 Ahora si quisieramos evaluar en la misma estructura si es un archivo, directorio o no existe, lo podemos lograr añadiendo una declaración más en el bloque `if / elif / else`:
 
