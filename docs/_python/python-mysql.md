@@ -138,8 +138,8 @@ Resultados producidos por la declaración 'select 2':
 
 Este método envía la declaración `COMMIT` al servidor de **MySQL**, confirmando la transacción actual. Dado que, de forma predeterminada no se confirma automáticamente, es importante llamar a este método después de cada transacción que modifique datos:
 
-
-```py
+{% include code-header.html %}
+```python
 cursor.execute("INSERT INTO employees (first_name) VALUES (%s), (%s)", ('Mary', 'Jane'))
 cnx.commit()
 ```
@@ -149,7 +149,6 @@ cnx.commit()
 ## MySQLCursor.fetchall()
 
 El método recupera todas (o todas las filas restantes) de un conjunto de resultados de una consulta a la base de datos y retorna una **lista de tuplas**. Si no hay más filas disponibles, devuelve una **lista vacía**.
-
 
 El siguiente ejemplo muestra como podemos recuperar las dos primeras filas de un conjunto de resultados y luego recuperar el resto de filas restantes:
 
@@ -187,8 +186,10 @@ print(remaining_rows)
 
 Esta propiedad es de solo lectura y nos devuelve los nombre de las columnas de un conjunto de resultados como una secuencia de cadenas:
 
-{% capture ej_column_names %}
-{% highlight python %}
+{% tabs ex_column_names %}
+{% tab ex_column_names python %}
+{% include code-header.html %}
+```python
 from prettytable import PrettyTable  # pip install prettytable
 import mysql.connector
 
@@ -200,11 +201,10 @@ p_table.field_names = cursor.column_names
 p_table.add_rows(cursor.fetchall())
 p_table.align = 'l'
 print(p_table)
-{% endhighlight %}
-{% endcapture %}
-
-{% capture result_ej_column_names %}
-{% highlight text %}
+```
+{% endtab %}
+{% tab ex_column_names resultado %}
+```text
 +--------------+---------------+------------+---------------+----------------+
 | rut          | nombre        | apellido   | telefono      | direccion      |
 +--------------+---------------+------------+---------------+----------------+
@@ -216,16 +216,9 @@ print(p_table)
 | 177977934    | marco         | contreras  | 84+87949      | av suecia      |
 | 19.144.134-6 | claudia       | villalobos | 984687949     | costanero 213  |
 +--------------+---------------+------------+---------------+----------------+
-{% endhighlight %}
-{% endcapture %}
-
-{% include tabs.html
-	id='ej_column_names'
-	tab_1='script.py'
-	tab_2='Resultado'
-	bloque_1=ej_column_names
-	bloque_normal=result_ej_column_names
-%}
+```
+{% endtab %}
+{% endtabs %}
 
 ---
 
@@ -236,8 +229,10 @@ Este método nos retorna un objeto iterable que se puede utilizar para procesar 
 
 El siguiente ejemplo ejecuta un procedimiento almacenado que produce dos conjuntos de resultados y luego el método `stored_results()` los utiliza para recuperarlos:
 
-{% capture sql_proc %}
-{% highlight sql %}
+{% tabs ex_store_result %}
+{% tab ex_store_result sql %}
+{% include code-header.html %}
+```sql
 -- EJECUTAR EN EL CLIENTE MYSQL
 CREATE DATABASE ej_storeprocedure;
 USE ej_storeprocedure;
@@ -264,11 +259,11 @@ BEGIN
 	FROM productos WHERE id = idProd;
 END //
 delimiter ;
-{% endhighlight %}
-{% endcapture %}
-
-{% capture ej_callproc %}
-{% highlight python %}
+```
+{% endtab %}
+{% tab ex_store_result python %}
+{% include code-header.html %}
+```python
 from mysql.connector import MySQLConnection
 
 cnx = MySQLConnection(user="root", password="root", database="ej_storeprocedure")
@@ -279,24 +274,15 @@ cursor.callproc("productoID", (4,))
 print(cursor.stored_results())
 for result in cursor.stored_results():
     print(result.fetchall())
-{% endhighlight %}
-{% endcapture %}
-
-{% capture result_ej_callproc %}
-{% highlight shell %}
+```
+{% endtab %}
+{% tab ex_store_result resultado %}
+```text
 [('Gamma', 15, Decimal('370.00'), 'Caroten')]
-{% endhighlight %}
-{% endcapture %}
+```
+{% endtab %}
+{% endtabs %}
 
-{% include tabs.html
-	id='ej_callproc'
-	tab_1='script.py'
-	tab_2='script.sql'
-	tab_3='Resultado'
-	bloque_1=ej_callproc
-	bloque_2=sql_proc
-	bloque_normal=result_ej_callproc
-%}
 
 ---
 
