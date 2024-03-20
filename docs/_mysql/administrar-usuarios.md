@@ -2,6 +2,7 @@
 layout: default
 title: Administrar usuarios
 categories: ["guía"]
+image_path: '/assets/images/mysql/administrar-usuarios'
 ---
 
 ## Introducción
@@ -62,7 +63,7 @@ CREATE USER 'marco'@'localhost' IDENTIFIED BY 'propassword123';
 ```
 
 <p align="center">
-    <img src="{{ page.image_path }}administrar-usuarios/create-user-01.png"><br>
+    <img src="{{ page.image_path | relative_url }}/create-user-01.png"><br>
     (Creando un nuevo usuario)
 </p>
 
@@ -72,7 +73,7 @@ Crear una cuenta que use el complemento de autenticación predeterminado y la co
 
 
 <p align="center">
-    <img src="{{ page.image_path }}administrar-usuarios/create-user-02.png"><br>
+    <img src="{{ page.image_path | relative_url }}/create-user-02.png"><br>
     (Creando un nuevo usuario con contraseña expirada)
 </p>
 
@@ -140,7 +141,7 @@ SHOW GRANTS FOR 'user_name'@'host_name';
 ```
 
 <p align="center">
-    <img src="{{ page.image_path }}administrar-usuarios/show_privileges_01.png"><br>
+    <img src="{{ page.image_path | relative_url }}/show_privileges_01.png"><br>
     (Consultando los permisos del nuevo usuario creado)
 </p>
 
@@ -182,7 +183,7 @@ FLUSH PRIVILEGES;
 ```
 
 <p align="center">
-    <img src="img/show_privileges_03.png" alt="image"><br>
+    <img src="{{ page.image_path | relative_url }}/show_privileges_03.png" alt="image"><br>
     (ejemplo con el usuario creado en la sección <a href="#create-user">crear usuario</a>)
 </p>
 
@@ -211,7 +212,7 @@ Remover todos los privilegios:
 REVOKE ALL PRIVILEGES ON *.* FROM 'username'@'localhost';
 ```
 <p align="center">
-    <img src="img/revoke-privileges.png" alt="image"><br>
+    <img src="{{ page.image_path | relative_url }}/revoke-privileges.png" alt="image"><br>
     (ejemplo con el usuario creado en la sección <a href="#create-user">crear usuario</a>)
 </p>
 
@@ -225,6 +226,6 @@ DROP USER 'user'@'localhost';
 ```
 
 <p align="center">
-    <img src="img/drop_user_01.png" alt="pic"><br>
+    <img src="{{ page.image_path | relative_url }}/drop_user_01.png" alt="pic"><br>
     (ejemplo con el usuario creado en la sección <a href="#crear-usuario">crear usuario</a>)
 </p>

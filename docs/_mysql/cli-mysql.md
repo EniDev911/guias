@@ -2,6 +2,7 @@
 layout: default
 title: "Cliente de línea de comandos Mysql"
 categories: ["guía"]
+image_path: '/assets/images/mysql/cliente-mysql'
 css:
   custom: |-
     thead { background: #000; border: 1px solid #AAA }
@@ -10,36 +11,33 @@ css:
 ---
 
 
-## INTRODUCCIÓN
-
 Cuando instalamos MySQL, dentro del paquete de instalación contiene un programa para conectarnos al servidor mediante la línea de comandos, que se llama **mysql** y nos permite abrir una sesión como cliente para ejecutar sentencias **SQL** con capacidades de edición. Es compatible con el uso interactivo y no interactivo. Cuando se usa de forma interactiva, los resultados de la consulta se presentan en un formato de tabla [ASCII](https://es.wikipedia.org/wiki/ASCII). Cuando se usa de forma no interactiva (por ejemplo, como filtro), el resultado se presenta en formato separado por tabuladores. El formato de salida se puede cambiar usando las [opciones de comando](#optionscmd).
 
 ---
 
-<a name="localizar-cliente"></a>
-## LOCALIZAR EL CLIENTE EN WINDOWS
+## Localizar el cliente en Windows
 
 De acuerdo al modo de instalación las rutas de la ubicación de MySQL puede variar, a continuación voy a mencionar las rutas que generalmente son por defecto según el paquete de instalación y la plataforma.
 
 
 ### XAMP
 
-![img - path-xamp](assets/path-xamp.png)
+![img - path-xamp]({{ page.image_path | relative_url }}/path-xamp.png)
 
 
 ### WAMP
 
-![img - path-wamp](assets/path-wamp.png)
+![img - path-wamp]({{ page.image_path | relative_url }}/path-wamp.png)
 
 
 ### EXTRAIDO DESDE UN ZIP
 
-![img - path-manual](assets/path-manual.png)
+![img - path-manual]({{ page.image_path | relative_url }}/path-manual.png)
 
 
 ---
 
-## CONECTARSE AL SERVIDOR
+## Conectarse al servidor
 
 Una vez tenemos localizado el programa podemos conectar con el servidor de MySQL por línea de comandos. Desde la consola o terminal invocamos al programa **mysql** y le indicamos en los argumentos las opciones básicas de conexión (**host**, **usuario**, **puerto**, etc).
 
@@ -51,20 +49,19 @@ mysql -h localhost -u root -P 3306 -p
 ```
 
 {:align='center'}
-![img - connect](assets/connect.png){:height='340'}
+![img - connect]({{ page.image_path | relative_url }}/connect.png){:height='340'}
 
 Estos parámetros son sencillo, aunque dependiendo del método de autenticación podría variar pero simplemente necesitamos especificar 2:  
 
-- `-u`: el usuario que se configuró en el proceso de instalación u otro existente creado por un usuario administrador.
-- `-p`: el password para el usuario configurado.
+- `-u` : el usuario que se configuró en el proceso de instalación u otro existente creado por un usuario administrador.
+- `-p` : el password para el usuario configurado.
 
 Si su servidor se ejecuta en su propia máquina, no es necesario especificar el parámetro `-h` ya que mysql por defecto usa la opción de **localhost**.
-
 
 ---
 
 <a name="opciones-linea-de-comandos"></a>
-## OPCIONES DE LÍNEA DE COMANDOS
+## Opciones de línea de comandos
 
 **mysql** admite varias opciones, que se pueden especificar en la línea de comandos o en los archivos de opciones usando las directivas **`[mysql]`** y **`[client]`**. Voy a dejar en la siguiente tabla algunas de las más utilizadas.  
 
@@ -202,7 +199,7 @@ no-auto-rehash=True
 ```
 
 {:align='center'}
-![img - auto-rehash](assets/auto_rehash.png){:height='400'}
+![img - auto-rehash]({{ page.image_path | relative_url }}/auto_rehash.png){:height='400'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -237,7 +234,7 @@ auto-vertical-output=True
 ```
 
 {:align='center'}
-![img - auto-vertical-output](assets/auto_vertical_output.png){:height='400'}
+![img - auto-vertical-output]({{ page.image_path | relative_url }}/auto_vertical_output.png){:height='400'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -248,12 +245,14 @@ auto-vertical-output=True
 
 Imprime los resultados usando la pestaña como separador de columnas, con cada fila en una nueva linea. Con esta opción, **mysql** no usa el archivo de historial ni imprime mensajes adicionales tampoco muestra el prompt al conectarse.
 
+{% include code-header.html %}
 ```bash
 mysql -u root -p  -B
 ```
 
 En el archivo de opciones: 
 
+{% include code-header.html file='my.ini' %}
 ```ini
 # para el programa mysql
 [mysql]
@@ -273,7 +272,7 @@ La base de datos a utilizar. Esta opción también es útil principalmente en un
 
 **En la línea de comando**
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 mysql -u root -p -D test
 ```
@@ -282,7 +281,7 @@ mysql -u root -p -D test
 
 >En caso de que no especifique otra base de datos, intentará conectarse a la que esteblece este archivo  
 
-{: .clipboard }
+{% include code-header.html file='my.ini' %}
 ```ini
 # para los programas externos
 [client]
@@ -318,7 +317,7 @@ table=True
 ```
 
 {:align='center'}
-![img - delimiter](assets/delimiter.png){:height='400'}
+![img - delimiter]({{ page.image_path | relative_url }}/delimiter.png){:height='400'}
 
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
@@ -334,13 +333,13 @@ Ejecuta la sentencia y sale. El formato es el mismo que genera el producido por 
 
 Volcar la salida en un archivo y con formato HTML:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 mysql -u root -p -e "SELECT * FROM tablename;" -H > results.html
 ```
 
 {:align='center'}
-![img - execute option](assets/execute-cli.png){:height='330'}
+![img - execute option]({{ page.image_path | relative_url }}/execute-cli.png){:height='330'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -356,16 +355,17 @@ La contraseña de la cuenta de MySQL utilizada para conectarse al servidor. El v
 
 **En la línea de comando**  
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 mysql -u root -p 
 ```
+
 > Se considera inseguro proporcionar el password mediante la línea de comandos, en versiones posterios a la 5.6 ya no se puede proporcionar el valor en la misma línea. Por lo que solo puede colocar este valor cuando se lo solicita MySQL.  
 
 
 **En el archivo de opciones** 
 
-{: .clipboard }
+{% include code-header.html file='my.ini' %}
 ```ini
 # para el programa mysql
 [mysql]
@@ -386,11 +386,13 @@ El modo silencioso da como resultado un formato de salida no tabular y el escape
 
 **En la línea de comando**  
 
+{% include code-header.html %}
 ```bash
 mysql -u root -p -s 
 ```
 **En el archivo de opciones**  
 
+{% include code-header.html file='my.ini' %}
 ```ini
 [mysql]
 database=test
@@ -412,13 +414,13 @@ La opción `--dns-srv-name` tiene prioridad sobre la opción `--host` en caso de
 
 **En la línea de comando**  
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 mysql -h 127.0.0.1 -u root -p 
 ```
 **En el archivo de opciones**  
 
-{: .clipboard  }
+{% include code-header.html file='my.ini' %}
 ```ini
 [mysql]
 database=test
@@ -433,13 +435,15 @@ host=localhost
 ### -\-html \| -H
 
 Produce que cada vez que ejecutemos comandos, la salida se agreguen las etiquetas HTML para generar tablas. Usando la instrucción `INTO OUTFILE` podemos crear archivos en html. Ej: 
+
+{% include code-header.html %}
 ```sql
 SELECT num_factura, fecha_factura, item, cantidad FROM facturas;
 INTO OUTFILE 'c:/temp/facturas.txt'
 ```
 
 {:align='center'}
-![img - html-output](assets/html-output.png){:height='250'}
+![img - html-output]({{ page.image_path | relative_url }}/html-output.png){:height='250'}
 
 <a href="#opciones-linea-de-comandos">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -452,12 +456,15 @@ El nombre de usuario de la cuenta de MySQL que se usará para conectarse el serv
 
 **En la línea de comando**  
 
+{% include code-header.html %}
 ```bash
 mysql -h 127.0.0.1 -u root -p 
 ```
+
 **En el archivo de opciones**  
 
-```text
+{% include code-header.html file='my.ini' %}
+```ini
 [mysql]
 database=test
 user=root
@@ -479,19 +486,17 @@ Habilite los comandos **mysql con nombre**. Se permiten comandos de formato larg
 ---
 
 <a name="optionssesion"></a>
-
-## OPCIONES EN LA SESIÓN EN MYSQL
+## Opciones en una sesión interactiva
 
 Ahora que estamos conectado **mysql** envía cada instrucción SQL que emite al servidor para que se ejecute. También hay un conjunto de comandos que el cliente **mysql** interpreta. Para obtener una lista escribimos el comando **help** o el símbolo de interrogación **?** en el prompt.  
 
-
 **Lista de los comandos del cliente:**  
 
-![img - command-session](assets/command-help.png)
+![img - command-session]({{ page.image_path | relative_url }}/command-help.png)
 
 **Traducido**
 
-```text
+```plaintext
 mysql> help
 
 Lista de todos los comandos de MySQL:  
@@ -542,7 +547,7 @@ Borra la instrucción de la entrada actual, quiere decir que se ignorará todo l
 
 ### Ejemplo
 
-![pic](assets/clear-in.png)
+![pic]({{ page.image_path | relative_url }}/clear-in.png)
 
 <a href="#optionssesion-table">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
@@ -551,14 +556,14 @@ Borra la instrucción de la entrada actual, quiere decir que se ignorará todo l
 <a name="c-delimiter"></a>
 ### delimiter
 
-![pic](assets/delimiter_.png)
+![pic]({{ page.image_path | relative_url }}/delimiter_.png)
 
 <a href="#optionssesion-table">![](https://img.shields.io/badge/regresar%20tabla%20opciones-%E2%86%A9-gray?style=for-the-badge&logo=files&logoColor=%23F93)</a>
 
 ---
 
 <a name="optionsprompt"></a>
-## OPCIONES PARA EL PROMPT
+## Opciones para el prompt
 
 EL comando **`prompt`** puede alterar la configuración predeterminada. La cadena para definir el aviso puede contener las siguientes secuencias especiales.  
 
@@ -586,101 +591,101 @@ EL comando **`prompt`** puede alterar la configuración predeterminada. La caden
 <p align="left">
   <a name="count"></a><b><code>\c</code> - count</b><br>
   <code>prompt [\c][\'sql statement\']&#62;&nbsp;</code><br>
-  <img src="assets/count.png" alt="prompt count" width="400">
+  <img src="{{ page.image_path | relative_url }}/count.png" alt="prompt count" width="400">
 </p>
 
 <p align="left">
   <a name="date"></a><b><code>\D</code> - date</b><br>
   <code>prompt [\D][\U]&#62;&nbsp;</code><br>
-  <img src="assets/date.png" alt="prompt date" width="400">
+  <img src="{{ page.image_path | relative_url }}/date.png" alt="prompt date" width="400">
 </p>
 
 <p align="left">
-  <a name="dbs"></a><b><code>\d</code> - database<br>
+  <a name="dbs"></a><b><code>\d</code> - database</b><br>
   <code>prompt \d&#62;&nbsp;</code><br>
-<img src="assets/db.png" alt="prompt database" width="400">
+<img src="{{ page.image_path | relative_url }}/db.png" alt="prompt database" width="400">
 </p>
 
 <p align="left">
   <a name="_host"></a><b><code>\h</code> - host</b><br>
   <code>prompt \h&#62;&nbsp;</code><br>
-<img src="assets/host.png" alt="prompt host" width="400">
+<img src="{{ page.image_path | relative_url }}/host.png" alt="prompt host" width="400">
 </p>
 
 <p align="left">
   <a name="_delimiter"></a><b><code>\l</code> - delimiter</b><br>
   <code>prompt \h\l\h&#62;&nbsp;</code><br>
-  <img src="assets/delimiter.png" alt="prompt delimiter" width="400">
+  <img src="{{ page.image_path | relative_url }}/delimiter.png" alt="prompt delimiter" width="400">
 </p>
 
 <p align="left">
   <a name="minute"></a><b><code>\m</code> - minute</b><br>
   <code>prompt [\r][\m][\s]&#62;&nbsp;</code><br>
-  <img src="assets/minute.png" alt="prompt minute" width="400">
+  <img src="{{ page.image_path | relative_url }}/minute.png" alt="prompt minute" width="400">
 </p>
 
 <p align="left">
   <a name="newline"></a><b><code>\n</code> - new line</b><br>
   <code>prompt (mysql \v)\n[\U]&#62;&nbsp;</code><br>
-  <img src="assets/newline.png" alt="prompt newline" width="400">
+  <img src="{{ page.image_path | relative_url }}/newline.png" alt="prompt newline" width="400">
 </p>
 
 <p align="left">
   <a name="ampm"></a><b><code>\P</code> - pm am</b><br>
   <code>prompt [\r \P]&#62;&nbsp;</code><br>
-  <img src="assets/ampm.png" alt="prompt am pm" width="400">
+  <img src="{{ page.image_path | relative_url }}/ampm.png" alt="prompt am pm" width="400">
 </p>
 
 <p align="left">
   <a name="monthletter"></a><b><code>\O</code> - month</b><br>
   <code>prompt [\O, \Y]&#62;&nbsp;</code><br>
-  <img src="assets/monthletter.png" alt="prompt monthletter" width="400">
+  <img src="{{ page.image_path | relative_url }}/monthletter.png" alt="prompt monthletter" width="400">
 </p>
 
 <p align="left">
   <a name="monthnumeric"></a><b><code>\o</code> - month numeric</b><br>
   <code>prompt [\w, \o, \Y]&#62;&nbsp;</code><br>
-  <img src="assets/monthnumeric.png" alt="prompt monthnumeric" width="400">
+  <img src="{{ page.image_path | relative_url }}/monthnumeric.png" alt="prompt monthnumeric" width="400">
 </p>
 
 <p align="left">
   <a name="port"></a><b><code>\p</code> - port</b><br>
   <code>prompt \'Port\':[\p]&#62;&nbsp;</code><br>
-  <img src="assets/port.png" alt="prompt port" width="400">
+  <img src="{{ page.image_path | relative_url }}/port.png" alt="prompt port" width="400">
 </p>
 
 <p align="left">
   <a name="hourm"></a><b><code>\R</code> - hour 24 - format</b><br>
   <code>prompt [\R\S\s]&#62;&nbsp;</code><br>
-  <img src="assets/hourm.png" alt="prompt hour" width="400">
+  <img src="{{ page.image_path | relative_url }}/hourm.png" alt="prompt hour" width="400">
 </p>
 
 <p align="left">
   <a name="dotcom"></a><b><code>\S</code> - dot - comma</b><br>
   <code>prompt \'Second\'\S\s&#62;&nbsp;</code><br>
-  <img src="assets/dotcommand.png" alt="prompt dotcomma" width="400">
+  <img src="{{ page.image_path | relative_url }}/dotcommand.png" alt="prompt dotcomma" width="400">
 </p>
 
 <p align="left">
   <a name="second"></a><b><code>\s</code> - second</b><br>
   <code>prompt \'Second\'\S\s&#62;&nbsp;</code><br>
-  <img src="assets/second.png" alt="prompt second" width="400">
+  <img src="{{ page.image_path | relative_url }}/second.png" alt="prompt second" width="400">
 </p>
 
 <p align="left">
   <a name="userhost"></a><b><code>\U</code> - usuario & host</b><br>
   <code>prompt (\U)&#62;&nbsp;</code><br>
-  <img src="assets/userhost.png" alt="prompt user host" width="400">
+  <img src="{{ page.image_path | relative_url }}/userhost.png" alt="prompt user host" width="400">
 </p>
 
 <p align="left">
   <a name="version"></a><b><code>\v</code> - version mysql</b><br>
   <code>prompt (mysql \v)\n[\U]&#62;&nbsp;</code><br>
-  <img src="assets/version.png" alt="prompt version" width="400">
+  <img src="{{ page.image_path | relative_url }}/version.png" alt="prompt version" width="400">
 </p>
 
 <p align="left">
   <a name="tab"></a><b><code>\t</code> - tab</b><br>
   <code>prompt [\u\t\d]&#62;&nbsp;</code><br>
-  <img src="assets/tab.png" alt="prompt tab" width="400">
+  <img src="{{ page.image_path | relative_url }}/tab.png" alt="prompt tab" width="400">
 </p>
