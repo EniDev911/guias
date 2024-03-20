@@ -16,7 +16,7 @@
   <div id="header">
   </div><!-- end header -->
   <div class="wrapper">
-    {% include sidebar.html content=page.content %}
+    {% include sidebar.html %}
     <section>
       <div id="title">
         <h1>{{ page.title | default: site.title }}</h1>
@@ -25,7 +25,7 @@
       </div>
       {{ content }}
     </section>
-    {% include sidebar.html %}
+    {% include sidebar.html img='/assets/images/toc.png' content=page.content %}
   </div>
   <script src="{{ '/assets/js/tabs.js' | relative_url }}"></script>
 </body>

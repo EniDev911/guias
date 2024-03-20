@@ -1,8 +1,8 @@
 <!-- The Side Bar -->
 <aside aria-label="Sidebar" id="sidebar" class="sidebar">
-  <div class="sidebar__author">
-    <img src="//robohash.org/1" alt="" class="sidebar__author--picture">
-  </div>
-  {% include toc.html html=include.content class='sidebar__content' %}
+	<div class="sidebar__author">
+		<img src="{{ include.img | relative_url | default: 'https://raw.githubusercontent.com/EniDev911/assets/main/png/logo/logo_con_bg.png' }}" alt="" class="sidebar__author--picture">
+	</div>
+	{% include toc.html html=include.content class='sidebar__content' %}
 </aside>
 <!-- #sidebar -->

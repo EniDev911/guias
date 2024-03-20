@@ -2,6 +2,7 @@
 layout: default
 title: Crear un sitio desde 0
 categories: ["tutorial"]
+image_path: /assets/images/jekyll/comenzar-un-proyecto
 css:
   custom: |
     td.hljs-ln-line { font-size: 17px !important; }
@@ -52,17 +53,17 @@ bundle exec jekyll serve
 
 Por último abrimos el navegador en [`http://127.0.0.1:4000/`](http://127.0.0.1:4000/){:target='_blank' class='link'}:
 
-![img - nuevo_proyecto]({{ page.image_path }}/comenzar-un-proyecto/nuevo_proyecto.png)
+![img - nuevo_proyecto]({{ page.image_path | relative_url }}/nuevo_proyecto.png)
 
 Antes de empezar a ver la estructura de carpeta y contenido de los archivos, es altamente recomendable instalar la siguiente extensión para tener soporte de sintaxis de Liquid. 
 
 Para <abbr title="visual studio code">vs code</abbr>:
 
-![img - extension vs code]({{ page.image_path }}/comenzar-un-proyecto/extension_sintaxis_vscode.png)
+![img - extension vs code]({{ page.image_path | relative_url }}/extension_sintaxis_vscode.png)
 
 Para <abbr title="Sublime Text">ST3 - ST4</abbr>:
 
-![img - extension st]({{ page.image_path }}/comenzar-un-proyecto/extension_sintaxis_sublimetext.png)
+![img - extension st]({{ page.image_path }}/extension_sintaxis_sublimetext.png)
 
 ---
 
@@ -72,7 +73,7 @@ Jekyll utiliza el lenguaje de plantilla [`Liquid`](https://shopify.github.io/liq
 
 Una buena manera de comenzar a ver todo lo relacionado a las plantilla, es un buen momento para desplegar la carpeta `📁 layouts` y abrir el archivo `default.html`:
 
-![img - liquid layout]({{ page.image_path }}/comenzar-un-proyecto/explicacion_liquid.png)
+![img - liquid layout]({{ page.image_path | relative_url }}/explicacion_liquid.png)
 
 Los números indicados se explican a continuación:
 
@@ -87,11 +88,11 @@ Los números indicados se explican a continuación:
 
 Lo que tenemos entonces es nuestro contenedor para las páginas o publicaciones que escribamos en un futuro, cuando hemos visitado el sitio por primera vez tenía algo de contenido como un título y un parrado, que no es más que lo siguiente:
 
-![img - default_index]({{ page.image_path }}/comenzar-un-proyecto/index_root.png)
+![img - default_index]({{ page.image_path | relative_url }}/index_root.png)
 
 Como podemos observar el **front matter** es la zona de un documento para indicar que layout vamos a usar, es un sistema bien simple además podemos definir más datos en formato de **clave** - **valor** y usarlo como más nos acomode, en breve vamos a ver más casos para añadir datos en las páginas por ahora entendemos que nuestra página esta cargando el layout predeterminado que se generó cuando creamos el proyecto:
 
-![img - default_layout_index]({{ page.image_path }}/comenzar-un-proyecto/front_matter_index.png)
+![img - default_layout_index]({{ page.image_path | relative_url }}/front_matter_index.png)
 
 ---
 
@@ -125,4 +126,4 @@ Y dentro vamos a colocar una navegación simple como la siguiente:
 
 Ya se que puede resultar complicado entender pero vamos a ilustrar mejor este código vamos explicar por parte:
 
-![img - navigation liquid]({{ page.image_path }}/comenzar-un-proyecto/navigation_liquid.png)
+![img - navigation liquid]({{ page.image_path | relative_url }}/navigation_liquid.png)
