@@ -65,7 +65,7 @@ title: EniDev
 <!-- Herramientas -->
 <p align="center">
     <!-- MermaidJS -->
-    <a href="{{ '/mermaidjs' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
+    <a href="{{ '/docs/mermaid.html' | relative_url }}"><kbd><img src="{{ '/assets/images/logos/mermaid.svg' | relative_url }}" height="80"></kbd></a>
 </p>
 
 <br>
