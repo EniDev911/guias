@@ -57,8 +57,14 @@ defaults:
       type: mysql
     values:
       image_path: /assets/images/mysql/
+      categories: ["guía"]
   -
     scope:
       type: jekyll
     values:
       image_path: /assets/images/jekyll/
+  -
+    scope:
+      type: python
+    values:
+      categories: ["guía"]

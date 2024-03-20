@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Formas de importar CSV
+image_path: '/assets/images/python/google-colabs'
 css:
   custom: |
     strong{color: #fc7}
@@ -16,7 +17,7 @@ css:
 **Colab** (abreviatura de Collaboratory) es la plataforma gratuita de Google que permite a los usuarios codificar en Python. Es un servicio en la nube basado en Jupyter Notebook, proporcionando por Google. Esta plataforma nos permite entrenar los modelos de Machine Learning directamente en la nube y todo de forma gratuita. Google Colab hace lo mismo que Jupyter Notebook y un poco más, es decir, puede usar GPU y TPU de forma gratuita. Alguna de las ventajas de Google Colab incluyen la instalación rápida y el uso compartido en tiempo real de Notebook entre usuarios. Sin embargo, cargar un archivo **CSV** requiere escribir algunas líneas adicionales de códigos. En esta guía, analizaremos tres formas diferentes de cargar un archivo CSV y almacenarlo en un marco de datos de **pandas**. Para comenzar, iniciamos sesión en nuestra cuenta de Google y vamos a [`https://colab.research.google.com`](https://colab.research.google.com){:target='_blank' class='link'} luego abrimos un nuevo Notebook:
 
 
-![img - nuevo notebook](assets/nuevo_notebook.png){:class='center'}
+![img - nuevo notebook]({{ page.image_path | relative_url }}/nuevo_notebook.png ){:class='center'}
 
 ---
 
@@ -24,8 +25,8 @@ css:
 
 Para cargar el archivo desde nuestro disco, debemos anticipar el siguiente código en la primera celda y lo ejecutamos:
 
-{: .clipboard }
-```py
+{% include code-header.html %}
+```python
 from google.colab import files
 
 uploaded = files.upload()
@@ -33,12 +34,12 @@ uploaded = files.upload()
 
 Al ejecutarlo se nos habilitará el botón para cargar el archivo como se muestra a continuación:
 
-![img - nuevo notebook](assets/file_upload.png)
+![img - file upload]({{ page.image_path | relative_url }}/file_upload.png)
 
 Luego de seleccionar el archivo CSV del disco local, en un segundo bloque escriba el siguiente fragmento de código para importarlo en un marco de datos de pandas:
 
-{: .clipboard }
-```py
+{% include code-header.html %}
+```python
 import pandas as pd
 import io
  
@@ -52,8 +53,8 @@ print(df)
 
 Es la forma más fácil de cargar un archivo CSV en Colab. Para esto, nos dirigimos al repositorio de Github y luego le hacemos clic en *Ver sin procesar*. Copiamos el enlace al conjunto de datos sin procesar y lo pasamos como parámetro a `read_csv()` en pandas para obtener el marco de datos:
 
-{: .clipboard }
-```py
+{% include code-header.html %}
+```python
 import pandas as pd
 
 url = 'copied_raw_github_link'
