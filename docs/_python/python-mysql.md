@@ -67,7 +67,7 @@ Este método devuelve un objeto [`MySQLCursor()`](https://dev.mysql.com/doc/conn
 
 Para crear un cursor, se usa el método `.cursor()` de un objeto de conexión:
 
-{: .clipboard }
+{% include code-header.html %}
 ```py
 import mysql.connector
 
@@ -77,7 +77,7 @@ cursor = cnx.cursor()
 
 También es posible crear una instancia de un cursor pasando un objeto `MySQLConnection` a la clase `MySQLCursor`:
 
-{: .clipboard }
+{% include code-header.html %}
 ```py
 import mysql.connector
 from mysql.connector.cursor import MySQLCursor
@@ -103,8 +103,10 @@ Si el parámetro `multi` está configurado en `True`, el método `.execute()` pu
 
 El siguiente ejemplo realiza dos operaciones en una sola operación del método `execute()` y muestra el resultado de cada declaración:
 
-{% capture ej_multi %}
-{% highlight python %}
+{% tabs ex_python_multi %}
+{% tab ex_python_multi python %}
+{% include code-header.html %}
+```python
 from mysql.connector import MySQLConnection
 
 cnx = MySQLConnection(user="user", password="pass_user", database="test_db")
@@ -115,27 +117,20 @@ for result in cursor.execute("select 1; select now(); select 2;", multi=True):
     if result.with_rows:
         print(f"Resultados producidos por la declaración '{result.statement}': ")
         print(result.fetchall())
-{% endhighlight %}
-{% endcapture %}
-
-{% capture result %}
-{% highlight shell %}
+```
+{% endtab %}
+{% tab ex_python_multi resultado %}
+```text
 Resultados producidos por la declaración 'select 1':
 [(1,)]
 Resultados producidos por la declaración 'select now()':
 [(datetime.datetime(2023, 11, 9, 14, 17, 10),)]
 Resultados producidos por la declaración 'select 2':
 [(2,)]
-{% endhighlight %}
-{% endcapture %}
+```
+{% endtab %}
+{% endtabs %}
 
-{% include tabs.html
-	id='ej_multi'
-	tab_1='ej_multi.py'
-	tab_2='Resultado'
-	bloque_1=ej_multi
-	bloque_normal=result
-%}
 
 ---
 
@@ -158,8 +153,10 @@ El método recupera todas (o todas las filas restantes) de un conjunto de result
 
 El siguiente ejemplo muestra como podemos recuperar las dos primeras filas de un conjunto de resultados y luego recuperar el resto de filas restantes:
 
-{% capture ej_fetchall %}
-{% highlight python %}
+{% tabs ex_fetchall %}
+{% tab ex_fetchall python %}
+{% include code-header.html %}
+```python
 from mysql.connector import MySQLConnection
 
 cnx = MySQLConnection(user="root", password="root", database="mysql")
@@ -171,23 +168,16 @@ remaining_rows = cursor.fetchall()
 
 print(head_rows)
 print(remaining_rows)
-{% endhighlight %}
-{% endcapture %}
-
-{% capture result_ej_fetchall %}
-{% highlight shell%}
+```
+{% endtab %}
+{% tab ex_fetchall resultado %}
+```text
 [('marco',), ('mysql.infoschema',)]
 [('mysql.session',), ('mysql.sys',), ('root',)]
-{% endhighlight %}
-{% endcapture %}
+```
+{% endtab %}
+{% endtabs %}
 
-{% include tabs.html
-	id='ej_fetchall'
-	tab_1='ej_fetchall.py'
-	tab_2='Resultado'
-	bloque_1=ej_fetchall
-	bloque_normal=result_ej_fetchall
-%}
 
 > **Nota**: debemos recuperar todas las filas de la consulta actual antes de ejecutar nuevas sentencias utilizando la misma conexión.
 
