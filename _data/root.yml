@@ -7,7 +7,7 @@ db:
     link: /docs/mysql.html
   - name: SQLite3
     logo: /assets/images/logos/sqlite.ico
-    link: /sqlite
+    link: /docs/sqlite.html
 programming:
   - name: ruby
     logo: /assets/images/logos/ruby.png
