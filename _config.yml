@@ -36,6 +36,8 @@ collections:
     output: true
   ruby:
     output: true
+  sqlite:
+    output: true
   vscode:
     output: true
   mermaid:
