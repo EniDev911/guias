@@ -3,7 +3,6 @@ layout: default
 title: "Diccionarios"
 ---
 
-
 ## ¿Qué es un Diccionario de datos?
 
 Un diccionario es una estructura de datos y un tipo de dato en Python con características especiales que nos permite almacenar cualquier tipo de valor como enteros, cadenas, listas e incluso otras funciones.  
