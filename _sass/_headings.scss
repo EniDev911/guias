@@ -4,13 +4,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
 h1 {
-	font-size: 18px;
+	font-size: 27px;
 	text-align: center;
 	line-height: 36px;
 	font-family: 'Scope One', serif;
 }
-h2 { font-size: 17px; }
-h3 { font-size: 16px; }
+h2 { font-size: 26px; }
+h3 { font-size: 20px; }
 
 // MARGIN AND PADDING
 h1, h2, h3, h4, h5, h6 {
@@ -30,12 +30,12 @@ h2 {
 
 @media (min-width: 768px) {
 	h1 { font-size: 28px;}
-	h2 { font-size: 25px; }
+	h2 { font-size: 28px; }
 	h3 { font-size: 22px; }
 }
 
 @media (min-width: 992px) {
 	h1 { font-size: 38px;}
-	h2 { font-size: 30px; }
+	h2 { font-size: 32px; }
 	h3 { font-size: 24px; }
 }
