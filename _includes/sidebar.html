@@ -1,7 +1,7 @@
 <!-- The Side Bar -->
 <aside aria-label="Sidebar" id="sidebar" class="sidebar">
 	<div class="sidebar__author">
-		<a href="{{ include.href | relative_url | default: '/'}}">
+		<a href="{{ include.href | default: '/' | relative_url }}">
 			<img src="{{ include.img | relative_url | default: 'https://raw.githubusercontent.com/EniDev911/assets/main/png/logo/logo_con_bg.png' }}" alt="" class="sidebar__author--picture">
 		</a>
 	</div>
