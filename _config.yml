@@ -50,3 +50,8 @@ defaults:
       type: mysql
     values:
       image_path: /assets/images/mysql/
+  -
+    scope:
+      type: jekyll
+    values:
+      image_path: /assets/images/jekyll/
