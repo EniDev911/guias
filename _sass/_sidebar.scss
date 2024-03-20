@@ -3,17 +3,17 @@
   overflow-x: auto;
   min-height: 100vh;
   padding-top: 20px;
-  flex-basis: 25rem;
+  flex-basis: 0;
   flex-grow: 1;
   display: flex;
-  // display: none;
+  display: none;
   flex-direction: column;
   top: 0;
-  border: 1px solid red;
+  // border: 1px solid red;
   &__content {
     display: flex;
     flex-direction: column;
-    border: 1px solid green;
+    // border: 1px solid green;
     height: 100%;
     font-size: 14px;
     list-style: none;
@@ -33,5 +33,12 @@
   &--picture {
     height: 100%;
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-basis: 15rem;
   }
 }

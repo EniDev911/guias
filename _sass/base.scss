@@ -25,8 +25,9 @@ body {
   padding:0px 0 20px 0px;
   margin: 0px;
   font-family: 'EncodeSansRegular', sans-serif;
-  color:#f0e7d5;
   font-weight: normal;
+  font-size: 18px;
+  color: $color;
   background: $background;
 }
 
@@ -52,9 +53,7 @@ kbd {
 }
 
 p {
-  color: $color;
   font-family: 'EncodeSansRegular', sans-serif;
-  font-size: 18px;
   font-weight: normal;
   letter-spacing: .5px;
 }

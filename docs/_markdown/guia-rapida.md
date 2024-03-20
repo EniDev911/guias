@@ -173,6 +173,25 @@ otras.</p>
 {% endtab %}
 {% endtabs %}
 
+
+---
+
+## Listas de definiciones
+
+Muchos procesadores de Markdown también aceptan listas de definiciones, que se componen de un **término** y su correspondiente **definición**
+
+Para crear una lista de definiciones tendremos que agregar un **término** en la primera línea y, en la siguiente, **dos puntos** (`:`) seguidos de un **espacio** y la **definición** asociada al término:
+
+{% include code-header.html %}
+```markdown
+Término 1
+: Esta es la definición del término 1
+
+Término 2
+: Esta es la primera definición del término 2
+: Esta es la segunda definición del término 2
+```
+
 ---
 
 ## Imágenes
