@@ -3,6 +3,12 @@ layout: default
 title: Jekyll
 ---
 
+
+{% assign plugins = site.jekyll | where: "categories", "plugin" %}
+
+<button id="plugin" class="badge" style="background: salmon; margin: 10px">Plugins</button>
+
+
 <table>
 	<thead>
 		<th>Tipo</th>
@@ -17,3 +23,11 @@ title: Jekyll
 		{% endfor %}
 	</tbody>
 </table>
+
+
+<script>
+	const btn = document.getElementById("plugin");
+	btn.addEventListener('click', () => {
+
+	})
+</script>

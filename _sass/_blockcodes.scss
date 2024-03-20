@@ -19,16 +19,21 @@ code.language-plaintext {
 }
 
 .highlight > *,
-code[class*='lang'] > * {
+code[class*='language'],
+code[class*='language'] > * {
 	tab-size: 2;
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 16px;
+  color: #c9d1d9;
 }
 
 pre[class^=language] {
-  font-size: 16px;
   border: 1px solid #ccc8;
   font-family: 'JetBrains Mono', monospace !important;
   padding: 12px;
   margin: 0 0 30px 0;
+}
+
+code.language-mysql:before {
+  content: "mysql> "
 }

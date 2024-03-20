@@ -1,16 +1,12 @@
 ---
 layout: default
 title: Personalizar el prompt del cliente mysql
+categories: ["guía"]
+image_path: '/assets/images/mysql/personalizar-prompt'
 css:
   custom: |-
     strong {color: #dd6}
 ---
-
-[comment]: <> (Author: Marco Contreras Herrera)
-[comment]: <> (Email: enidev911@gmail.com)
-
-[![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
-
 
 ## ¿Qué es el prompt?
 
@@ -23,14 +19,14 @@ Por ejemplo, mediante la variable **MYSQL_PS1**
 
 **Windows-CMD**:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 set MYSQL_PS1=[(\u@\h)][(\d)]^> 
 ```
 
 **Linux-bash**:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 MYSQL_PS1='[(\u@\h)][(\d)]>' 
 ```
@@ -46,19 +42,18 @@ indicamos al cliente de mysql que queremos que nos muestre el usuario con el que
 Ejemplo en el símbolo de sistema de Windows:
 
 {:align='center'}
-![img set variables](assets/01.png){:height='450'}
+![img set variables]({{ page.image_path | relative_url }}/01.png){:height='450'}
 
 Como resultados obtendremos lo siguiente cuando nos conectemos:  
 
 {:align='center'}
-![img - mysql prompt](assets/02.png){:height='450'}
+![img - mysql prompt]({{ page.image_path | relative_url }}/02.png){:height='450'}
 
 >**Nota**: Al establecer el valor de la variable mediante el comando **`set`** solo estará disponible en esa sesión o instancia de la ventana de CMD.  
 
-
 Si queremos establecer el valor a la variable de forma permanente en Windows lo hacemos por medio del comando **setx**:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 setx MYSQL_PS1 "[(\u@\h)][(\d)]> "
 ```
@@ -70,27 +65,31 @@ setx MYSQL_PS1 "[(\u@\h)][(\d)]> "
 Una vez dentro de la sesión interactiva podemos cambiar el prompt usando el comando **prompt** o el método abreviado **\R**.  
 
 
-{: .clipboard }
-```bash
+{% include code-header.html %}
+```mysql
 prompt [✨\u |💾 \d]> 
 ```
+{: .language-mysql }
 
-{: .clipboard }
-```bash
+{% include code-header.html %}
+```mysql
 prompt 📅 (\w-\o-\Y)> 
 ```
+{: .language-mysql }
 
-{: .clipboard }
-```bash
+{% include code-header.html %}
+```mysql
 prompt (🐬 mysql \v)\n🔌->(\d)>
 ```
+{: .language-mysql }
 
-{: .clipboard }
-```bash
+{% include code-header.html %}
+```mysql
 prompt [\'contador de consulta\'(\c)]> 
 ```
+{: .language-mysql }
 
-![img - set prompt](assets/04.png)
+![img - set prompt]({{ page.image_path | relative_url }}/04.png)
 
 > **OJO**: El que se muestre o no los símbolos de emoji, dependerá de la fuente usada para el terminal.
 
@@ -105,7 +104,7 @@ Editamos el archivo de opciones de MySQL/MariaDB
 
 Modifique el path según su instalación:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 sudo nano /etc/mysql/my.cnf
 ```
@@ -114,22 +113,18 @@ sudo nano /etc/mysql/my.cnf
 
 Modifique el path según su instalación:
 
-{: .clipboard }
-```cmd
-notepad.exe C:\MySQL_8\my.ini
+{% include code-header.html %}
+```bat
+notepad C:\MySQL_8\my.ini
 ```
 
 Buscamos la sección mysql y añadimos lo siguiente:  
 
-{: .clipboard }
+{% include code-header.html file='my.ini' %}
 ```ini
 [mysql]
 prompt=[✨\u |💾 \d]>\_
 ```
 
 {:align='center'}
-![img - set archivo de opciones](assets/03.png){:height='350'}
-
-
-
-
+![img - set archivo de opciones]({{ page.image_path | relative_url }}/03.png){:height='350'}

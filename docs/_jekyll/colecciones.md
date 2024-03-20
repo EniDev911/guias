@@ -2,6 +2,7 @@
 layout: default
 title: Colecciones en Jekyll
 categories: ["guía"]
+type: "guia"
 ---
 
 

@@ -3,9 +3,6 @@ layout: default
 title: Guía general resumida MySQL
 ---
 
-[comment]: <> (Author: Marco Contreras Herrera)
-[comment]: <> (Email: enidev911@gmail.com)
-
 
 <a name="top"></a>
 
@@ -57,13 +54,12 @@ CREATE DATABASE <<nombre-base-de-datos>>;
 ```
 > Con la sintaxis anterior no tendríamos ningún problema en crearla siempre y cuando no exista anteriormente. **Para evitar tener un error como *`Can't create database 'nombre-base-de-datos'; database exists`*  usamos la sentencia `IF NOT EXISTS`**. Los guiones no son permitidos para utilizarlos en nombres así que la nomenclatura anterior no sería correcta.
 
-<a href="#top">![](https://img.shields.io/badge/Volver%20al%20listado-%E2%86%A9-orange?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)</a> 
-
 ---
 
 <a name="crear-base-de-datos-con-if-not-exists"></a> 
 ### Crear una base de datos con if not exists
 
+{% include code-header.html %}
 ```sql
 CREATE DATABASE IF NOT EXISTS <<nombre-base-de-datos>>;
 ```
@@ -77,6 +73,7 @@ CREATE DATABASE IF NOT EXISTS <<nombre-base-de-datos>>;
 
 Esta sería una manera más elegante de **crear una base de datos**. Aún asi podemos crearla definiendo la codificación con **`CHARACTER SET`** y **`COLLATE`** (colación):  
 
+{% include code-header.html %}
 ```sql
 CREATE DATABASE IF NOT EXISTS <<nombre-base-de-datos>> 
 CHARACTER SET utf8 COLLATE utf8_general_ci;

@@ -26,6 +26,8 @@ collections:
     output: true
   postgres:
     output: true
+  python:
+    output: true
   javascript:
     output: true
   mysql:
@@ -35,6 +37,8 @@ collections:
   ruby:
     output: true
   vscode:
+    output: true
+  mermaid:
     output: true
 
 collections_dir: docs

@@ -1,6 +1,5 @@
 .sidebar {
   background-color: #111;
-  overflow-x: auto;
   min-height: 100vh;
   padding-top: 20px;
   flex-basis: 0;
@@ -8,17 +7,19 @@
   display: flex;
   display: none;
   flex-direction: column;
-  top: 0;
   // border: 1px solid red;
   &__content {
     display: flex;
     flex-direction: column;
-    // border: 1px solid green;
-    height: 100%;
-    font-size: 14px;
+    overflow-x: auto;
+    height: auto;
+    width: 90%;
+    padding: 0;
+    margin: 10px auto;
+    font-size: 13px;
     list-style: none;
     li {
-      margin: 8px 0;
+      margin: 0 0 8px 0;
     }
   }
 }
@@ -29,7 +30,6 @@
   border-radius: 50%;
   overflow: hidden;
   align-self: center;
-  position: relative;
   &--picture {
     height: 100%;
     width: 100%;

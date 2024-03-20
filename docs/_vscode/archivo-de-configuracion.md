@@ -22,18 +22,24 @@ Si prefiere trabajar directamente siempre sobre el archivo settings.json, podemo
 
 {% include code-header.html file='settings.json' %}
 ```json
-	"workbench.settings.editor": "json"
+"workbench.settings.editor": "json"
 ```
 
 ### Formato
 
 {% include code-header.html file='settings.json' %}
 ```json
-{
-	"editor.formatOnPaste": true, 
-	"editor.formatOnSave": true,
-	"editor.formatOnType": true,
-}
+"editor.formatOnPaste": true
+```
+
+{% include code-header.html file='settings.json' %}
+```json
+"editor.formatOnSave": true
+```
+
+{% include code-header.html file='settings.json' %}
+```json
+"editor.formatOnType": true
 ```
 
 ### Fuentes

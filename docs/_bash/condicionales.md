@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Estructuras condicionales"
+categories: ["guía"]
 css:
   custom: |-
     td { width: fit-content }
@@ -76,6 +77,7 @@ touch comparar-cadenas.sh && chmod +x $_
 
 Comparar dos cadenas:
 
+{% include code-header.html %}
 ```bash
 #!/bin/bash
 
@@ -89,7 +91,6 @@ else
 	echo "Las cadenas no son iguales"
 fi
 ```
-
 
 Como podemos observar `$VAR1` no es igual a `$VAR2` a pesar de que tengan el mismo texto, como podemos imaginar es porque se distingue mayúsculas de minúsculas.
 
@@ -132,8 +133,10 @@ fi
 
 Ahora si quisieramos evaluar en la misma estructura si es un archivo, directorio o no existe, lo podemos lograr añadiendo una declaración más en el bloque `if / elif / else`:
 
-{% capture ej_if__elif_file_dir %}
-{% highlight shell %}
+{% tabs elif_ex %}
+{% tab elif_ex bash %}
+{% include code-header.html %}
+```bash
 #!/bin/bash
 foo="foobar"
 if [[ -f $foo ]]
@@ -145,53 +148,35 @@ then
 else
 	echo "No existe"
 fi
-{% endhighlight %}
-<enidev-button 
-	data-btn='compiler' 
-	data-lang='bash'
-	data-ext='sh'>
-</enidev-button>
-{% endcapture %}
-{% capture result_ej_if__elif_file_dir %}
-{% highlight shell %}
+```
+{% endtab %}
+{% tab elif_ex resultado %}
+```text
 Se creo el archivo: test.txt
-{% endhighlight %}
-{% endcapture %}
+```
+{% endtab %}
+{% endtabs %}
 
-{% include tabs.html
-	id='ej_if__elif_file_dir'
-	tab_1='script.sh'
-	tab_2='Resultado'
-	bloque_1=ej_if__elif_file_dir
-	bloque_normal=result_ej_if__elif_file_dir
-%}
 
 ## Más ejemplos practicos
 
 Conectarse con servidor mediante una clave ssh si esta clave existe:
 
-{% capture ej_if_ssh %}
-{% highlight shell %}
-#!/bin/bash
-
+{% tabs ssh_ex %}
+{% tab ssh_ex bash %}
+{% include code-header.html %}
+```bash
 eval $(ssh-agent -s)
 if [[ -f "$HOME/.ssh/github_rsa" ]]
 then
 	ssh-add "$HOME/.ssh/github_rsa"
 fi
-{% endhighlight %}
-{% endcapture %}
-{% capture result_ej_if_ssh %}
-{% highlight shell %}
+```
+{% endtab %}
+{% tab ssh_ex resultado %}
+```text
 Agent pid 834
 Identity added: /home/.ssh/github_rsa (enidev911@email.com)
-{% endhighlight %}
-{% endcapture %}
-
-{% include tabs.html
-	id='ej_ej_if_ssh'
-	tab_1='script.sh'
-	tab_2='Resultado'
-	bloque_1=ej_if_ssh
-	bloque_normal=result_ej_if_ssh
-%}
+```
+{% endtab %}
+{% endtabs %}

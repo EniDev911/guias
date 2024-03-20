@@ -14,7 +14,7 @@ programming:
     link: /docs/ruby.html
   - name: python
     logo: /assets/images/logos/python.png
-    link: /python
+    link: /docs/python.html
   - name: javascript
     logo: /assets/images/logos/javascript.png
     link: /docs/javascript.html

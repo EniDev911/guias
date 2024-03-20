@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Bash - Manipular archivos y carpetas"
+categories: ["guía"]
 css:
   custom: |-
       h3 { padding: 0 9px; border-left: 3px solid #f2f5a6; background: #181918; display: inline-block; margin-top: 6px; color: lightgreen }

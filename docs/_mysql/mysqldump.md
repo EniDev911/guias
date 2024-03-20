@@ -1,31 +1,15 @@
 ---
 layout: default
 title: Exportar e Importar bases de datos con mysqldump
+categories: ["guía"]
+image_path: '/assets/images/mysql/mysqldump'
 ---
 
-[comment]: <> (Author: Marco Contreras Herrera)
-[comment]: <> (Email: enidev911@gmail.com)
-
-
-[![badge](https://img.shields.io/badge/mysql-%23000.svg?logo=mysql&logoColor=white)](../)
-
-### CONTENIDO
-
-- [Objetivo y descripción](#intro)
-- [Requerimientos](#requerimientos)
-- [Uso básico](#uso-basico)
-- [Opciones](#opciones-mysqldump)
-- [Exportar](#exportar)
-- [Importar](#importar)
-
-
-<a name='intro'></a>
 ## Objetivo y Descripción
 
 Si bien los clientes de base de datos ( Navycat, MySQLWorkbrench, etc… ) son excelentes herramientas que facilitan la gestión de bases de datos, no siempre tendremos la opción de utilizarlos, por lo que es necesario saber hacer la mayoría de tareas más comunes desde la línea de comandos. Es por eso que en esta guía vamos a ver el **proceso para exportar e importar una base de datos MySQL desde linea de comandos.** Vamos a conocer algunas utilidades incluidas junto al servidor de **MySQL**.
 
 
-<a name='requerimientos'></a>
 ## Requerimientos
 
 - [MySQL](http://www.mysql.com/) - Tener instalado o en su lugar (*XAMP, MAMP, LAMP, etc*)
@@ -33,7 +17,6 @@ Si bien los clientes de base de datos ( Navycat, MySQLWorkbrench, etc… ) son e
     Su principal uso es para realizar copias de seguridad de las bases de datos administradas.
 
 
-<a name='uso-basico'></a>
 ## Uso básico
 
 Tres formas básicas de invocar a **mysqldump** son posibles:
@@ -42,13 +25,13 @@ Tres formas básicas de invocar a **mysqldump** son posibles:
 
 Indicando su nombre, y opcionalmente una o más tablas de la misma base de datos. Si no se indican tablas, se respaldan todas.
 
-```bash
+```text
 mysqldump [opciones] nombre_bd [nombre_tabla nombre_tabla2 ...] > respaldo.sql
 ```
 
 **Demostración**  
 
-![gif](img/mysqldump-bkp-1.gif)
+![gif]({{ page.image_path | relative_url }}/mysqldump-bkp-1.gif)
 
 ---
 
@@ -56,7 +39,7 @@ mysqldump [opciones] nombre_bd [nombre_tabla nombre_tabla2 ...] > respaldo.sql
 
 Respaldar bases de datos de forma completa, quiere decir, que no se pueden indicar tablas individuales de esta manera.
 
-```bash
+```text
 mysqldump [opciones] --databases nombre_bd1 nombrebd2 > respaldo.sql
 ```
 
@@ -66,21 +49,21 @@ mysqldump [opciones] --databases nombre_bd1 nombrebd2 > respaldo.sql
 
 Respalda de forma completa todas las bases de datos del servidor MySQL de forma completa, no se pueden indicar tablas individuales de esta manera.
 
-```bash
+```text
 mysqldump [opciones] --all-databases > respaldo.sql
 ```
 
 **Demostración**  
 
-![gif](img/respaldo_general.gif)
+![gif]({{ page.image_path | relative_url }}/respaldo_general.gif)
 
 ---
 
-<a name="opciones-mysqldump"></a>
 ## Opciones más comunes
 
 **mysqldump** es una herramienta con decenas de opciones, para verlas todas podemos utilizar el siguiente comando:  
 
+{% include code-header.html %}
 ```bash
 mysqldump --help
 ```
@@ -115,7 +98,6 @@ Opciones de conexión:
 
 ---
 
-<a name='exportar'></a>
 ## Exportar
 
 
@@ -140,7 +122,7 @@ Una vez que la ejecución del comando termine, se creará el archivo **archivo.s
 
 **Ejemplo:**
 
-![export](img/01_mysqldump_export.png)
+![export]({{ page.image_path | relative_url }}/01_mysqldump_export.png)
 
 Generando un archivo similar a este según sus bases de datos que quieran exportar: 
 
@@ -204,19 +186,20 @@ mysqldump -h ip_servidor -u usuario_bd -p --no-create-info=TRUE base_de_datos > 
 
 ---
 
-<a name="importar"></a>
 ## Importar
 
 Para importar una base de datos desde un archivo **`.sql`** tenemos dos caminos.
 
 El más sencillo consiste en ejecutar el siguiente comando en la terminal (asegurándonos que la base de datos exista).
-```
-$ mysql -u usuario_mysql -p base_de_datos < archivo.sql
+
+```text
+mysql -u usuario_mysql -p base_de_datos < archivo.sql
 ```
 Ejemplo: 
 
 Suponiendo que tengamos el siguiente script llamado **base_datos.sql** y previamente tengamos creada una base de datos llamada **importdb**
 
+{% include code-header.html file='base_datos.sql' %}
 ```sql
 CREATE TABLE IF NOT EXISTS contactos (
     id int(11) NOT NULL AUTO_INCREMENT,
@@ -228,37 +211,49 @@ CREATE TABLE IF NOT EXISTS contactos (
 
 **CMD:**
 
-![pic](img/02_mysql_import.png)
+![pic]({{ page.image_path | relative_url }}/02_mysql_import.png)
 
 Obtendriamos lo siguiente al revisar:
 
-![pic](img/03_mysql_showimport.png)
+![pic]({{ page.image_path | relative_url }}/03_mysql_showimport.png)
 
 O bien podemos seguir estos pasos:
 
 1. Nos conectamos a la base de datos a donde vamos a importar.
+
 ```bash
 mysql -h ip_servidor -u usuario -p
 ```
+
+{: start="2" }
 2. Una vez dentro de la consola MySQL, si la base de datos no existe, la creamos con:
+
 ```sql
 CREATE DATABASE base_datos;
 ```
+
+{: start="3" }
 3. En cualquier caso indicamos la base de datos a usar:
+
+{% include code-header.html %}
 ```sql
 USE base_datos;
 ```
+
+{: start="4" }
 4. Y ahora, el proceso de importación, que sería tan sencillo como ejecutar:
-```txt
+
+{% include code-header.html %}
+```sql
 source /home/usuario/archivo.sql
 ```
 
 **Resultado**  
 
 <p align = 'center'>
-  <img src = 'img/04_mysql_showimport.png' width = "900" height="550"/>
+  <img src = '{{ page.image_path | relative_url }}/04_mysql_showimport.png' width = "900" height="550"/>
 </p>
 
 <p align = 'center'>
-  <img src = 'img/05_mysql_showimport.png' width="900" height= "550"/>
+  <img src = '{{ page.image_path | relative_url }}/05_mysql_showimport.png' width="900" height= "550"/>
 </p>

@@ -76,3 +76,36 @@ Los filtros cambian la salida de un objeto de Liquid. Se utilizan dentro de una 
   '&lt;p&gt;Lorem ipsum...&lt;/p&gt;' 
 {% endcomment %}{% endraw %}
 ```
+
+---
+
+## Ordenamiento
+
+### sort
+
+Primero ordenaremos una colección o lista como las publicaciones y luego la mostraremos con un bucle for:
+
+{% include code-header.html %}
+```liquid
+{% raw %}{% assign sorted-posts = site.posts | sort: 'title' %}
+{% for post in sorted-posts limit: 5 %}
+  <li>{{post.title}}</li>
+{% endfor %}{% endraw %}
+```
+
+### sort | reverse
+
+Podemos organizarlo en orden inverso de los títulos
+
+
+{% include code-header.html %}
+```liquid
+{% raw %}{% assign sorted-posts = site.posts | sort: 'title' | reverse %}
+{% for post in sorted-posts limit: 5 %}
+  <li>{{post.title}}</li>
+{% endfor %}{% endraw %}
+```
+
+### where
+
+Muchas veces queremos que las publicaciones se dividan en diferentes categorías y se muestren como una lista

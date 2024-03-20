@@ -3,9 +3,10 @@
 <head>
   {% seo %}
   {% include head.html %}
-
   <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/scrolls-anchors.js' | relative_url }}"></script>
+  <script src=".{{ '/assets/js/photoswipe-lightbox.umd.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/photoswipe.umd.min.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/photoswipe.css' | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <style>
     {{ page.css.custom }}
@@ -28,5 +29,14 @@
     {% include sidebar.html img='/assets/images/toc.png' content=page.content %}
   </div>
   <script src="{{ '/assets/js/tabs.js' | relative_url }}"></script>
+  <script type="text/javascript">
+    var lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a:has(img)',  //avoid other links default a
+        // dynamic import is not supported in UMD version
+        pswpModule: PhotoSwipe
+      });
+    lightbox.init();
+  </script>
 </body>
 </html>
