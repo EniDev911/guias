@@ -51,6 +51,7 @@ defaults:
       type: postgres
     values:
       image_path: /assets/images/postgres/
+      categories: ["guía"]
   -
     scope:
       type: mysql

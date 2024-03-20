@@ -1,9 +1,7 @@
 ---
 layout: default
 title: RowID - Sqlite3
-css:
-  custom: |-
-    strong { color: #ff8; }
+categories: ["guía"]
 ---
 
 
@@ -11,7 +9,7 @@ Cada vez que se crea una tabla en SQLite de forma predeterminada se crea un camp
 
 Por ejemplo, si creamos una nueva tabla para almacenar links:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE TABLE links (
 	name TEXT,
@@ -21,7 +19,7 @@ CREATE TABLE links (
 
 Y agregamos algunos registros para ver el resultado:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 INSERT INTO links VALUES ('google', 'https//google.com');
 INSERT INTO links VALUES ('github', 'https//github.com');
@@ -29,17 +27,10 @@ INSERT INTO links VALUES ('github', 'https//github.com');
 
 Como resultado, SQLite crea un **ID** de fila que comienza en 1 y aumenta en uno con cada fila agregada. Para mostrar el campo debemos incluirlo en la consulta de forma implícita:
 
-{: .clipboard }
-<div style="position: relative;">
-{% highlight sql %}
+{% include code-header.html %}
+```sql
 SELECT rowid, * FROM links;
-{% endhighlight %}
-<enidev-button 
-	data-btn="compiler" 
-	data-lang="sqlite" 
-	data-ext="sql"
-	data-content="{{ site.data.examples.sqlite3.rowid_example_1 }}"></enidev-button>
-</div>
+```
 
 Como podemos observar, se encuentras las respectivas filas identificadas por su **rowid**, sin embargo hay situaciones que para optimizar los espacios de almacenamientos y las velocidades en las ejecuciones de las consultas podemos crear tablas sin el campo **rowid**.
 
@@ -49,7 +40,7 @@ Como podemos observar, se encuentras las respectivas filas identificadas por su 
 
 Para forzar a SQLite que no cree el campo **rowid** añadimos al final de la instrucción la cláusula `WITHOUT ROWID` como se muestra a continuación:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE TABLE links (
 	name text primary key,

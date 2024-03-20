@@ -1,19 +1,4 @@
 ---
-layout: default
-title: Postgres
+layout: main
+collection: postgres
 ---
-
-<table>
-	<thead>
-		<th>N°</th>
-		<th>Guía</th>
-	</thead>
-	<tbody>
-		{% for doc in site.postgres %}
-		<tr onclick="window.open('{{ doc.url | relative_url }}', '_parent')" style="cursor:pointer">
-			<td>{{ forloop.index }}</td>
-			<td>{{ doc.title }}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
