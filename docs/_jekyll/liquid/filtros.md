@@ -97,7 +97,6 @@ Primero ordenaremos una colección o lista como las publicaciones y luego la mos
 
 Podemos organizarlo en orden inverso de los títulos
 
-
 {% include code-header.html %}
 ```liquid
 {% raw %}{% assign sorted-posts = site.posts | sort: 'title' | reverse %}
@@ -106,6 +105,30 @@ Podemos organizarlo en orden inverso de los títulos
 {% endfor %}{% endraw %}
 ```
 
+## Filtros
+
 ### where
 
-Muchas veces queremos que las publicaciones se dividan en diferentes categorías y se muestren como una lista
+Muchas veces queremos que las publicaciones se dividan en diferentes categorías y se muestren como una lista. Esto se puede lograr con el filtro `where`.
+
+Considerando este sitio web, por ejemplo. La mayoría de mis publicaciones son sobre colecciones de distintas temáticas y cada una tiene alguna categoría como `categories: ["guía", "tutorial", "etc"]`. 
+
+Filtremos todas las publicaciones que tienen de categoría **guía**:
+
+{% include code-header.html %}
+```liquid
+{% raw %}{% assign sorted-posts = site.posts | where: "categories", "guía" %}
+{% for post in sorted-posts limit: 5 %}
+  <li>{{post.title}}</li>
+{% endfor %}{% endraw %}
+```
+
+Ahora, consideremos que tenemos diferentes autores que escriben artículos en el blog. Esta puede ser una excelente manera de separar las publicaciones según su autor:
+
+{% include code-header.html %}
+```liquid
+{% raw %}{% assign sorted-posts = site.posts | where: "author", "enidev911" %}
+{% for post in sorted-posts limit: 5 %}
+  <li>{{post.title}}</li>
+{% endfor %}{% endraw %}
+```

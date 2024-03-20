@@ -7,14 +7,14 @@
   display: flex;
   display: none;
   flex-direction: column;
+  position: relative;
   // border: 1px solid red;
   &__content {
     display: flex;
     flex-direction: column;
     overflow-x: auto;
     height: auto;
-    width: 90%;
-    padding: 0;
+    padding: 0 10px;
     margin: 10px auto;
     font-size: 13px;
     list-style: none;
