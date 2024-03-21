@@ -49,7 +49,6 @@ defaults:
     scope:
       type: postgres
     values:
-      image_path: /assets/images/postgres/
       categories: ["guía"]
   -
     scope:

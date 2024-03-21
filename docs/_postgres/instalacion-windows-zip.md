@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "INSTALACIÓN ZIP - USANDO LÍNEA DE COMANDOS"
+title: "Postgres en Windows desde los binarios"
+support: true
 ---
 
 
@@ -41,7 +42,6 @@ Debemos crear una carpeta donde se almacenarán las configuraciones de nuestro s
 
 ---
 
-<a name="configuracion-inicial"></a>
 ## Configuración inicial
 
 Para iniciar una nueva configuración en un cluster de PostgreSQL y crear el **rol de superusuario**, **contraseña**, **encriptación**, y la **codificación** para las base de datos, haremos uso de la herramienta **initdb**.  
@@ -116,12 +116,11 @@ pg_ctl -D "C:\pgsql_data" restart
 
 ---
 
-<a name="set-as-service"></a>
 ## Registrar como servicio en windows
 
 Para ejecutar este comando debe abrir un CMD como **administrador**: 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 pg_ctl register -D "C:\pgsql_data" -N "postgres14"
 ```
@@ -130,7 +129,7 @@ pg_ctl register -D "C:\pgsql_data" -N "postgres14"
 
 Para iniciar el servicio en un CMD como **administrador**:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc start "postgres14"
 ```
@@ -140,37 +139,33 @@ sc start "postgres14"
 Para eliminar el servicio primero debemos detener el servicio **abrimos una sesión CMD como administrador** y ejecutamos el comando: 
 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc stop postgres147
 ```
 
 Ahora ya podemos eliminar el servicio con el siguiente comando: 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc delete postgres14
 ```
 O también podemos hacerlo por medio del siguiente comando:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 pg_ctl unregister -N postgre14
 ```
 
 ![img - eliminar el servicio](https://raw.githubusercontent.com/EniDev911/assets/main/png/postgre/zip-install/delete_service.png)
 
-
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#top)
-
 ---
 
-<a name="set-as-service"></a>
 ## Registrar como servicio en windows
 
 Para ejecutar este comando debe abrir un CMD como **administrador**: 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 pg_ctl register -D "C:\pgsql_data" -N "postgres14"
 ```
@@ -178,7 +173,7 @@ pg_ctl register -D "C:\pgsql_data" -N "postgres14"
 
 Para iniciar el servicio en un CMD como **administrador**:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc start "postgres14"
 ```
@@ -188,33 +183,29 @@ sc start "postgres14"
 
 Para eliminar el servicio primero debemos detener el servicio **abrimos una sesión CMD como administrador** y ejecutamos el comando: 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc stop postgres14
 ```
 
 Ahora ya podemos eliminar el servicio con el siguiente comando: 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 sc delete postgres14
 ```
 
 O también podemos hacerlo por medio del siguiente comando:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 pg_ctl unregister -N postgre14
 ```
 
 ![img - eliminar el servicio](https://raw.githubusercontent.com/EniDev911/assets/main/png/postgre/zip-install/delete_service.png)
 
-
-[![](https://img.shields.io/badge/regresar%20a%20contenido-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#top)
-
 ---
 
-<a name="set-as-environ-var"></a>
 ## Agregar al Path
 
 Para ejecutar después el programa cliente psql desde cualquier ubicación, agregamos esa ubicación a la variable de entorno **PATH**.
@@ -223,21 +214,20 @@ Para ejecutar después el programa cliente psql desde cualquier ubicación, agre
 
 También puede a través de un CMD normal (para que sea disponible para nivel de usuario) o como administrador (para que sea disponible a nivel de sistema): 
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 setx PATH "%path%;"C:\pgsql_14\bin\
 ```
 
 ---
 
-<a name="connect"></a>
 ## Conectarse al servidor
 
 ### Iniciar sesión en el servidor PostgreSQL
 
 Usando el cliente **psql.exe** para conectarnos a nuestro servidor. Lo siguiente es llamar al programa e iniciar sesión indicando el usuario y luego nos pedirá el password:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bat
 psql -U postgres
 ```
@@ -247,7 +237,6 @@ Cuando se le solicite la contraseña, ingrese la contraseña que configuró dura
 
 ---
 
-<a name="operaciones-psql"></a>
 ## Operaciones básicas en psql
 
 - Para listar los usuarios, use el comando **`\du`**
@@ -259,8 +248,3 @@ Cuando se le solicite la contraseña, ingrese la contraseña que configuró dura
     **`pg_dump.exe -U postgres -d <database name> -f <path>\backup.sql`**
 - Para importar un archivo `.pgsql` o `.sql` existente al servidor de la base de datos, use el siguiente comando.  
 **`psql.exe -h <hostname> -U postgres < <path>\backup.sql`**
-
-<p align="center">
-<a href="https://www.buymeacoffee.com/9111592" target="_blank">
-<img src="https://raw.githubusercontent.com/EniDev911/assets/main/png/support/buymeacoffee.png" height="80"></a>
-</p>

@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "POSTGRES - INSTALACIÓN EN UBUNTU"
+title: "Postgres - Ubuntu"
+support: true
+image_path: '/assets/images/postgres/instalacion-ubuntu'
 ---
 
 ## Instalar paquetes
@@ -54,7 +56,7 @@ Para salir de la sesión interactiva de postgres, ejecutamos el meta comando `\q
 
 **Demostración:**
 
-![img - install-gif]({{ page.image_path }}instalacion-ubuntu/postgres_install_ubuntu.gif)
+![img - install-gif]({{ page.image_path | relative_url }}/postgres_install_ubuntu.gif)
 
 ---
 
@@ -151,12 +153,4 @@ El comando anterior se conecta a la base de datos `template1` con el usuario `po
 ALTER USER postgres with encrypted password 'my_password';
 ```
 
-![img - pg_hba.conf]({{ page.image_path }}instalacion-ubuntu/pg_hba.png)
-
-
----
-
-
-<small>¿Quieres apoyarme? 👇</small>
-
-&nbsp;&nbsp;&nbsp;&nbsp;[![buymecoffe](https://badges.aleen42.com/src/buymeacoffee.svg)](https://www.buymeacoffee.com/9111592) 
+![img - pg_hba.conf]({{ page.image_path | relative_url }}/pg_hba.png)

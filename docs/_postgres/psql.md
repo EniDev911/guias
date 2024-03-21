@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "PSQL - CLIENTE DE LÍNEA DE COMANDOS"
+title: "Psql cliente de línea de comandos"
+image_path: '/assets/images/postgres/psql'
 css:
   custom: >-
     thead { background: #000; border: 1px solid #AAA }
     tbody { border: 1px solid #AAA }
     tbody tr:hover { background: #cfcfcf30; cursor: pointer; }    
-author: Marco Contreras Herrera
 ---
 
-## ¿QUÉ ES PSQL?
+## ¿Qué es Psql?
 
 **Psql** es una aplicación cliente que viene incluido en el paquete de PostgreSQL regular y está basado en la terminal. Nos permite establecer una conexión a un servidor de PostgreSQL donde debemos proporcionar las opciones de conexión como **argumentos** correctamente a través de la línea de comandos, establecida la conexión se abre una sesión interactiva para realizar consultas [**SQL**](https://es.wikipedia.org/wiki/SQL){:target="_blank"} y enviarlas a nuestro servidor y ver los resultados. Además, psql proporciona una serie de [**`matacomandos`**](#metacommand) y varias funciones similares a las de un shell para facilitar la escritura de scripts y la automatización de una amplia variedad de tareas.
 
@@ -30,7 +30,7 @@ psql -h localhost -U postgres -d postgres
 ```
 {% endtab %}
 {% tab connect salida %}
-```psql
+```text
 $ psql -U postgres -W -p 5432 -h localhost
 Password for user postgres:
 psql (10.15 (Ubuntu 10.15-0ubuntu0.18.04.1))
@@ -39,7 +39,6 @@ Type "help" for help.
 
 postgres=#
 ```
-{: .language-psql }
 {% endtab %}
 {% endtabs %}
 
@@ -56,23 +55,26 @@ Si se encuentra un argumento que no pertenece a ninguna opción, se interpretar�
 
 ### Demostración
 
-![img - gif]({{ page.image_path | relative_url }}psql/connect_cmd.gif)
+![img - gif]({{ page.image_path | relative_url }}/connect_cmd.gif)
 
-> **NOTA**: Tengamos en cuenta que no se puede simplemente conectarse a cualquier base de datos con cualquier nombre de usuario. **El usuario que desea conectarse debe tener los permisos previamente creados** por un usuario con rol de administrador o superusuario del sistema de base de datos.  
+Tengamos en cuenta que no se puede simplemente conectarse a cualquier base de datos con cualquier nombre de usuario.
 
+> El usuario que desea conectarse debe tener los permisos previamente creados por un usuario con rol de administrador o superusuario del sistema de base de datos.  
+{: .prompt-info }
 
 Esta utilidad de línea de comandos acepta las siguientes opciones al momento de invocarla:
 
-```text
+```bash
 Empleo:
 psql [OPCIONES]... [BASE-DE-DATOS [USUARIO]]
         
 Opciones generales:
-  -c, --command=ORDEN # ejecutar sólo una orden (SQL o interna) y salir
+
+  -c, --command=ORDEN # ejecutar sólo una orden SQL y sale 
   -d, --dbname=NOMBRE # nombre de base de datos a conectarse (por omisión: «postgres»)
   -f, --file=ARCHIVO # ejecutar órdenes desde archivo, luego salir
   -l, --list # listar bases de datos, luego salir
-  -v, --set=, --variable=NOMBRE=VALOR # definir variable de psql Ej: -v ON_ERROR_STOP=1
+  -v, --set=, --variable=NOMBRE=VALOR # definir variables de psql Ej: -v ON_ERROR_STOP=1
   -V, --version # mostrar información de versión, luego salir
   -X, --no-psqlrc # no leer archivo de configuración (~/.psqlrc)
   -1 («uno»), --single-transaction  # ejecuta órdenes en una única transacción
@@ -113,7 +115,6 @@ Opciones de conexión:
   -W, --password # forzar petición de contraseña (debería ser automático)
 ```
 
-
 ## Estableciendo variables de entornos
 
 Cuando los valores predeterminado no son del todo correctos, puede ahorrarse algo de escritura configurando las siguientes variables de entorno:  
@@ -133,10 +134,10 @@ setx PGUSER postgres
 setx PGPASSWORD postgre
 ```
 
-![img - set variables]({{ page.image_path | relative_url }}psql/setx_variables.png)
+![img - set variables]({{ page.image_path | relative_url }}/setx_variables.png)
 
-
-> **NOTA**: Considere usar mejor un **archivo pgpass**
+> Considere usar mejor un archivo pgpass
+{: .prompt-info }
 
 
 ---
@@ -147,14 +148,14 @@ Una forma alternativa de especificar los parámetros de conexión es una cadena 
 
 Un ejemplo sería:
 
-{: .clipboard }
+{% include code-header.html %}
 ```bash
 psql postgresql://hostname:5432/mydb?user=username
 ```
 
 ### Demostración
 
-![img - gif](assets/connect_uri_cmd.gif)
+![img - gif]({{ page.image_path | relative_url }}/connect_uri_cmd.gif)
 
 
 ---
@@ -167,7 +168,7 @@ Como alternativa, el archivo de contraseñas que se utilizará se puede especifi
 
 Este archivo debe contener líneas en el siguiente formato:
 
-```txt
+```text
 hostname:port:database:username:password
 ```
 
@@ -175,23 +176,20 @@ hostname:port:database:username:password
 
 Estableciendo la variable **PGPASSFILE** en cmd Windows 
 
-![img - gif](assets/pgpass_variable.gif)
+![img - gif]({{ page.image_path | relative_url }}/pgpass_variable.gif)
 
 Podemos agregar un comentario en una línea precediéndola con un `#`. Cada uno de los primeros cuatro campos puede ser un valor literal, o un comodín `*` para que coincida con cualquier cosa y de esa manera no nos solicite ingresar credenciales para conectarnos a otra base de datos o desde un cliente como **pgadmin** que nos muestra un mensaje de error al proporcionar valores literales.
 
 Un ejemplo sería:  
 
-{: .clipboard }
-```ini
-# hostname:port:database:username:password
+```text
 localhost:5432:*:postgres:postgre
 ```
-
 
 Aunque este artículo es completamente de **psql**, te voy a dejar un ejemplo de como establecer este archivo desde el programa **PgAdmin** en la siguiente ilustración:
 
   
-![img - gif](assets/pgadmin_pgpass.gif)
+![img - gif]({{ page.image_path | relative_url }}/pgadmin_pgpass.gif)
 
 
 En los sistemas Unix, los permisos en un archivo de contraseña deben prohibir cualquier acceso al mundo o grupo; lograr esto mediante un comando como `chmod 0600 ~/.pgpass`. Si los permisos son menos estrictos que esto, el archivo se ignorará. En Windows, se supone que el archivo se almacena en un directorio que es seguro, por lo que no se realizan comprobaciones de permisos especiales
@@ -202,7 +200,6 @@ En los sistemas Unix, los permisos en un archivo de contraseña deben prohibir c
 ## Meta Comandos
 
 Cualquier cosa que ingrese en psql que comience con una barra invertida **`\`** sin comillas es un meta-comando de **psql** que es procesado por psql mismo. Estos comandos hacen que **psql** sea más útil para la administración o la creación de scripts.  
-
 
 <table>
   <thead>
@@ -334,13 +331,12 @@ Cualquier cosa que ingrese en psql que comience con una barra invertida **`\`** 
 </table>
 
 
-
 <a name="mc-a"></a>
 ### Meta Comando para alineación
 
 Si el formato de salida de la tabla no está alineado, se cambia a alineado. Este comando es mantenido por compatibilidad y comodidad, se puede utilizar **`\pset`** para una solución más general. Ej:
 
-![img - aligned](./assets/aligned.gif)
+![img - aligned]({{ page.image_path | relative_url }}/aligned.gif)
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -348,7 +344,6 @@ Si el formato de salida de la tabla no está alineado, se cambia a alineado. Est
 
 <a name="mc-connect"></a>
 ### Meta Comando para cambiar de conexión
-
 
 Establece una nueva conexión a un servidor de **PostgreSQL**. Los parámetros de conexión se pueden especificar usando la sintaxis posicional o usando una cadena de conexión como lo muestra la siguiente ilustración:
 
@@ -364,7 +359,7 @@ Establece una nueva conexión a un servidor de **PostgreSQL**. Los parámetros d
 
 Establece o Anula el título de las tablas que se imprimen en los resultados de una consulta. Ej:
 
-![img - mc-title](./assets/meta-comando-title.png){:height='400'}
+![img - mc-title]({{ page.image_path | relative_url }}/meta-comando-title.png){:height='400'}
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -375,7 +370,7 @@ Establece o Anula el título de las tablas que se imprimen en los resultados de 
 
 Muestra los términos de copyright y distribución de PostgreSQL  
 
-![img - mc-copyright](assets/copyright.png){:height='400'}
+![img - mc-copyright]({{ page.image_path | relative_url }}/copyright.png){:height='400'}
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -397,7 +392,7 @@ Activa o Desactiva la visualización del tiempo en milisegundos que tarda cada i
 
 Activa o Desactiva el formato de tabla expandido en el resultado de cada instrucción SQL o meta-comando.
 
-![img - gif xtend](assets/xtend.gif)
+![img - gif xtend]({{ page.image_path | relative_url }}/xtend.gif)
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#meta-comandos)
 
@@ -407,10 +402,11 @@ Activa o Desactiva el formato de tabla expandido en el resultado de cada instruc
 ## Meta Comando para imprimir en consola
 
 
-![img - echo gif](assets/echo.gif)
+![img - echo gif]({{ page.image_path | relative_url }}/echo.gif)
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge)](#metacommand)
 
+---
 
 <a name="mc-html"></a>
 ## Meta Comando para cambiar la salida a HTML
@@ -419,16 +415,14 @@ Activa o Desactiva el formato de tabla expandido en el resultado de cada instruc
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#metacommand)
 
+---
 
 <a name="mc-conninfo"></a>
 ### Meta Comando para ver la información de la conexión actual
 
-
-
 ![timing png](https://raw.githubusercontent.com/EniDev911/assets/main/png/db/postgres/meta-comando-conninfo.png)
 
 [![](https://img.shields.io/badge/regresar%20a%20tabla-%E2%86%A9-%232BAAEC?style=for-the-badge&logo=readthedocs&logoColor=%23FAC173)](#meta-comandos)
-
 
 ---
 
@@ -437,6 +431,7 @@ Activa o Desactiva el formato de tabla expandido en el resultado de cada instruc
 
 Una característica clave de las **variables en psql** es que pueden sustituirlas (*interpolarlas*) en sentencias SQL normales, así como en los argumentos de los **meta-comandos**. Además psql proporciona funciones para garantizar que los valores de las variables utilizados como identificadores y literales de SQL se cite correctamente. La sintaxis para interpolar un valor sin comillas es anteponer dos puntos (`:`) al nombre de la variable. Por ejemplo:  
 
+{% include code-header.html %}
 ```shell
 \set var 'usuarios'
 SELECT * FROM :var;
@@ -446,7 +441,8 @@ consultaría la tabla con el valor `usuarios` asignada a la variable. Considerar
 
 Cuando se va a utilizar un valor como identificador o literal de SQL, lo más seguro es disponer que se incluya entre comillas. Para citar el valor de una variable como literal SQL, escriba dos puntos (`:`) seguidos del nombre de la variable entre comillas simples.  Para citar el valor como un identificador SQL, escriba dos puntos seguidos del nombre de la variable entre comillas dobles. Estas construcciones tratan correctamente las comillas y otros caracteres especiales incrustados en el valor de la variable. El ejemplo anterior se escribiría de manera más segura de esta manera:
 
-```txt
+{% include code-header.html %}
+```shell
 \set var 'usuarios'
 SELECT * FROM :"var";
 ```
@@ -455,7 +451,8 @@ La interporlación de variables no se realizará dentro de literales e identific
 
 Un ejemplo de uso de este mecanismo es copiar el contenido de un archivo en una columna de tabla. Primero se carga el archivo en una variable y luego interpolamos el valor de la variable como una cadena entrecomillada:  
 
-```txt
+{% include code-header.html %}
+```shell
 \set content `cat my_file.txt`
 INSERT INTO my_table VALUES (:'content');
 ```

@@ -4,10 +4,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
 h1 {
-	font-size: 27px;
+	font-size: 29px;
 	text-align: center;
 	line-height: 36px;
-	font-family: 'Scope One', serif;
+	font-family: 'Fira Sans', serif;
+	&.heading {
+		color: #7ECCDC;
+		text-transform: uppercase;
+	}
 }
 h2 { font-size: 26px; }
 h3 { font-size: 20px; }
@@ -29,13 +33,13 @@ h2 {
 
 
 @media (min-width: 768px) {
-	h1 { font-size: 28px;}
+	h1 { font-size: 31px;}
 	h2 { font-size: 28px; }
 	h3 { font-size: 22px; }
 }
 
 @media (min-width: 992px) {
-	h1 { font-size: 38px;}
+	h1 { font-size: 40px;}
 	h2 { font-size: 32px; }
 	h3 { font-size: 24px; }
 }

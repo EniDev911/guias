@@ -1,27 +1,32 @@
 ---
 layout: default
 title: "Administración de usuarios y roles"
-image_subpath: administrar-roles-usuarios
+image_path: 'assets/images/postgres/administrar-roles-usuarios'
+libs:
+  - name: 'fontawesome'
+    cdn: //kit.fontawesome.com/6b8f0c7049.js
 ---
 
-## INTRODUCCIÓN
 
-Con PostgreSQL, podemos crear usuarios y roles con permisos de acceso granulares. Al nuevo usuario o rol se les debe conceder selectivamente los permisos necesarios para cada objeto de base de datos. Esto da mucho poder al usuario final, pero al mismo tiempo, dificulta potencialmente el proceso de creación de usuarios y roles con los permisos correctos.  
+En Postgres, podemos crear usuarios y roles con permisos de acceso granulares. Al nuevo usuario o rol se les debe conceder selectivamente los permisos necesarios para cada objeto de base de datos. Esto da mucho poder al usuario final, pero al mismo tiempo, dificulta potencialmente el proceso de creación de usuarios y roles con los permisos correctos.  
 
-PostgreSQL nos permite conceder permisos directamente a los usuarios de la base de datos. Sin embargo, como práctica recomendada, se puede crear varios roles con conjuntos específicos de permisos basados en los requisitos de una aplicación y acceso. Paso seguido, se le asigna el rol apropiado a cada usuario. Los roles deben utilizarse para aplicar un modelo de privilegios mínimos para acceder a objetos de base de datos. El usuario maestro o superusuario que se crea durante la instalación de PostgreSQL solo debe utilizarse para tareas de administración de bases de datos, como la creación de otros usuarios, roles y bases de datos. **El usuario maestro nunca debe ser utilizado por la aplicación**.
+Postgres nos permite conceder permisos directamente a los usuarios de la base de datos. Sin embargo, como práctica recomendada, se puede crear varios roles con conjuntos específicos de permisos basados en los requisitos de una aplicación y acceso. Paso seguido, se le asigna el rol apropiado a cada usuario. Los roles deben utilizarse para aplicar un modelo de privilegios mínimos para acceder a objetos de base de datos. El **usuario maestro o superusuario** que se crea durante la instalación de Postgres solo debe utilizarse para tareas de administración de bases de datos, como la creación de otros usuarios, roles y bases de datos.
 
-![img - privilegios]({{ page.image_path }}{{ page.image_subpath }}/pg-privilegios-dark.png)
+> El usuario maestro nunca debe ser utilizado por la aplicación.
+{: .prompt-danger }
+
+![img - privilegios]({{ page.image_path | relative_url }}/pg-privilegios-dark1.png)
 
 ---
 
-## CREAR ROLES Y USUARIOS
+## Crear roles y usuarios
 
-En PostreSQL no existen los usuarios y los grupos como tal, sino que
-tenemos roles. Cada instalación de PostgreSQL nos brinda una
+En Postres no existen los usuarios y los grupos como tal, sino que
+tenemos roles. Cada instalación de Postgres nos brinda una
 aplicación para crear roles, el cuál se puede usar por invocando el
 nombre del programa [createuser](https://www.postgresql.org/docs/current/app-createuser.html){: target='_blank' } que es un wrapper que crea un **ROLE** con permisos de conexión.
 
-Para poder crear un usuario - role **es necesario tener permisos de super usuario** o al menos el privilegio de `CREATROLE`.
+Para poder crear un usuario o *role* **es necesario tener permisos de super usuario** o al menos el privilegio de `CREATROLE`.
 
 Para ver los roles existentes:  
 
@@ -96,7 +101,7 @@ donde option puede ser:
 `CREATE ROLE` agrega un nuevo rol a un clúster de base de datos. Un rol es una entidad que puede poseer objetos de base de datos y tener privilegios de bases de datos; un rol puede considerarse un "**usuario**", un "**grupo**" o ambos según como se utilice.
 
 
-### MÁS EJEMPLOS
+### Ejemplos
 
 Crear un rol que puede iniciar sesión, pero no le asignamos contraseña:
 
@@ -116,7 +121,7 @@ Asignandole una contraseña a el usuario **boba_fett** desde la sesión interact
 
 **DEMO**:
 
-![img - demo]({{ page.image_path | relative_url }}{{ page.image_subpath }}/createuser-and-password.gif)
+![img - demo]({{ page.image_path | relative_url }}/createuser-and-password.gif)
 
 Crear un rol con una contraseña:  
 
@@ -142,7 +147,7 @@ CREATE ROLE myuser WITH LOGIN PASSWORD 'secret_passwd';
 
 **DEMO**:
 
-![img - demo]({{ page.image_path | relative_url }}{{ page.image_subpath }}/create-role-user-login.gif)
+![img - demo]({{ page.image_path | relative_url }}/create-role-user-login.gif)
 
 
 Ambas sentencias crean exactamente lo mismo, un usuario. Este nuevo usuario no tiene ningún permiso aparte de los permisos predeterminados disponibles para el **rol public**. Todos los nuevos usuarios y roles heredan los permisos del **rol public**.
@@ -150,7 +155,7 @@ Ambas sentencias crean exactamente lo mismo, un usuario. Este nuevo usuario no t
 
 ---
 
-## ESQUEMA PUBLIC Y ROL PUBLIC
+## Esquema Public y Rol Public
 
 Cuando se crea una nueva base de datos, PostgreSQL crea de forma predeterminada un esquema denominado **public** y concede acceso en este esquema a un rol de backend denominado **public**. A todos los usuarios y roles nuevos se les concede de forma predeterminada el **rol public** y, por lo tanto, pueden crear objetos en el esquema **public**.
 
@@ -162,7 +167,6 @@ show search_path;
 ```
 
 ![img - search_path]({{ page.image_path | relative_url }}{{ page.image_subpath }}/search_path.gif)
-
 
 El nombre de "**$user**" se refiere al nombre del usuario que ha iniciado sesión actualmente. De forma predeterminada, no existe ningún esquema con el mismo nombre de usuario. Por lo tanto, el esquema **public** se convierte en el esquema predeterminado siempre que se utiliza un nombre de objeto no calificado. Por este motivo, cuando un usuario intenta crear una nueva tabla sin especificar el nombre del esquema, la tabla se crea en el esquema **public**. Como se mencionó anteriormente, de forma predeterminada, todos los usuarios tienen acceso para crear objetos en el esquema **public** y, por lo tanto, la tabla se ha creado correctamente.
 
@@ -188,17 +192,17 @@ La revocación de los permisos del **rol public** afecta a todos los usuarios y 
 
 ---
 
-## ASIGNACIÓN DE PERMISOS
+## Asignación de permisos
 
 En esta sección se documenta el proceso de creación de nuevos roles y el proceso de concesión de permisos para acceder a varios objetos de datos. Los permisos deben concederse a nivel de base de datos, esquema y objeto de esquema. Por ejemplo, si necesita conceder el acceso a una tabla, también debe asegurarse de que el rol tenga acceso a la base de datos y al esquema en que existe la tabla. Si falta alguno de los permisos, el rol no puede acceder a la tabla.
 
 <p align="center">
-  <img src="assets/pg_role-niveles-permisos.png" alt="img - ilustracion">
+  <img src="{{ page.image_path | relative_url }}/pg_role-niveles-permisos.png" alt="img - ilustracion">
 </p>
 
 El nombre sigue las reglas para los identificadores de SQL: sin adornor ni caracteres especiales o entre comillas dobles.
 
-### ASIGNACIÓN DE PERMISOS EJEMPLOS
+### Ejemplos de asignación de permisos
 
 Crear un rol de solo lectura. El primer paso consiste en crear un nuevo rol denominado **readonly** mediante la siguiente instrucción SQL:
 
@@ -211,29 +215,28 @@ Este es un rol simple sin permisos ni contraseña. No se puede utilizar para ini
 
 Conceda permiso a este rol para conectarse a la base de datos de destino denominada `demodatabase`:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 GRANT CONNECT ON DATABASE demodatabase TO readonly;
 ```
 
 El siguiente paso es otorgar acceso al uso de este rol a su esquema. Supongamos que el esquema se llama `schemademo`:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 GRANT USAGE ON SCHEMA schemademo TO readonly;
 ```
 
 Para determinar el conjunto de roles existentes, examine el catálogo del sistema consultando la vista `pg_roles`, por ejemplo:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 SELECT rolname FROM pg_roles;
 ```
 
 Asignamos el rol de readonly a un `<<usuario | rol>>` existente:  
 
-
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 GRANT readonly TO rolname;
 ```
@@ -242,9 +245,7 @@ Para mayor comodidad, los programas `createuser` y `dropuser` se proporcionan co
 
 **DEMO**:
 
-![img - gif](assets/createuser-and-dropuser.gif)
-
-
+![img - gif]({{ page.image_path | relative_url }}/createuser-and-dropuser.gif)
 
 ---
 
@@ -272,22 +273,21 @@ En el siguiente ejemplo, se utilizan tres roles de base de datos diferentes:
 
 Ejecuta el siguiente comando para ver el rol con el que se inició sesión:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 SELECT current_user;
 ```
 
 Ahora intenta eliminar un usuario o rol con objetos dependientes, aparece un error similar al siguiente:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 DROP ROLE test_user;
 ```
 
 Mensaje desde el servidor:
 
->
-```txt
+```text
 ERROR:  role "test_user" cannot be dropped because some objects depend on it
 DETAIL:  privileges for database pg_example
 owner of table test_table
@@ -301,8 +301,7 @@ En el mensaje de error que obtenemos nos da la siguiente información:
 - El rol **test_user** tiene privilegios concedidos en la base de datos **pg_example** y en la tabla **test_t2**.
 - El rol **test_user** es propietario de la tabla **test_table**, el esquema **test_schema** y un objeto de secuencia **test_seq** en **test_schema**.
 
->
-```txt
+```text
 pg_another_db=> DROP ROLE test_user;
 ERROR:  role "test_user" cannot be dropped because some objects depend on it
 DETAIL:  privileges for database pg_example
@@ -311,8 +310,7 @@ DETAIL:  privileges for database pg_example
 
 Para eliminar el usuario o la función, debemos reasignar la propiedad de los objetos en propiedad a otro usuario o rol y revocar los permisos asociados. Para ello podemos utilizar el comando [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/sql-reassign-owned.html){:target='_blank' class='link'} de PostgreSQL para reasignar la propiedad de estos objetos a otro usuario. Al ejecutar este comando, es posible que aparezca un error similar al siguiente:  
 
->
-```txt
+```text
 pg_example=> select current_user;
  current_user
 --------------
@@ -323,8 +321,7 @@ ERROR:  permission denied to reassign objects
 
 Para resolver este problema, debe conceder el usuario o rol al usuario que está reasignando la proppiedad. No puede ser `test_user` para hacerlo porque **`test_user`** no es el propietario **`another_user`**. Por lo tanto, es posible que aparezca un error similar al siguiente:  
 
->
-```txt
+```text
 pg_example=> select current_user;
  current_user
 --------------
