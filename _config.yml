@@ -66,3 +66,8 @@ defaults:
       type: python
     values:
       categories: ["guía"]
+  -
+    scope:
+      type: javascript
+    values:
+      categories: ["guía"]

@@ -2,6 +2,16 @@
 layout: default
 title: Filtros | Liquid
 categories: ["guía"]
+css:
+  custom: |-
+   output {  
+   	padding: 10px;
+   	background-color: #ccc9;
+   	font-weight: bold;
+   	border-radius: 5px;
+   	border: 1px solid #ccc;
+   	color: #181818;
+   }
 ---
 
 Los filtros cambian la salida de un objeto de Liquid. Se utilizan dentro de una salida y están separados por carácter de pipe (`|`).
@@ -106,6 +116,23 @@ Podemos organizarlo en orden inverso de los títulos
 ```
 
 ## Filtros
+
+
+### join
+
+Combina los elementos de una matriz en una sola cadena usando un argumento separador:
+
+{% include code-header.html %}
+```liquid
+{% raw %}{% assign authors = "enidev911, neck, darkonen" | split: ", " %}
+{{ authors | join: " and "}}{% endraw %}
+```
+
+Producción:
+<output>
+{% assign authors = "enidev911, neck, darkonen" | split: ", " %}
+{{ authors | join: " and "}}
+</output>
 
 ### where
 

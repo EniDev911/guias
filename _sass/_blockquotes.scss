@@ -2,21 +2,22 @@ blockquote {
   border-width: thin;
   border-color: #ffcc00;
   border-style: double double none;
-  margin:15px 0 10px 0;
-  padding: 0;
+  margin: 18px 0;
+  padding: 10px 20px;
   background: #00000040;
   border-radius: 3px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  p {
+    padding: 0;
+    margin: 0;
+  }
   &.prompt-danger {
     border-color: #ff1200;
     background: #ff330030;
     color: #fff9;
-    p {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-    p::before {
+    &::before {
       text-rendering: auto;
       font: var(--fa-font-solid);
       -webkit-font-smoothing: antialiased;
@@ -24,18 +25,14 @@ blockquote {
       color: #ff3240;
       display: block;
       font-size: 1.8em;
-      margin-right: 8px;
+      margin-right: 20px;
     }
   }
   &.prompt-info {
     border-color: #7ECCDC;
     background: #7ECCDC10;
-    p {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-    p::before {
+
+    &::before {
       text-rendering: auto;
       font: var(--fa-font-solid);
       -webkit-font-smoothing: antialiased;
@@ -43,12 +40,10 @@ blockquote {
       color:  #7ECCDC;
       display: block;
       font-size: 1.8em;
-      margin-right: 8px;
+      margin-right: 20px;
     }
   }
-  * {
-  	padding: 15px;
-  }
+
   strong, em {
   	margin: 0 ;
   	padding: 0 ;

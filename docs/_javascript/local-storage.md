@@ -20,7 +20,7 @@ El tipo `Storage` está diseñado para almacenar pares de clave/valor. El tipo `
 - `clear()` - eliminar todos los valores.
 
 
-## Localstorage VS Sessionstorage
+### Localstorage VS Sessionstorage
 
 `Window.localstorage` o simplemente `localStorage` almacena datos para siempre hasta que la aplicación los borre. Esto es diferente a **`sessionStorage`** donde se borra el almacenamiento cuando se cierra el navegador. Además, los datos permanecen sincronizados si el usuario tiene varias pestañas abiertas de la misma aplicación.
 

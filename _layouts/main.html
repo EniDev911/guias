@@ -11,7 +11,7 @@ layout: default
 	<tbody>
 		{% for doc in site[page.collection] %}
 		<tr onclick="window.open('{{ doc.url | relative_url }}', '_parent')" style="cursor:pointer">
-			<td><span class="badge">{{ doc.categories }}</span></td>
+			<td><span class="badge">{{ doc.categories | join: ', ' }}</span></td>
 			<td>{{ doc.title }}</td>
 		</tr>
 		{% endfor %}

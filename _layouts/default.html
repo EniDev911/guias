@@ -21,10 +21,11 @@
     <section>
       <div id="title">
         <h1 class="heading">{{ page.title | default: site.title }}</h1>
-        <p align="center">{{ site.description | default: site.github.project_tagline }}</p>
-        <hr>
+        <!-- <p align="center">{{ site.description | default: site.github.project_tagline }}</p> -->
       </div>
-      {{ content }}
+      <div class="wrapper__content">
+        {{ content }}
+      </div>
     </section>
     {% include sidebar.html img='/assets/images/toc.png' content=page.content %}
   </div>

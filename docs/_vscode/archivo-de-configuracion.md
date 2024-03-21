@@ -16,7 +16,7 @@ Dentro podemos modificar algunos parámetros directamente en el archivo **JSON**
 ![img - settings3](https://enidev911.github.io/fullstackjsg33/src/guides/vs-code/use-guide/assets/img/file/settings_json1.png)
 
 
-### Abrir el archivo JSON
+## Abrir el archivo JSON
 
 Si prefiere trabajar directamente siempre sobre el archivo settings.json, podemos establecer la siguiente modificación en el archivo de configuración:
 
@@ -27,15 +27,21 @@ Si prefiere trabajar directamente siempre sobre el archivo settings.json, podemo
 
 ### Formato
 
+Formatea el código al pegarlo:
+
 {% include code-header.html file='settings.json' %}
 ```json
 "editor.formatOnPaste": true
 ```
 
+Formatea el código al guardar:
+
 {% include code-header.html file='settings.json' %}
 ```json
 "editor.formatOnSave": true
 ```
+
+Formatea una línea después de escribirla:
 
 {% include code-header.html file='settings.json' %}
 ```json
@@ -44,12 +50,23 @@ Si prefiere trabajar directamente siempre sobre el archivo settings.json, podemo
 
 ### Fuentes
 
-{% include code-header.html %}
+Tamaño de fuente (en pixeles):
+
+{% include code-header.html file='settings.json' %}
 ```json
-{
-	"editor.cursorStyle": "line-thin", 
-	"editor.cursorBlinking": "blink",
-	"editor.hideCursorInOverviewRuler": true,
-}
+"editor.fontSize": 18
 ```
 
+Familia de la fuente:
+
+{% include code-header.html file='settings.json' %}
+```json
+"editor.fontFamily": "'Cascadia code', monospace"
+```
+
+Activa las ligaduras para las fuentes que lo soportan:
+
+{% include code-header.html file='settings.json' %}
+```json
+"editor.fontLigatures": true
+```

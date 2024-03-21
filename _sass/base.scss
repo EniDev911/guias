@@ -18,9 +18,12 @@
 @import "sidebar";
 @import "print";
 
-$background: #171717;
+$background: #111;
 $color: #b1b1b1;
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   padding:0px 0 20px 0px;
@@ -32,7 +35,6 @@ body {
   background: $background;
 }
 
-
 p, table, dl {
   margin:0 0 20px;
 }
@@ -41,61 +43,37 @@ dd {
   margin-bottom: 15px;
 }
 
-
 p {
   font-family: 'EncodeSansRegular', sans-serif;
   font-weight: normal;
   letter-spacing: .5px;
 }
+
 .wrapper {
   max-width:100%;
   width: 100%;
   // border: 2px solid red;
   display: flex;
   overflow: hidden;
-  gap: 1rem;
-
   section {
    flex-basis: 0;
    flex-grow: 999;
    min-inline-size: 60%;
-   padding: 20px;
-   // border: 1px solid yellow;
-   #title {
-    border: 0;
-    outline: none;
-    margin: 0 0 15px 0;
-    padding: 0 0 5px 0;
+ }
+ &__content {
+   padding: 28px;
+   border-radius: 10px;
+   background: #171717;
+ }
 
-    .credits {
-      font-size: 11px;
-      font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: normal;
-      color: #696969;
-
-      &.left {
-        float: left;
-      }
-
-      &.right {
-        float: right;
-      }
-    }
-
-  }
-}
-}
-
-section img {
+ section img {
   max-width: 100%;
 }
-
 
 table {
   width:100%;
   border-collapse:collapse;
 }
-
 
 hr {
   border: 0;
@@ -104,9 +82,7 @@ hr {
   background: transparent url('../images/hr.gif') center center repeat-x;
   margin: 15px 0 20px 0;
 }
-
-
-
+}
 @media (min-width: 768px) {
   .flex {
     flex-direction: row;
@@ -115,31 +91,4 @@ hr {
       width: calc(100% / 3.2);
     }
   }
-}
-
-@media print, screen and (max-width: 720px) {
-
-  #title {
-    .credits {
-      display: block;
-      width: 100%;
-      line-height: 30px;
-      text-align: center;
-
-      .left {
-        float: none;
-        display: block;
-      }
-
-      .right {
-        float: none;
-        display: block;
-      }
-    }
-  }
-}
-
-
-@media(hover:hover){
-
 }
