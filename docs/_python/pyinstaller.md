@@ -23,3 +23,10 @@ pip install pyinstaller
 ```bash
 pyinstaller --onefile my_app.py
 ```
+
+Esconder la consola del interprete:
+
+{% include code-header.html %}
+```bash
+pyinstaller –onefile app.py –windowed
+```
