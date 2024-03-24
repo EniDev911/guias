@@ -28,5 +28,40 @@ Esconder la consola del interprete:
 
 {% include code-header.html %}
 ```bash
-pyinstaller –onefile app.py –windowed
+pyinstaller --onefile app.py --windowed
 ```
+
+### Opciones específicas de Windows
+
+`-w, --windowed, --noconsole`
+: Esta opción oculta la ventana de la consola de fondo.
+
+`-i, --icon`
+: Aplica un ícono al ejecutable:
+
+{% include code-header.html %}
+```bash
+pyinstaller --icon='path/to/icon' app.py
+```
+
+### Empaquetar íconos en un archivo ejecutable
+
+Si nuestra aplicación solo tiene como objetivo sistemas Windows, entonces empaquetar los íconos en el ejecutable es muy sencillo porque Tkinter soporta cargar íconos directamente desde archivos ejecutables (.exe) usando el método `iconbitmap()`, podemos usar el siguiente código para cargar en la ventana de la aplicación el ícono empaquetado dentro del archivo ejecutable de Windows:
+
+{% include code-header.html %}
+```python
+import sys, tkinter as tk
+
+root = tk.Tk()
+root.iconbitmap(sys.executable)
+
+root.mainloop()
+```
+
+A continuación convertimos el programa en un ejecutable:
+
+{% include code-header.html %}
+```txt
+pyinstaller --icon=icon.ico --windowed app.py
+```
+{: .language-cmd }
