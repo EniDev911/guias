@@ -35,6 +35,8 @@ collections:
     output: true
   ruby:
     output: true
+  rails:
+    output: true
   sqlite:
     output: true
   vscode:
@@ -60,7 +62,7 @@ defaults:
     scope:
       type: jekyll
     values:
-      image_path: /assets/images/jekyll/
+      categories: ["guía"]
   -
     scope:
       type: python
@@ -69,6 +71,11 @@ defaults:
   -
     scope:
       type: javascript
+    values:
+      categories: ["guía"]
+  -
+    scope:
+      type: rails
     values:
       categories: ["guía"]
   -

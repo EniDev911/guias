@@ -6,6 +6,7 @@ title: "Poblando una base de datos con seeds"
 
 En el archivo `db/seed.rb` podemos escribir cualquier código Ruby válido, así que podemos hacer cosas más complejas como generar información aleatoria como lo siguiente:
 
+{% include code-header.html %}
 ```ruby
 100.times do |i|
   Book.create(

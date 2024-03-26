@@ -7,8 +7,8 @@ Tengamos en cuanta que Jekyll usa por defecto **kramdown** (una biblioteca de Ru
 
 Una de esas características es añadir cualquier atributo a elementos en línea o en bloque. Veamos algunos casos de uso:
 
-{: .clipboard }
-```md
+{% include code-header.html file='random-post.md' %}
+```markdown
 Esto es de un color *verde*{: style="color: green"}
 
 {:align='center'}

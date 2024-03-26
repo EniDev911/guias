@@ -3,7 +3,6 @@ layout: home
 title: EniDev
 ---
 
-
 <style>
   .row {
     display: flex;
@@ -13,6 +12,7 @@ title: EniDev
     margin: 20px 0;
   }
 </style>
+
 <!-- Databases -->
 <div class="row">
   {% for item in site.data.root.db %}
@@ -38,7 +38,8 @@ title: EniDev
         <img
           src="{{ item.logo | relative_url }}"
           alt="{{ item.name }}"
-          height="80">
+          height="80"
+          width="80">
       </div>
     </div>
   </a>
@@ -74,10 +75,10 @@ title: EniDev
 <p align="center">
   {% for item in site.data.root.generadores %}
   <a href="{{ item.link | relative_url }}">
-    <kbd><img
+    <img
         src="{{ item.logo | relative_url }}"
         alt="{{ item.name }}"
-        height="80"></kbd>
+        height="80">
     </a>
     {% endfor %}
 </p>

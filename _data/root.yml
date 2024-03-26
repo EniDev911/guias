@@ -12,6 +12,9 @@ programming:
   - name: ruby
     logo: /assets/images/logos/ruby.png
     link: /docs/ruby.html
+  - name: rails
+    logo: /assets/images/logos/ruby-on-rails.svg
+    link: /docs/rails.html
   - name: python
     logo: /assets/images/logos/python.png
     link: /docs/python.html

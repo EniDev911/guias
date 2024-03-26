@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ```bash
 📂 app # 👈 Contiene los controllers, models, views, helpers, mailers y assets para la aplicación.
 ├── 📂 assets

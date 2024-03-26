@@ -23,12 +23,14 @@ Los objetos de **ActiveRecord** se pueden crear a partir de un hash, un bloque o
 
 Por ejemplo, dado un modelo para usuarios `User` con los atributos `name` y `occupation`, la llamada al método `create` y guardará el nuevo registro en la base de datos:
 
+{% include code-header.html %}
 ```ruby
 user = User.create(name: "David", occupation: "programmer")
 ```
 
 Usando al método `new`, se puede crear una instancia de un objeto (*sin guardarlo*):
 
+{% include code-header.html %}
 ```ruby
 user = User.new
 user.name = "David"
@@ -39,6 +41,7 @@ Para guardar esta instancia como un nuevo registro en la base de datos, debemos 
 
 Finalmente, si se proporciona un bloque, tanto para el método `create` y `new` entregarán el nuevo objeto a ese bloque para su inicialización:
 
+{% include code-header.html %}
 ```ruby
 user = User.new do |u|
   u.name = "David"
@@ -52,12 +55,14 @@ end
 
 Retornar la colección de todos los usuarios:  
 
+{% include code-header.html %}
 ```ruby
 users = User.all
 ```
 
 Retorna el primer registro de la colección de usuarios:
 
+{% include code-header.html %}
 ```ruby
 user = User.first
 ```
@@ -78,6 +83,7 @@ users = User.where(name: "David", occupation: "programmer").order(create_at: :de
 
 Una vez se ha recuperado un objeto de **Active Record**, se pueden modificar sus atributos y se puede guardar en la base de datos con los valores actualizado:
 
+{% include code-header.html %}
 ```ruby
 user = User.find_by(name: "David")
 user.name = "Dave"
@@ -86,21 +92,25 @@ user.save
 
 Una forma abreviada de esto es usar nombres de atributos de mapeo como un `hash` al valor deseado, dentro del método `update`:
 
+{% include code-header.html %}
 ```ruby
 user = User.find_by(name: "David")
 user.update(name: "Dave")
 ```
 
 >Esto es más útil cuando se actualizan varios atributos a la vez.
+{: .prompt-info }
 
 Si, por el contrario, desea actualizar varios registros de forma masiva, puede usar el método `update_all`:
 
+{% include code-header.html %}
 ```ruby
 User.update_all "max_login_attempts = 3, must_change_password = 'true'"
 ```
 
 Lo anterior es equivalente a escribir lo siguiente:
 
+{% include code-header.html %}
 ```ruby
 User.update(:all, max_login_attempts: 3, must_change_password: true)
 ```
@@ -109,7 +119,7 @@ User.update(:all, max_login_attempts: 3, must_change_password: true)
 
 Asimismo, una vez recuperamos un objeto **Active Record** puede eliminarlo, usando el método `destroy` elimina el registro de la base de datos:
 
-
+{% include code-header.html %}
 ```ruby
 user = User.find_by(name: 'David')
 user.destroy
@@ -117,6 +127,7 @@ user.destroy
 
 Si desea eliminar registros de forma masiva o varios, puede usar el método `destroy_all` o `destroy_by`:
 
+{% include code-header.html %}
 ```ruby
 User.destroy_by(name: "David")
 User.destroy_all

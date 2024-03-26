@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Validaciones
+title: ActiveRecord - Validaciones
 ---
 
 **Active Record** nos permite validar el estado de un modelo antes de que se escriba en la base de datos. Hay varios métodos que se pueden usar para verificar el valor de un atributo no esté vacío, sea único y que no se encuentre ya en la base de datos o que siga un formato específico entre otras cosas.
