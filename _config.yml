@@ -71,3 +71,8 @@ defaults:
       type: javascript
     values:
       categories: ["guía"]
+  -
+    scope:
+      type: sqlite
+    values:
+      categories: ["guía"]

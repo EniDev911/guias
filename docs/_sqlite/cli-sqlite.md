@@ -1,18 +1,14 @@
 ---
 layout: default
 title: "CLI SQlite"
+image_path: '/assets/images/sqlite/cli-sqlite'
 css:
-  custom: |
-    strong { color: #DA3;  }
-    strong { color:  #d94; }
+  custom: |-
     thead { background: #000; border: 1px solid #AAA }
     tbody { border: 1px solid #AAA }
     tbody tr:hover { background: #111; cursor: pointer; }
     h3 { color: #dd5; } 
 ---
-
-
-[![bagde](https://img.shields.io/badge/sqlite-%2307405e.svg?logo=sqlite&logoColor=white){:height="50"}](../)
 
 
 ## Primeros Pasos
@@ -27,30 +23,32 @@ Por ejemplo, para crear una nueva base de datos SQLite llamada `sistema.db` con 
 
 **Invocamos el programa pasando el nombre de la base de datos**:
 
-{: .clipboard }
-```bash
+{% include code-header.html %}
+```cmd
 sqlite3 sistema.db
 ```
+{: .language-cmd }
 
-**Luego creamos una tabla para almacenar a los usuarios**:
+Luego en la sesión interactiva ejecutamos una sentencia SQL para crear una tabla de usuarios:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE TABLE usuarios (id INT, nombre TEXT);
 ```
 
-**Podemos crear dos usuarios con el comando** [`INSERT`](https://en.wikipedia.org/wiki/Insert_(SQL)){:target='_blank' class='link'}:
+Podemos crear dos usuarios con el comando [`INSERT`](https://en.wikipedia.org/wiki/Insert_(SQL)){:target='_blank'}:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 INSERT INTO usuarios (id, nombre) VALUES (1, 'marco');
 INSERT INTO usuarios (id, nombre) VALUES (2, 'marcelo');
 ```
 
 
-![step1](assets/cli_01.png)
+![step1]({{ page.image_path | relative_url }}/cli_01.png)
 
 > Para salir del programa sqlite3 solo debe escribir **`.q`** o con <kbd>Ctrl</kbd> + <kbd>c</kbd> y luego <kbd>Enter</kbd>.
+{: .prompt-info }
 
 --- 
 
@@ -314,7 +312,7 @@ Enumera los nombres de las tablas puede utilizarlo para buscar patrones Ej: (<co
 
 De forma predeterminada, sqlite3 envía los resultados de la consulta a la salida estándar. Podemos cambiar esto usando los comandos **`.output`** y **`.once`**. Simplemente pasamos el nombre de un archivo de salida como argumento para el comando **`output`** y todos los resultados de la consulta posterior se escribirán en ese archivo. Ejemplo:  
 
-![step2](assets/cli_02.png)
+![step2]({{ page.image_path | relative_url }}/cli_02.png)
 
 ---
 
@@ -323,7 +321,7 @@ De forma predeterminada, sqlite3 envía los resultados de la consulta a la salid
 
 El comando **`.read`** toma un solo argumeto que es el nombre de un archivo desde el cual se quiere leer el texto de entrada.
 
-![step3](assets/cli_03.png)
+![step3]({{ page.image_path | relative_url }}/cli_03.png)
 
 El comando **`.read`** deja de leer temporalmente desde el teclado y en su lugar toma su entrada del archivo nombrado. Al llegar al final del archivo, la entrada vuelve al teclado. El achivo de secuencia de comandos puede contener **dot-command**.  
 
@@ -334,7 +332,9 @@ El comando **`.read`** deja de leer temporalmente desde el teclado y en su lugar
 
 Este comando es usado para clonar los datos en otra base de datos a partir de la base de datos actual:
 
-![img - dc-clone](assets/dc-clone.png){:height="170"}
+![img - dc-clone]({{ page.image_path | relative_url }}/dc-clone.png){:height="170"}
+
+---
 
 ## SQLite: Funciones de E/S de archivo
 
@@ -342,7 +342,7 @@ El shell de la línea de comandos agrega dos funciones SQL definidas por la apli
 
 La función **`readfile(X)`** lee todo el contenido del archivo X y devuelve ese contenido como un **BLOB**. Esto se puede usar para cargar contenido en una tabla. Por ejemplo:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE TABLE imagenes(nombre TEXT,tipo TEXT,imagen BLOB);
 INSERT INTO imagenes(nombre,tipo,imagen)
@@ -351,7 +351,7 @@ VALUES('icon','png',readfile('icon.png'));
 
 La función SQL **`writefile(X, Y)`** escribe el blob **`Y`** en el archivo llamado **`X`** y devuelve el número de bytes escritos. Utilice esta función para extraer el contenido en una tabla. Por ejemplo:  
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 SELECT writefile('icon.png', imagen) FROM imagenes WHERE nombre = 'icon';
 ```
@@ -365,10 +365,19 @@ Para ver una lista de las tablas de la base de datos, se puede introducir `.tabl
 
 Ahora para ver el esquema, donde veremos las sentencias SQL ejecutadas para la definición del esquema usamos `.schema` o `.fullschema`
 
-```sql
+{% tabs ex_dotcommand_query %}
+{% tab ex_dotcommand_query sqlite3-cli %}
+{% include code-header.html %}
+```cmd
 .tables
-birds
 .fullschema --indent
+```
+{: .language-cmd }
+{% endtab %}
+{% tab ex_dotcommand_query resultado %}
+```text
+birds
+
 CREATE TABLE IF NOT EXISTS "schema_migrations"("version" varchar NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS "ar_internal_metadata"(
   "key" varchar NOT NULL PRIMARY KEY,
@@ -384,7 +393,9 @@ CREATE TABLE IF NOT EXISTS "birds"(
   "updated_at" datetime(6) NOT NULL
 );
 ```
-   
+{% endtab %}
+{% endtabs %}
+
 
 <a name="dot-command-tables"></a>
 ### Ver las tablas existentes
@@ -392,8 +403,7 @@ CREATE TABLE IF NOT EXISTS "birds"(
 
 El comando `.tables` es similar a configurar el modo de lista y luego ejecutar la siguiente consulta:  
 
-
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 SELECT name FROM sqlite_schema 
 WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%'

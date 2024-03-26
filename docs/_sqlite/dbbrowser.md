@@ -111,15 +111,15 @@ Como podemos observar tenemos la opción para exportar a **JSON**, seleccionamos
 
 En caso de que no sepas que es una vista, una vista simplemente es un conjunto de resultados de una consulta almacenada. Una vista es la forma de empaquetar una consulta en un objeto con nombre almacenado en la base de datos.
 
-Esta tarea es un poco más avanzada que lo que hemos anteriormente sobre DB Browser, sin embargo aplicando algunos pasos bien sencillos podemos lograr crear vistas sin problemas. Vamos a trabajar el el área de explorador de datos (*browse data*) y seleccionaremos la tabla que tengamos más registros y aplicaremos algunos filtros:
+Esta tarea es un poco más avanzada que lo que hemos visto anteriormente sobre DB Browser, sin embargo aplicando algunos pasos bien sencillos podemos lograr crear vistas sin problemas. Vamos a trabajar el el área de explorador de datos (*browse data*) y seleccionaremos la tabla que tengamos más registros y aplicaremos algunos filtros:
 
 ![img - filter in tables]({{ page.image_path | relative_url }}/filter-in-tables.png)
 
 En el área de filtros estamos aplicando los siguientes criterios:
 
-1. Que el campo Puntaje_Credito sean clientes que tengan más de 750 puntos.
-2. Que en el campo Pais sólo sean clientes de Francia.
-3. Que en el campo Edad sean sólo clientes entre 20 y 40 años de edad.
+1. Que el campo `Puntaje_Credito` sean clientes que tengan más de 750 puntos.
+2. Que en el campo `Pais` sólo sean clientes de Francia.
+3. Que en el campo `Edad` sean sólo clientes entre 20 y 40 años de edad.
 
 A continuación debemos exportar esta presentación de los datos como una vista:
 
