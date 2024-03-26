@@ -25,7 +25,7 @@ Debemos respetar el orden:
 
 Creamos la tabla con la siguiente estructura:
 
-{: .clipboard }
+{% include code-header.html %}
 ```sql
 CREATE TABLE empleados (
 	nombre text,
@@ -33,14 +33,12 @@ CREATE TABLE empleados (
 );
 ```
 
-
 Para guardar datos de fecha podemos usar la función `date()`:
 
+{% include code-header.html %}
 ```sql
 INSERT INTO empleados ('Marco', date())
 ```
-{: .clipboard }
-
 
 ---
 
@@ -50,6 +48,7 @@ Es bastante fácil obtener la fecha y hora actuales con SQLite. Para ello podemo
 
 En los siguientes ejemplos se puede ver su funcionamiento:
 
+{% include code-header.html %}
 ```sql
 SELECT DATE('now'); -- Retorna fecha actual formato 'YYYY-MM-DD'
 SELECT TIME('now'); -- Retorna fecha actual formato 'hh:mm:ss'
@@ -75,6 +74,7 @@ A continuación se muestra una lista con especificadores y datos extraídos:
 
 En los siguientes ejemplos se puede ver su funcionamiento:
 
+{% include code-header.html %}
 ```sql
 SELECT strftime('%Y', '2023-03-05'); -- Retorna el año en formato 'YYYY'
 
@@ -99,6 +99,7 @@ Esta función toma un valor de fecha u hora como primer argumento y una cadena m
 
 La cadena modificadora es una combinación de un número y un especificador de unidad. Por ejemplo, la cadena modificadora '1 día' se escribiría de la siguiente manera `'+1 day'` y agrega un día a un valor de fecha y la cadena modificadora `+2 hours` agrega dos horas a un valor de hora.
 
+{% include code-header.html %}
 ```sql
 SELECT date('2023-03-01', '+1 day'); -- agrega un día
 
