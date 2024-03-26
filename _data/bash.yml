@@ -1,7 +1,0 @@
-papers:
-  - name: "Manipular archivos y carpetas"
-    link: comandos/manipular-archivos-carpetas
-  - name: "Variables reservadas en Bash"
-    link: variables
-  - name: "Condicionales"
-    link: estructuras-condicionales
