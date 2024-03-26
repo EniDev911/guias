@@ -1,42 +1,46 @@
 ---
 layout: default
 title: URLs cortas para cada ruta
+image_path: '/assets/images/rails/urls-abreviadas'
 ---
 
 ## Puesta en marcha
 
 Para una nueva aplicación **Rails API**, lo haremos con el siguiente comando:  
 
+{% include code-header.html %}
 ```bash
 rails new bird-api --api --minimal
 ```
 
-Esto creará una nueva aplicación en la cual vamos a trabajar.
+Esto creará una nueva aplicación en la cual vamos a trabajar. Luego, seguiremos avanzando y vamos a crear nuestra migración y modelo mediante el uso del **generador de Rails**:  
 
-Luego, seguiremos avanzando y vamos a crear nuestra migración y modelo mediante el uso del **generador de Rails**:  
-
+{% include code-header.html %}
 ```bash
 rails g model Birds name species
 ```
 
-Este modelo preparará nuestra primera migración de una tabla de aves dos columnas, en este caso especies y nombre de formato cadena.
+Este modelo preparará nuestra primera migración de una tabla de aves con dos campos, en este caso especies y nombre de formato cadena.
 
 Entonces ya podemos ejecutar la migración con el comando:
 
+{% include code-header.html %}
 ```bash
 rails db:migrate
 ```
 
 Ya vamos avanzando bien, asi que podemos ir generando un controlador para manejar nuestras rutas:  
 
+{% include code-header.html %}
 ```bash
 rails g controller birds
 ```
 
 ### Creación de rutas a mano
 
-Avancemos y profundicemos en nuestro archivo **`route.rb`** y creemos las rutas que queremos para que nuestro controlador de pájaros para que pueda proporcionar una respuesta en formato JSON.
+Avancemos y profundicemos en nuestro archivo `config/route.rb` y creemos las rutas que queremos para que nuestro controlador de pájaros para que pueda proporcionar una respuesta en formato JSON.
 
+{% include code-header.html file='routes.rb' %}
 ```ruby
 Rails.application.routes.draw do
   get 'birds', to: 'birds#index'
@@ -46,15 +50,36 @@ end
 
 Podemos hacer una comprobación rápida para ver si están habilitadas nuestras rutas con:  
 
+{% tabs ver_rutas %}
+{% tab ver_rutas bash %}
+{% include code-header.html %}
 ```bash
 rails routes -E -c birds
 ```
+{% endtab %}
+{% tab ver_rutas resultado %}
+```text
+--[ Route 1 ]------------------------------------------
+
+Prefix            | birds
+Verb              | GET
+URI               | /birds(.:format)
+Controller#Action | birds#index
+--[ Route 2 ]------------------------------------------
+
+Prefix            |
+Verb              | GET
+URI               | /birds/:id(.:format)
+Controller#Action | birds#show
+```
+{% endtab %}
+{% endtabs %}
 
 ### Crear las acciones del controlador
 
-Ahora configuramos rápidamente nuestras acciones de controlador para manejar nuestras rutas **RESTful** de **index** y **show**:  
+Ahora configuramos rápidamente nuestras acciones de controlador en `app/controllers/birds_controller.rb` para manejar nuestras rutas **RESTFUL** de **index** y **show**:  
 
-
+{% include code-header.html file='birds_controller.rb' %}
 ```ruby
 class BirdsController < ApplicationController
   def index
@@ -73,11 +98,10 @@ class BirdsController < ApplicationController
 end
 ```
 
-¡Genial!. Podemos verificar si esto funciona agregando datos semilla y sembrando nuestra aplicación:
+¡Genial!. Podemos verificar si esto funciona agregando datos semilla en `db/seeds.rb` y sembrando nuestra aplicación con data:
 
-
+{% include code-header.html file='seeds.rb' %}
 ```ruby
-# seeds.rb
 Bird.create([
   {name: "águila", species: "accipitriformes"},
   {name: "aguilucho", species: "accipitriformes"},
@@ -87,9 +111,11 @@ Bird.create([
 ```
 
 >Rails nos ofrece ese mecanismo a través del archivo `db/seeds.rb`, que nos permite escribir código Ruby y utilizar los modelos de nuestra aplicación para poblar la base de datos.
+{: .prompt-info }
 
 Para ejecutar este código y poblar la base de datos utilizamos el siguiente comando:
 
+{% include code-header.html %}
 ```bash
 rails db:seed
 ```
@@ -98,28 +124,44 @@ Como resultado, tendremos datos en nuestra tabla `birds` de **sqlite**, podemos 
 
 La primer es mediante algún programa de **cli** como sqlite3.exe, donde podremos ejecutar la sentencia sql y ver los resultados:
 
-![pic](assets/db_sqlite_select.png)
+![pic]({{ page.image_path | relative_url }}/db_sqlite_select.png)
 
-O ingresando a la consola interactiva de **rails** con el comando:
+O por medio de la consola interactiva de **rails** con el comando:
 
+{% include code-header.html %}
 ```bash
-rails console # o c (abreviado)
+rails console
 ```
 
-Y podemos usar el modelo y listar todos los registros:  
+Y dentro de la sesión interactiva podemos usar el modelo y listar todos los registros:
 
-![pic](assets/rails_console_select.png)
+{% include code-header.html %}
+```bash
+Bird.all
+```
 
-Ahora podemos verificar nuestra ruta RESTful para `/birds`, deberíamos ver algo similar (dependiendo de los datos iniciales):
+![pic]({{ page.image_path | relative_url }}/rails_console_select.png)
 
-![pic](assets/index_browser_json.png)
+Ahora podemos verificar nuestra ruta RESTFUL para `/birds`, deberíamos ver algo similar (dependiendo de los datos iniciales).
+
+Lanzamos el servidor:
+
+{% include code-header.html %}
+```bash
+rails s
+```
+
+Y vamos al navegador e ingresamos a `/birds`:
+
+![pic]({{ page.image_path | relative_url }}/index_browser_json.png)
 
 ### Automatizar rutas
 
 Ahora refactoricemos nuestro código para automatizar las Rutas.  
 
-Podemos hacer esto yendo al archivo `route.rb`, y dejamos comentado lo que teníamos y agreamos un *resorce*:  
+Podemos hacer esto yendo al archivo de ruta en `config/route.rb`, y dejamos comentado lo que teníamos y agreamos un `resource`:
 
+{% include code-header.html file='routes.rb' %}
 ```ruby
 # routes.rb
 Rails.application.routes.draw do
@@ -205,7 +247,7 @@ end
 
 Y ahora desde postman eliminados el primer pájaro.
 
-![pic](assets/delete_postman.png)
+![pic]({{ page.image_path | relative_url }}/delete_postman.png)
 
 
 ## Conclusión
@@ -213,7 +255,3 @@ Y ahora desde postman eliminados el primer pájaro.
 El caso está en los detalles, ya que omitir la '**`s`**' en los recursos cambia todo el mecanismo de automatización.
 
 Quizás en la mayoría de los casos, vamos a usar `resources :controllers_name` y no `resource :controllers_name` al automatizar la creación de rutas RESTful.
-
-
-
-

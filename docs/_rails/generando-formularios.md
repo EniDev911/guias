@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Generando formularios"
+image_path: '/assets/images/rails/generando-formularios'
 ---
 
 
@@ -8,6 +9,7 @@ title: "Generando formularios"
 
 Un ejemplo básico de ello sería el siguiente:  
 
+{% include code-header.html %}
 ```erb
 <%= form_for @persona do |form| %>
  <div>
@@ -23,12 +25,14 @@ Un ejemplo básico de ello sería el siguiente:
 
 Ahora para llegar a eso, primero debemos tener una aplicación creada, y luego generar un modelo, para ello usamos el generador de rails: 
 
+{% include code-header.html %}
 ```bash
 rails g model Persona nombre edad:integer estatura:float
 ```
 
 Y a continuación vamos a ejecutar el comando para crear el esquema en la base de datos por defecto que es **sqlite**:  
 
+{% include code-header.html %}
 ```bash
 rails db:migrate
 ```
@@ -41,8 +45,8 @@ rails g controller personas index new create
 
 A continuación abrimos el archivo del controlador y terminamos de desarrollar las acciones, como agregar una nueva instancia de nuestro modelo para usarla en la vista y construir posteriormente el formulario:  
 
+{% include code-header.html file='personas_controller.rb' %}
 ```ruby
-# app/controller/personas_controller.rb
 class PersonaController < ApplicationController
   def index
     @personas = Persona.all
@@ -66,6 +70,7 @@ end
 
 Ahora en nuestro archivo de `config/routes.rb`, vamos a regitrar las rutas de la siguiente manera:
 
+{% include code-header.html file='routes.rb' %}
 ```ruby
 Rails.application.routes.draw do
   root 'personas#index'
@@ -77,8 +82,9 @@ end
 
 ### Usando form builder
 
-Para ello creamos un nuevo archivo, en este caso, el ejemplo estará basado en **personas**, para la vista voy a estar usando clases de bootstrap para darle estilos, este formulario debemos crearlo en `app/views/personas/new.html.erb` y tendrá el siguiente contenido:  
+Para ello creamos un nuevo archivo, en este caso, el ejemplo estará basado en **personas**, para la vista voy a estar usando clases de bootstrap para darle estilos, este formulario debemos crearlo en `app/views/personas/new.html.erb` y tendrá el siguiente contenido:
 
+{% include code-header.html file='new.html.erb' %}
 ```erb
 <!-- app/views/personas/new.html.erb -->
 <h1 align="center">Agregar Persona</h1>
@@ -211,5 +217,5 @@ end
 
 ### Resultado
 
-![gif](assets/crear-persona.gif)
+![gif]({{ page.image_path | relative_url }}/crear-persona.gif)
 
