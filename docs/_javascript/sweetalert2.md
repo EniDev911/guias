@@ -26,7 +26,7 @@ Swal.fire("Esta es una alerta");
 <button class="btn" onclick="{Swal.fire('Esta es una alerta');}">VER ALERTA</button>
 
 > **Nota**: la tipografía del texto es tomada de nuestra web, es decir, la librería no incluye ninguna tipografía.
-
+{: .prompt-info }
 
 ## Evento de alerta cerrada o aceptada
 

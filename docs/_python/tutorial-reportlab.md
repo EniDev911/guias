@@ -275,4 +275,4 @@ canvas.save()
 
 ### Estilos
 
-Hasta ahora, tanto el texto como las figuras que hemos dibujado han utilizado los estilos por defecto (básicamente colores blanco y negro)
+Hasta ahora, tanto el texto como las figuras que hemos dibujado han utilizado los estilos por defecto (básicamente colores blanco y negro). Te habrás dado cuenta que las funciones que hemos estado utilizando no soportan argumentos como `foreground` y `background` para indicar el color de cada dibujo en particular
